@@ -1,0 +1,38 @@
+.item {
+    display: flex;
+    max-width: 400px;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 50px;
+}
+
+.item_img {
+    display: block;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    border: solid 1px black;
+}
+
+.item_title {
+    font-family: 'Kaushan Script';
+    text-align: center;
+    font-size: 50px;
+    text-transform: capitalize;
+    color: #d7d7f6;
+}
+
+.item_title:after {
+    content: "";
+    display: block;
+    width: 160px;
+    height: 3px;
+    margin: 15px auto -20px auto;
+    background-color: #e5996e;
+}
+
+.item_text {
+    padding: 5px 0px 5px 25px;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

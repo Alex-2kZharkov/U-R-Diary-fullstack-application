@@ -1,0 +1,42 @@
+.auten_form {
+    position: absolute;
+    text-align: center;
+    width: 29%;
+    left: 36.3%;
+    bottom: 30%;
+}
+
+fieldset {
+    border: double 5px #eeeeee;
+}
+
+legend {
+    font-size: 40px;
+    line-height: 1.5;
+}
+
+.field {
+    display: inline-block;
+    min-width: 320px;
+    padding: 20px 15px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times;
+    font-size: 20px;
+    text-align: center;
+    outline-color: #0080ff;
+}
+
+.submit {
+    font-family: Georgia, 'Times New Roman', Times;
+    font-size: 20px;
+    padding: 20px 80px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.1s linear;
+}
+
+.submit:hover {
+    background-color: #0080ff;
+    color: #eeeeee
+}
