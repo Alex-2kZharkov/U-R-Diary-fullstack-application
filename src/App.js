@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import st from './styles/App.module.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  authenticate = (e) => {
+    e.preventDefault();
+    alert(`Checked!`);
+  };
+
+  render() {
+    return (
+      <div>
+        <div className={st.App}>
+          <div className={st.App_intro}>
+            <div className={st.title}>
+              <i className={`${st.logos} fas fa-book`}></i>
+              <h1>U'R Diary</h1>
+              <i className={`${st.logos} fas fa-pencil-alt`}></i>
+            </div>
+            <form
+              className={st.auten_form}
+              onSubmit={this.authenticate}
+              method='post'
+            >
+              <fieldset>
+                <legend>Authentication</legend>
+                <input
+                  type='text'
+                  placeholder='Type your email here'
+                  required
+                  className={st.field}
+                />
+                <input
+                  type='password'
+                  placeholder='Type your password'
+                  required
+                  className={st.field}
+                />
+                <button className={st.submit}>Sign in</button>
+                
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
