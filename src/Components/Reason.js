@@ -11,7 +11,7 @@ export class Reason extends Component {
       <div className={st.item}>
         <img
           src={`${this.props.img}`}
-          alt='3434r34r'
+          alt='Inspiration and creativeness'
           className={st.item_img}
         ></img>
         <div className={st.item_title}>{this.props.title}</div>

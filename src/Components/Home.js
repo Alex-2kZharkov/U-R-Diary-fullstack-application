@@ -8,7 +8,7 @@ class Home extends Component {
     return (
       <div>
         <div className={st.App}>
-          <div className={st.App_intro}>
+          <main className={st.App_intro}>
             <div className={st.autenticate}>
               <button>
                 Login <i class='fas fa-laptop-house'></i>
@@ -27,7 +27,9 @@ class Home extends Component {
                 A place to write and share
               </h2>
               <h2 className={`${st.just_write} ${st.write}`}>Or just write</h2>
-
+              <h3 className={st.reasons_title}>
+                There are a million reasons why you should try it
+              </h3>
               <div className={st.reasons}>
                 <Reason
                   img='https://blog.aboutmybrain.com/hs-fs/hubfs/New_Blog_Images/hero-images/The-Importance-Of-Imagination.jpg?width=750&name=The-Importance-Of-Imagination.jpg'
@@ -47,7 +49,7 @@ class Home extends Component {
                 <Reason
                   img='https://www.casiola.com/wp-content/uploads/2019/06/worldofanimation.jpg'
                   title=' Inspire creativity'
-                  content='Writing a journal is a great way to unleash your creativity. Everyone has the potential to be creative, just that most of us haven’t discovered it yet. Your journal is the best place to start exploring your inner creativity.'
+                  content='Writing a journal is a great way to unleash your creativity. Everyone has the potential to be creative, just that most of us haven’t discovered it yet. Your diary is the best place to start exploring your inner creativity.'
                 />
                 <Reason
                   img='https://iranterritory.files.wordpress.com/2016/04/1913623.jpg'
@@ -57,7 +59,7 @@ class Home extends Component {
                   }
                 />
                 <Reason
-                  img='https://thumb.mp-farm.com/1918171/preview.jpg'
+                  img='https://img.pixers.pics/pho_wat(s3:700/FO/24/37/95/81/700_FO24379581_710e273e09648f86673b334f33830dda.jpg,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/fototapeter-spion.jpg.jpg'
                   title='Access'
                   content={
                     "There is no need to lock or hide diary. Only you can access it, 24/7, as long as you have stable internet connection. In taxi and car, at mall queu, whatever. U'R Diary is your best friend"
@@ -65,7 +67,56 @@ class Home extends Component {
                 />
               </div>
             </div>
-          </div>
+
+            <footer className={st.footer}>
+              <div className={st.copyright}>
+                <div className={st.copyright_product}>
+                  <i className={`far fa-copyright ${st.copyright_logo}`}> </i>
+                  <span> 2020 </span>
+                  <span className={st.copyright_product_name}>U'R Diary</span>
+                </div>
+                <div className={st.developer}>
+                  Developed by
+                  <span className={st.developer_name}> Alex 2kZharkov</span>
+                </div>
+              </div>
+              <div className={st.social_links}>
+                <a
+                  href='https://github.com/Alex-2kZharkov'
+                  className={st.social_links_logo}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                 <i class="fab fa-github-alt"></i>
+                </a>
+                <a
+                  href='https://www.instagram.com/aleksis.zharkov/'
+                  className={st.social_links_logo}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <i className='fab fa-instagram'></i>
+                </a>
+
+                <a
+                  href='https://twitter.com/DeanWin12789068'
+                  className={st.social_links_logo}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <i className='fab fa-twitter'></i>
+                </a>
+                <a
+                  href='https://vk.com/s.zharkov2015'
+                  className={st.social_links_logo}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <i className='fab fa-vk'></i>
+                </a>
+              </div>
+            </footer>
+          </main>
         </div>
       </div>
     );

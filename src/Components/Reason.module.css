@@ -3,7 +3,7 @@
     max-width: 400px;
     flex-direction: column;
     justify-content: flex-end;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .item_img {
@@ -33,6 +33,7 @@
 
 .item_text {
     padding: 5px 0px 5px 25px;
+    text-align: center;
     font-size: 30px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
