@@ -1,9 +1,10 @@
 .auten_form {
-    position: absolute;
-    text-align: center;
+    position: fixed;
     width: 29%;
     left: 36.3%;
     bottom: 30%;
+    color: #fff;
+    font-size: 40px;
 }
 
 fieldset {
@@ -11,12 +12,13 @@ fieldset {
 }
 
 legend {
-    font-size: 40px;
+    font-size: 60px;
+    text-align: center;
     line-height: 1.5;
 }
 
 .field {
-    display: inline-block;
+    display: block;
     min-width: 320px;
     padding: 20px 15px;
     margin: 0 auto;
@@ -24,19 +26,43 @@ legend {
     font-family: Georgia, 'Times New Roman', Times;
     font-size: 20px;
     text-align: center;
-    outline-color: #0080ff;
+    outline-color: #b83737;
 }
 
 .submit {
+    display: block;
     font-family: Georgia, 'Times New Roman', Times;
     font-size: 20px;
     padding: 20px 80px;
+    margin: 10px auto;
     border-radius: 50px;
     cursor: pointer;
     transition: background 0.1s linear;
 }
 
 .submit:hover {
-    background-color: #0080ff;
+    background-color: #6b2b2b;
     color: #eeeeee
+}
+
+.registration {
+    text-align: center;
+
+}
+
+.down {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.registration a {
+    text-decoration: none;
+    color: #fb5d7f;
+    transition: color .1s linear;
+    transition: text-decoration .1s linear;
+}
+
+.registration a:hover {
+    text-decoration: underline;
+    color: #ff4069;
 }

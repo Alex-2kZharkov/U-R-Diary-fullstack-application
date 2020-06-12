@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import st from './Autentication.module.css';
 class Autenticattion extends Component {
   render() {
@@ -24,11 +25,14 @@ class Autenticattion extends Component {
               className={st.field}
             />
             <button className={st.submit}>Sign in</button>
-            <div>
-              Still haven't got an account?
-              <a href='/registration'>
+            <div className={st.registration}>
+              <div>
+                Still haven't got an account?
+                <i className={`fas fa-arrow-circle-down ${st.down}`}></i>
+              </div>
+              <Link to='/personalRoom'>
                 Click here to get absolutely free account
-              </a>
+              </Link>
             </div>
           </fieldset>
         </form>

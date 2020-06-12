@@ -13,6 +13,7 @@ class App extends Component {
       <BrowserRouter>
         <Route exact path='/' component={Home} />
         <Route path='/registration' component={Registration} />
+        <Route path='/personalRoom' component={Registration} />
       </BrowserRouter>
     );
   }

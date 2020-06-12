@@ -8,12 +8,17 @@
     min-height: 100vh;
     position: relative;
     color: white;
+
+}
+
+.wrapper {
+    z-index: 5;
 }
 
 .autenticate {
-    position: absolute;
+    position: fixed;
     right: 1%;
-    top: 0.5%;
+    top: 1%;
 }
 
 .autenticate button {
