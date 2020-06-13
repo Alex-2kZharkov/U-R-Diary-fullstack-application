@@ -59,7 +59,7 @@ class Registration extends Component {
             className={css.field}
           />
           <input
-            type='text'
+            type='email'
             placeholder='Write down your email here'
             required
             className={css.field}

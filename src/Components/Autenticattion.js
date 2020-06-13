@@ -5,7 +5,23 @@ import TransitionButton from './TransitionButton';
 class Autenticattion extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      email: '',
+      password: '',
+    };
   }
+
+  handleEmailChange = (e) => {
+    this.setState({
+      email: e.target.value,
+    });
+  };
+  handlePasswordChange = (e) => {
+    this.setState({
+      password: e.target.value,
+    });
+  };
   render() {
     return (
       <div>
@@ -22,18 +38,29 @@ class Autenticattion extends Component {
           <fieldset>
             <legend>Authentication</legend>
             <input
-              type='text'
+              type='email'
               placeholder='Type your email here'
               required
               className={st.field}
+              value={this.state.email}
+              onChange={this.handleEmailChange}
             />
             <input
               type='password'
               placeholder='Type your password'
               required
               className={st.field}
+              value={this.state.password}
+              onChange={this.handlePasswordChange}
             />
-            <button className={st.submit}>Sign in</button>
+            <button
+              onClick={() =>
+                alert(`${this.state.email}\n${this.state.password}`)
+              }
+              className={st.submit}
+            >
+              Sign in
+            </button>
             <div className={st.registration}>
               <div>
                 Still haven't got an account?
