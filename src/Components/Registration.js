@@ -5,6 +5,36 @@ import Autenticattion from './Autenticattion';
 import { Link } from 'react-router-dom';
 import Quote from './Quote';
 class Registration extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      nickname: '',
+      email: '',
+      password: '',
+      passwordAgain: '',
+    };
+  }
+  handleNicknameChange = (e) => {
+    this.setState({
+      nickname: e.target.value,
+    });
+  };
+  handleEmailChange = (e) => {
+    this.setState({
+      email: e.target.value,
+    });
+  };
+  handlePasswordChange = (e) => {
+    this.setState({
+      password: e.target.value,
+    });
+  };
+  handlePasswordAgainChange = (e) => {
+    this.setState({
+      passwordAgain: e.target.value,
+    });
+  };
   render() {
     return (
       <div className={css.intro}>
@@ -25,7 +55,7 @@ class Registration extends Component {
         </div>
         <div className={css.transition}>
           <button onClick={this.props.act}>
-            <Link to='/personalRoom'>
+            <Link to='/'>
               Main page{' '}
               <i className={`fas fa-laptop-house ${css.transition_icon}`}></i>
             </Link>
@@ -57,26 +87,43 @@ class Registration extends Component {
             placeholder='Create you nickname'
             required
             className={css.field}
+            value={this.state.nickname}
+            onChange={this.handleNicknameChange}
           />
           <input
             type='email'
             placeholder='Write down your email here'
             required
             className={css.field}
+            value={this.state.email}
+            onChange={this.handleEmailChange}
           />
           <input
             type='password'
             placeholder='Create your password'
             required
             className={css.field}
+            value={this.state.password}
+            onChange={this.handlePasswordChange}
           />
           <input
             type='password'
             placeholder='Type your password again'
             required
             className={css.field}
+            value={this.state.passwordAgain}
+            onChange={this.handlePasswordAgainChange}
           />
-          <button className={css.submit}>Registrate now</button>
+          <button
+            onClick={() =>
+              alert(
+                `${this.state.nickname}\n${this.state.email}\n${this.state.password}\n${this.state.passwordAgain}`
+              )
+            }
+            className={css.submit}
+          >
+            Registrate now
+          </button>
           <div className={css.registration}></div>
         </form>
       </div>
