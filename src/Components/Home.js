@@ -29,7 +29,7 @@ class Home extends Component {
           <TransitionButton
             act={this.showAutenForm}
             label='Login'
-            icon='fas fa-laptop-house'
+            icon={'fas fa-arrow-circle-right'}
           />
           <div className={st.title}>
             <i className={`${st.logos} fas fa-book`}></i>

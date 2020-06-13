@@ -4,18 +4,15 @@ import st from './Autentication.module.css';
 import TransitionButton from './TransitionButton';
 class Autenticattion extends Component {
   constructor(props) {
-    super(props)
-
+    super(props);
   }
   render() {
-    
-    
     return (
       <div>
         <TransitionButton
           act={this.props.act}
           label='Main page'
-          icon='fas fa-arrow-circle-left'
+          icon='fas fa-laptop-house'
         />
         <form
           className={st.auten_form}
@@ -42,7 +39,7 @@ class Autenticattion extends Component {
                 Still haven't got an account?
                 <i className={`fas fa-arrow-circle-down ${st.down}`}></i>
               </div>
-              <Link to='/personalRoom'>
+              <Link to='/registration'>
                 Click here to get absolutely free account
               </Link>
             </div>
