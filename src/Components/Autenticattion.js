@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import st from './Autentication.module.css';
+import TransitionButton from './TransitionButton';
 class Autenticattion extends Component {
+  constructor(props) {
+    super(props)
+
+  }
   render() {
+    
+    
     return (
       <div>
+        <TransitionButton
+          act={this.props.act}
+          label='Main page'
+          icon='fas fa-arrow-circle-left'
+        />
         <form
           className={st.auten_form}
           onSubmit={this.authenticate}
