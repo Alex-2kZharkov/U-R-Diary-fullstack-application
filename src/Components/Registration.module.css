@@ -1,0 +1,69 @@
+.intro {
+    background-image: url('https://www.publicdomainpictures.net/pictures/190000/velka/wood-background-02.jpg');
+    background-size: 1680;
+    min-height: 100vh;
+    position: relative;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 48px;
+    color: rgb(255, 255, 255);
+}
+
+.title {
+
+    font-size: 70px;
+    margin: 0px 0px 40px;
+    padding: 0 10%;
+    text-align: center;
+
+    text-shadow: 0 1px 0 rgb(204, 204, 204),
+        0 2px 0 #ca9e9e,
+        0 3px 0 rgb(192, 136, 136),
+        0 4px 0 #be8989,
+        0 5px 0 rgb(172, 127, 127),
+        0 6px 1px rgba(0, 0, 0, .1),
+        0 0 5px rgba(0, 0, 0, .1),
+        0 1px 3px rgba(0, 0, 0, .3),
+        0 3px 5px rgba(0, 0, 0, .2),
+        0 5px 10px rgba(0, 0, 0, .25),
+        0 10px 10px rgba(0, 0, 0, .2),
+        0 20px 20px rgba(0, 0, 0, .15);
+
+}
+
+.auten_form {
+    position: fixed;
+    width: 26%;
+    left: 36.3%;
+    bottom: 15%;
+    border: double 15px #b83737;
+    padding: 50px 0;
+    color: #fff;
+    font-size: 40px;
+}
+
+.field {
+    display: block;
+    min-width: 320px;
+    padding: 20px 15px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times;
+    font-size: 20px;
+    outline-color: #b83737;
+}
+
+.submit {
+    display: block;
+    font-family: Georgia, 'Times New Roman', Times;
+    font-size: 20px;
+    padding: 20px 80px;
+    margin: 50px auto 10px auto;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.1s linear;
+}
+
+.submit:hover {
+    background-color: #6b2b2b;
+    color: #eeeeee
+}

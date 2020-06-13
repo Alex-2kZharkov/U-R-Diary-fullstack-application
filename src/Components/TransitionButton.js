@@ -7,10 +7,9 @@ class TransitionButton extends Component {
   }
 
   render() {
-    console.log(this.props.act);
     return (
       <div className={st.autenticate}>
-        <button onClick={this.props.act}>
+        <button onClick={this.props.act}> {/*  callback function */}
           {this.props.label}
           <i className={`${this.props.icon} ${st.autenticate_icon}`}></i>
         </button>
