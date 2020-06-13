@@ -1,0 +1,49 @@
+.reviews__item {
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    min-height: 210px;
+    flex-basis: 33%;
+}
+
+.reviews__photo {
+    display: block;
+    width: 189px;
+    height: 189px;
+    border-radius: 50%;
+}
+
+.wrapper {
+    margin-left: 20px;
+}
+
+.reviews__text {
+    margin-bottom: 6px;
+    padding-top: 20px;
+    font-family: 'Cambria', sans-serif;
+    font-weight: 350;
+    font-size: 46px;
+    font-style: italic;
+}
+
+.text {
+    padding-top: 30px;
+}
+
+.reviews__author {
+    font-size: 36px;
+    font-family: 'Kaushan Script', cursive;
+    color: rgb(0, 0, 0);
+    text-shadow: 5px 5px 10px #ff3a65, -4px -4px 9px #ff3a65;
+}
+
+.reviews__author:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 80px;
+    height: 3px;
+    background-color: #fef8d4;
+    margin-right: 10px;
+}

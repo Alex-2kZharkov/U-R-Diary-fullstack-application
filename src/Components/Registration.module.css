@@ -8,7 +8,6 @@
     color: rgb(255, 255, 255);
 }
 
-
 .transition {
     position: absolute;
     right: 1%;
@@ -250,6 +249,15 @@ body {
 
 }
 
+/*Container for quotes*/
+.quotes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10%;
+    padding: 0 1%;
+}
+
+/*Styles for form*/
 .auten_form {
     position: fixed;
     width: 26%;
