@@ -1,8 +1,9 @@
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px 5%;
-    background-color: #a56247dc;
+    background-color: #a56247d2;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 48px;
     color: rgb(255, 255, 255);
@@ -11,5 +12,15 @@
 .nav a {
     text-decoration: none;
     color: #fff;
-    padding: 0px 40px;
+    padding: 0px 30px;
+}
+
+.nav a:hover {
+    text-shadow: 5px 5px 10px #d7d7f6, -4px -4px 9px #d7d7f6;
+    text-decoration: underline;
+}
+
+.active {
+    text-shadow: 5px 5px 10px #d7d7f6, -4px -4px 9px #d7d7f6;
+    text-decoration: underline;
 }
