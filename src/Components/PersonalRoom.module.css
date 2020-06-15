@@ -1,0 +1,11 @@
+.intro {
+    background: url('../assets/diary.jpeg');
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.darker {
+    background-color: #36354e60;
+    min-height: 100vh;
+}
