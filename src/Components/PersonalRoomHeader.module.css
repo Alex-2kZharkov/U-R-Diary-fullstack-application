@@ -12,66 +12,81 @@
 
 .user {
     font-family: 'Kaushan Script', 'Times Italic';
-    font-size: 64px;
+    font-size: 70px;
+    color: #333333;
     text-shadow: 5px 5px 10px #ff0037, -5px -5px 10px #ff0037;
-    animation: userName 12s linear 2s infinite;
+    animation: userName 12s linear 0.7s infinite;
 }
 
 @keyframes userName {
     0% {
         text-shadow: 5px 5px 10px #fb117e, -5px -5px 10px #fb117e;
+        color: #3b3836;
     }
 
     8% {
         text-shadow: 5px 5px 10px #d811fb, -5px -5px 10px #d811fb;
+        color: #d47c52;
     }
 
     16% {
         text-shadow: 5px 5px 10px #a511fb, -5px -5px 10px #a511fb;
+        color: #fbc411;
     }
 
     24% {
         text-shadow: 5px 5px 10px #8a11fb, -5px -5px 10px #8a11fb;
+        color: #d8fb11;
     }
 
     32% {
         text-shadow: 5px 5px 10px #1115fb, -5px -5px 10px #1115fb;
+        color: #6ffb11;
     }
 
     40% {
         text-shadow: 5px 5px 10px #117efb, -5px -5px 10px #117efb;
+        color: #11fb86;
     }
 
     48% {
         text-shadow: 5px 5px 10px #11b9fb, -5px -5px 10px #11b9fb;
+        color: #11fbd4;
     }
 
     56% {
         text-shadow: 5px 5px 10px #11fbd4, -5px -5px 10px #11fbd4;
+        color: #11b9fb;
     }
 
     64% {
         text-shadow: 5px 5px 10px #11fb86, -5px -5px 10px #11fb86;
+        color: #d811fb;
     }
 
     72% {
         text-shadow: 5px 5px 10px #6ffb11, -5px -5px 10px #6ffb11;
+        color: #a511fb;
     }
 
     80% {
         text-shadow: 5px 5px 10px #d8fb11, -5px -5px 10px #d8fb11;
+        color: #8a11fb;
     }
 
     88% {
         text-shadow: 5px 5px 10px #fbc411, -5px -5px 10px #fbc411;
+        color: #1115fb;
     }
 
     96% {
         text-shadow: 5px 5px 10px #fb5b11, -5px -5px 10px #fb5b11;
+        color: #117efb;
     }
 
     100% {
-        text-shadow: 5px 5px 10px #ff0037, -5px -5px 10px #ff0037;
+        text-shadow: 5px 5px 10px #ff6600, -5px -5px 10px #ff6600;
+        color: #11b9fb;
     }
 }
 
