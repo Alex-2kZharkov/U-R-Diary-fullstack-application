@@ -3,6 +3,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './Components/Home';
 import Registration from './Components/Registration';
 import PersonalRoom from './Components/PersonalRoom';
+import Notifications from './Components/Notifications';
+import Friends from './Components/Friends';
+import Comments from './Components/Comments';
 
 class App extends Component {
   authenticate = (e) => {
@@ -15,6 +18,9 @@ class App extends Component {
       <BrowserRouter>
         <Route exact path='/' component={PersonalRoom} />
         <Route path='/registration' component={Registration} />
+        <Route path='/personalRoom/notifications' component={Notifications} />
+        <Route path='/personalRoom/friends' component={Friends} />
+        <Route path='/personalRoom/comments' component={Comments} />
         {/*    <Route path='/personalRoom' component={} /> */}
       </BrowserRouter>
     );

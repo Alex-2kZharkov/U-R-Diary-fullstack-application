@@ -9,13 +9,13 @@
     color: rgb(255, 255, 255);
 }
 
-.nav a {
+.link {
     text-decoration: none;
     color: #fff;
     padding: 0px 30px;
 }
 
-.nav a:hover {
+.link:hover {
     text-shadow: 5px 5px 10px #d7d7f6, -4px -4px 9px #d7d7f6;
     text-decoration: underline;
 }
@@ -23,4 +23,5 @@
 .active {
     text-shadow: 5px 5px 10px #d7d7f6, -4px -4px 9px #d7d7f6;
     text-decoration: underline;
+    color: #333;
 }

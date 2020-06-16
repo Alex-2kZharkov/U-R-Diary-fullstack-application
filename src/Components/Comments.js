@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PersonalRoomHeader from './PersonalRoomHeader';
 
-export class Notifications extends Component {
+export class Comments extends Component {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ export class Notifications extends Component {
   }
 }
 
-export default Notifications;
+export default Comments;
