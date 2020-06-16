@@ -2,11 +2,77 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: nowrap;
     padding: 20px 5%;
     background-color: #a56247d2;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 48px;
     color: rgb(255, 255, 255);
+}
+
+.user {
+    font-family: 'Kaushan Script', 'Times Italic';
+    font-size: 64px;
+    text-shadow: 5px 5px 10px #ff0037, -5px -5px 10px #ff0037;
+    animation: userName 12s linear 2s infinite;
+}
+
+@keyframes userName {
+    0% {
+        text-shadow: 5px 5px 10px #fb117e, -5px -5px 10px #fb117e;
+    }
+
+    8% {
+        text-shadow: 5px 5px 10px #d811fb, -5px -5px 10px #d811fb;
+    }
+
+    16% {
+        text-shadow: 5px 5px 10px #a511fb, -5px -5px 10px #a511fb;
+    }
+
+    24% {
+        text-shadow: 5px 5px 10px #8a11fb, -5px -5px 10px #8a11fb;
+    }
+
+    32% {
+        text-shadow: 5px 5px 10px #1115fb, -5px -5px 10px #1115fb;
+    }
+
+    40% {
+        text-shadow: 5px 5px 10px #117efb, -5px -5px 10px #117efb;
+    }
+
+    48% {
+        text-shadow: 5px 5px 10px #11b9fb, -5px -5px 10px #11b9fb;
+    }
+
+    56% {
+        text-shadow: 5px 5px 10px #11fbd4, -5px -5px 10px #11fbd4;
+    }
+
+    64% {
+        text-shadow: 5px 5px 10px #11fb86, -5px -5px 10px #11fb86;
+    }
+
+    72% {
+        text-shadow: 5px 5px 10px #6ffb11, -5px -5px 10px #6ffb11;
+    }
+
+    80% {
+        text-shadow: 5px 5px 10px #d8fb11, -5px -5px 10px #d8fb11;
+    }
+
+    88% {
+        text-shadow: 5px 5px 10px #fbc411, -5px -5px 10px #fbc411;
+    }
+
+    96% {
+        text-shadow: 5px 5px 10px #fb5b11, -5px -5px 10px #fb5b11;
+    }
+
+    100% {
+        text-shadow: 5px 5px 10px #ff0037, -5px -5px 10px #ff0037;
+    }
 }
 
 .link {
