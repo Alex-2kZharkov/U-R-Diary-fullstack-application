@@ -274,7 +274,7 @@ body {
     min-width: 320px;
     padding: 20px 15px;
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     font-family: Georgia, 'Times New Roman', Times;
     font-size: 20px;
     outline-color: #b83737;
@@ -294,8 +294,4 @@ body {
 .submit:hover {
     background-color: #6b2b2b;
     color: #eeeeee
-}
-
-.error {
-    
 }

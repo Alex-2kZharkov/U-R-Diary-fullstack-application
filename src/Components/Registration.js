@@ -15,6 +15,7 @@ class Registration extends Component {
       password: '',
       passwordAgain: '',
       passwordError: null,
+      emailError: null,
     };
   }
   handleNicknameChange = (e) => {
@@ -136,9 +137,27 @@ class Registration extends Component {
                     />
                   ),
                 });
+              } else if (this.state.email === 'Email from server') {
+                this.setState({
+                  emailError: (
+                    <RegistrationMessage
+                      style={{
+                        position: 'absolute',
+                        left: '20%',
+                        top: '37%',
+                        color: '#f30b0b',
+                        fontWeight: '700',
+                        fontSize: '18px',
+                        fontFamily: 'Georgia',
+                      }}
+                      message='Email has already been using'
+                    />
+                  ),
+                });
               } else {
                 this.setState({
                   passwordError: null,
+                  emailError: null,
                 });
               }
             }}
@@ -147,7 +166,7 @@ class Registration extends Component {
             Registrate now
           </button>
           {this.state.passwordError}
-          <div className={css.registration}></div>
+          {this.state.emailError}
         </form>
       </div>
     );
