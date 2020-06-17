@@ -4,6 +4,7 @@ import TransitionButton from './TransitionButton';
 import Autenticattion from './Autenticattion';
 import { Link } from 'react-router-dom';
 import Quote from './Quote';
+import RegistrationMessage from './RegistrationMessage';
 class Registration extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +14,7 @@ class Registration extends Component {
       email: '',
       password: '',
       passwordAgain: '',
+      passwordError: null,
     };
   }
   handleNicknameChange = (e) => {
@@ -115,15 +117,36 @@ class Registration extends Component {
             onChange={this.handlePasswordAgainChange}
           />
           <button
-            onClick={() =>
-              alert(
-                `${this.state.nickname}\n${this.state.email}\n${this.state.password}\n${this.state.passwordAgain}`
-              )
-            }
+            onClick={(e) => {
+              e.preventDefault();
+              if (this.state.password !== this.state.passwordAgain) {
+                this.setState({
+                  passwordError: (
+                    <RegistrationMessage
+                      style={{
+                        position: 'absolute',
+                        left: '27%',
+                        bottom: '26%',
+                        color: '#f30b0b',
+                        fontWeight: '700',
+                        fontSize: '18px',
+                        fontFamily: 'Georgia',
+                      }}
+                      message='Passwords has to match!'
+                    />
+                  ),
+                });
+              } else {
+                this.setState({
+                  passwordError: null,
+                });
+              }
+            }}
             className={css.submit}
           >
             Registrate now
           </button>
+          {this.state.passwordError}
           <div className={css.registration}></div>
         </form>
       </div>
