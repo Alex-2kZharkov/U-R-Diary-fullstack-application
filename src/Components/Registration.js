@@ -11,6 +11,7 @@ class Registration extends Component {
 
     this.state = {
       nickname: '',
+      something: '',
       email: '',
       password: '',
       passwordAgain: '',
@@ -22,6 +23,11 @@ class Registration extends Component {
   handleNicknameChange = (e) => {
     this.setState({
       nickname: e.target.value,
+    });
+  };
+  handleSomethingChange = (e) => {
+    this.setState({
+      something: e.target.value,
     });
   };
   handleEmailChange = (e) => {
@@ -94,6 +100,14 @@ class Registration extends Component {
             value={this.state.nickname}
             onChange={this.handleNicknameChange}
           />
+          <textarea
+            type='text'
+            placeholder='Tell something about yourself'
+            required
+            className={css.field}
+            value={this.state.something}
+            onChange={this.handleSomethingChange}
+          ></textarea>
           <input
             type='email'
             placeholder='Write down your email here'
@@ -118,6 +132,7 @@ class Registration extends Component {
             value={this.state.passwordAgain}
             onChange={this.handlePasswordAgainChange}
           />
+
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -128,7 +143,7 @@ class Registration extends Component {
                       style={{
                         position: 'absolute',
                         left: '27%',
-                        bottom: '26%',
+                        bottom: '19%',
                         color: '#f30b0b',
                         fontWeight: '700',
                         fontSize: '18px',
@@ -145,7 +160,7 @@ class Registration extends Component {
                       style={{
                         position: 'absolute',
                         left: '20%',
-                        top: '37%',
+                        bottom: '50%',
                         color: '#f30b0b',
                         fontWeight: '700',
                         fontSize: '18px',
@@ -164,9 +179,9 @@ class Registration extends Component {
                       style={{
                         position: 'absolute',
                         left: '20%',
-                        bottom: '25%',
-                        backgroundColor: '#fff',
-                        color: '#37af1f',
+                        bottom: '1%',
+
+                        color: '#00ff00',
                         fontWeight: '700',
                         fontSize: '18px',
                         fontFamily: 'Georgia',
