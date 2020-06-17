@@ -18,6 +18,7 @@ class App extends Component {
       <BrowserRouter>
         <Route exact path='/' component={PersonalRoom} />
         <Route path='/registration' component={Registration} />
+        <Route exact path='/personalRoom' component={PersonalRoom} />
         <Route path='/personalRoom/notifications' component={Notifications} />
         <Route path='/personalRoom/friends' component={Friends} />
         <Route path='/personalRoom/comments' component={Comments} />

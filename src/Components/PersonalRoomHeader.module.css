@@ -10,7 +10,8 @@
     color: rgb(255, 255, 255);
 }
 
-.user {
+.user_link {
+    text-decoration: none;
     font-family: 'Kaushan Script', 'Times Italic';
     font-size: 70px;
     color: #333333;

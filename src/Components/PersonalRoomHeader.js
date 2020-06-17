@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import css from './PersonalRoomHeader.module.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 export class PersonalRoomHeader extends Component {
   render() {
     return (
       <header className={css.header}>
-        <div className={css.user}>
-          {this.props.user} {"'s"} Diary
+        <div>
+          <Link to='/personalRoom' className={css.user_link}>
+            {' '}
+            {this.props.user} {"'s"} Diary
+          </Link>
         </div>
         <div className={css.nav}>
           <NavLink
