@@ -16,6 +16,7 @@ class Registration extends Component {
       passwordAgain: '',
       passwordError: null,
       emailError: null,
+      succesRegist: null,
     };
   }
   handleNicknameChange = (e) => {
@@ -158,6 +159,21 @@ class Registration extends Component {
                 this.setState({
                   passwordError: null,
                   emailError: null,
+                  succesRegist: (
+                    <RegistrationMessage
+                      style={{
+                        position: 'absolute',
+                        left: '20%',
+                        bottom: '25%',
+                        backgroundColor: '#fff',
+                        color: '#37af1f',
+                        fontWeight: '700',
+                        fontSize: '18px',
+                        fontFamily: 'Georgia',
+                      }}
+                      message='Registration was successful'
+                    />
+                  ),
                 });
               }
             }}
@@ -167,6 +183,7 @@ class Registration extends Component {
           </button>
           {this.state.passwordError}
           {this.state.emailError}
+          {this.state.succesRegist}
         </form>
       </div>
     );
