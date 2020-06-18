@@ -9,7 +9,7 @@ function Record(props) {
         alt='Provided by user'
         className={css.record_image}
       ></img>
-      <div>
+      <div className={css.data_container}>
         <div className={css.title}>
           {props.title}
           <span className={css.date}> - {props.date}</span>

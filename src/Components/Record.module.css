@@ -1,9 +1,10 @@
 .record {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 50px;
 }
+
 
 .record_image {
     display: block;
@@ -13,6 +14,10 @@
     max-height: 150px;
     border-radius: 50%;
     border: solid 1px #333;
+}
+
+.data_container {
+    flex-basis: 83%;
 }
 
 .title,
@@ -31,7 +36,9 @@
 }
 
 .content {
+    margin-top: 10px;
     color: #333;
     font-size: 24px;
     font-family: Montserrat, sans-serif;
+    word-break: break-all;
 }
