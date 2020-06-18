@@ -1,11 +1,12 @@
 .intro {
-    background: url('../assets/diary.jpeg');
+    background: url('https://www.myfreetextures.com/wp-content/uploads/2014/10/seamless-wood-planks-3.jpg');
+    background-size: 100%;
     min-height: 100vh;
     position: relative;
     color: white;
 }
 
 .darker {
-    background-color: #cccccc2c;
+    /* background-color: #ccc; */
     min-height: 100vh;
 }
