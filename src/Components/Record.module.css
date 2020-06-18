@@ -20,25 +20,30 @@
     flex-basis: 83%;
 }
 
-.title,
-.date {
-    color: #ff9500;
+.title {
+    color: #ff8000;
+    text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
     font-weight: 700;
     font-size: 30px;
     font-family: Cambria, sans-serif;
-
+    font-weight: 900;
 }
 
+/* .title {
+    text-shadow: -3px 2px 3px #ff9100, 3px -2px 3px #ff9100;
+} */
+
 .date {
+    font-family: Cochin, Cambria, Georgia, Times, 'Times New Roman', serif;
     color: #0080ff;
-    text-decoration: underline;
-    font-weight: 500;
+    font-style: italic;
+
 }
 
 .content {
     margin-top: 10px;
-    color: #333;
+    color: #000000;
     font-size: 24px;
-    font-family: Montserrat, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
     word-break: break-all;
 }
