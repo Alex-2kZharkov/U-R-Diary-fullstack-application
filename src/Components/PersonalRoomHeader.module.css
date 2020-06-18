@@ -3,11 +3,16 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90%;
     padding: 20px 5%;
     background-color: #ff8000;
+    color: rgb(255, 255, 255);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 48px;
-    color: rgb(255, 255, 255);
+
 }
 
 .user_link {
@@ -105,5 +110,5 @@
 .active {
     text-shadow: 5px 5px 10px #d7d7f6, -4px -4px 9px #d7d7f6;
     text-decoration: underline;
-    color: #333;
+    color: #0080ff;
 }

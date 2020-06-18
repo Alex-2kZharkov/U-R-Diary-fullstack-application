@@ -8,8 +8,10 @@ class TransitionButton extends Component {
 
   render() {
     return (
-      <div className={st.autenticate}>
-        <button onClick={this.props.act}> {/*  callback function */}
+      <div className={st.autenticate} style={this.props.style}>
+        <button onClick={this.props.act}>
+          {' '}
+          {/*  callback function */}
           {this.props.label}
           <i className={`${this.props.icon} ${st.autenticate_icon}`}></i>
         </button>

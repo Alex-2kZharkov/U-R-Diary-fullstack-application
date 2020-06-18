@@ -10,3 +10,36 @@
     /* background-color: #ccc; */
     min-height: 100vh;
 }
+
+.autenticate {
+    position: fixed;
+    right: 0.1%;
+    bottom: 1%;
+}
+
+.autenticate button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #ff8000;
+    font-family: Cambria, sans-serif;
+    font-size: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: color .0s linear;
+    transition: text-shadow .0s ease;
+    transition: border .0s linear;
+    outline: none;
+}
+
+.autenticate button:hover {
+    cursor: pointer;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    color: #0080ff;
+    border: solid 2px #0080ff;
+
+}
+
+.autenticate_icon {
+    display: inline-block;
+    margin-left: 15px;
+}

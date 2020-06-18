@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import css from './PersonalRoom.module.css';
 import PersonalRoomHeader from './PersonalRoomHeader';
 import Records from './Records';
+import TransitionButton from './TransitionButton';
 class PersonalRoom extends Component {
   constructor(props) {
     super(props);
@@ -24,6 +25,15 @@ class PersonalRoom extends Component {
         <div className={css.darker}>
           <PersonalRoomHeader user='Alex' />
           <Records />
+
+          <div className={css.autenticate} style={this.props.style}>
+            <button onClick={this.props.act}>
+              {' '}
+              {/*  callback function */}
+              Add record
+              <i className={`fas fa-plus-circle ${css.autenticate_icon}`}></i>
+            </button>
+          </div>
         </div>
       </div>
     );
