@@ -45,6 +45,9 @@ class Registration extends Component {
       passwordAgain: e.target.value,
     });
   };
+  submitRegistration = e => {
+    
+  }
   render() {
     return (
       <div className={css.intro}>

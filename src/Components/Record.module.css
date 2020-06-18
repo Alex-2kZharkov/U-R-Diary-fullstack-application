@@ -1,0 +1,37 @@
+.record {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.record_image {
+    display: block;
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+    border: solid 1px #333;
+}
+
+.title,
+.date {
+    color: #ff9500;
+    font-weight: 700;
+    font-size: 30px;
+    font-family: Cambria, sans-serif;
+
+}
+
+.date {
+    color: #0080ff;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.content {
+    color: #333;
+    font-size: 24px;
+    font-family: Montserrat, sans-serif;
+}

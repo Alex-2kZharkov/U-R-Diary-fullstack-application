@@ -22,6 +22,10 @@ class Autenticattion extends Component {
       password: e.target.value,
     });
   };
+  submitToServer = (e) => {
+
+  }
+  
   render() {
     return (
       <div>
