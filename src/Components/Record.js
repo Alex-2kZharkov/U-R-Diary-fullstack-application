@@ -1,6 +1,6 @@
 import React from 'react';
 import css from './Record.module.css';
-
+import { Link } from 'react-router-dom';
 function Record(props) {
   return (
     <div className={css.record}>
@@ -15,6 +15,10 @@ function Record(props) {
           <span className={css.date}> - {props.date}</span>
         </div>
         <div className={css.content}>{props.content}</div>
+        <Link to='/personalRoom/record1' className={css.edit}>
+          {' '}
+          <i class='fas fa-edit'></i>
+        </Link>
       </div>
     </div>
   );
