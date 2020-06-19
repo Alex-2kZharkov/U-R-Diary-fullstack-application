@@ -47,26 +47,38 @@
 
 .search_container {
     position: fixed;
-    right: 20%;
-    top: 25%;
+    right: 0.2%;
+    top: 18%;
+}
 
-
+.search_container div {
+    position: relative;
 }
 
 .search_field {
+    border-radius: 10px;
     font-size: 24px;
     color: #000000;
     padding: 10px 10px;
-    width: 300px
+    width: 290px
 }
 
 .search {
-    margin: 0 10px;
+    position: absolute;
+    top: 100%;
+    left: 30%;
+    margin: 5px 10px 0 10px;
     font-size: 30px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .cancel_search {
+    position: absolute;
+    top: 100%;
+    right: 30%;
+    margin-top: 5px;
     font-size: 30px;
     border-radius: 10px;
+    cursor: pointer;
 }

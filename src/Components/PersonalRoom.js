@@ -40,19 +40,21 @@ class PersonalRoom extends Component {
             </button>
           </div>
           <div className={css.search_container}>
-            <input
-              type='text'
-              value={this.state.requiredTitle}
-              onChange={this.handleRequiredTitleChange}
-              placeholder='Type required title here'
-              className={css.search_field}
-            />
-            <button className={css.search}>
-              <i class='fas fa-search'></i>
-            </button>
-            <button className={css.cancel_search}>
-              <i class='fas fa-window-close'></i>
-            </button>
+            <div>
+              <input
+                type='text'
+                value={this.state.requiredTitle}
+                onChange={this.handleRequiredTitleChange}
+                placeholder='Type required title here'
+                className={css.search_field}
+              />
+              <button className={css.search}>
+                <i class='fas fa-search'></i>
+              </button>
+              <button className={css.cancel_search}>
+                <i class='fas fa-window-close'></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
