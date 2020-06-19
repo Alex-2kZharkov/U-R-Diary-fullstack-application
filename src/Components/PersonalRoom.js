@@ -101,6 +101,7 @@ class PersonalRoom extends Component {
       requiredTitle: '',
     };
     this.searchField = React.createRef();
+    this.searchResultStatus = false;
   }
   handleRequiredTitleChange = (e) => {
     this.setState({
@@ -109,9 +110,15 @@ class PersonalRoom extends Component {
   };
   addRecord = () => {};
   findRecord = () => {
-    return this.state.records.filter(
+    let result = this.state.records.filter(
       (record) => record.title === this.state.requiredTitle
     );
+    if (result.length) {
+      this.searchResultStatus = true;
+    } else {
+      this.searchResultStatus = false;
+    }
+    return result;
   };
   setSearchStatus = () => {
     this.setState({
@@ -119,10 +126,11 @@ class PersonalRoom extends Component {
     });
   };
   cancelSearch = () => {
-    this.searchField.current.value = '';
     this.setState({
       searchStatus: false,
+      requiredTitle: '',
     });
+    this.searchField.current.value = '';
   };
   render() {
     return (
@@ -130,6 +138,8 @@ class PersonalRoom extends Component {
         <div className={css.darker}>
           <PersonalRoomHeader user='Alex' />
           <Records
+            searchStatus={this.state.searchStatus}
+            searchResultStatus={this.searchResultStatus}
             records={
               this.state.searchStatus ? this.findRecord() : this.state.records
             }
