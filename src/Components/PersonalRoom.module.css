@@ -8,6 +8,7 @@
 
 .darker {
     /* background-color: #ccc; */
+    position: relative;
     min-height: 100vh;
 }
 
@@ -42,4 +43,30 @@
 .autenticate_icon {
     display: inline-block;
     margin-left: 15px;
+}
+
+.search_container {
+    position: fixed;
+    right: 20%;
+    top: 25%;
+
+
+}
+
+.search_field {
+    font-size: 24px;
+    color: #000000;
+    padding: 10px 10px;
+    width: 300px
+}
+
+.search {
+    margin: 0 10px;
+    font-size: 30px;
+    border-radius: 10px;
+}
+
+.cancel_search {
+    font-size: 30px;
+    border-radius: 10px;
 }

@@ -12,11 +12,16 @@ class PersonalRoom extends Component {
       email: '',
       aboutSelf: '',
       imageAddres: '',
-      searchTitle: '',
+
       records: [], // records from data base
+      requiredTitle: '',
     };
   }
-  handleSearchtitleChange = (e) => {};
+  handleRequiredTitleChange = (e) => {
+    this.setState({
+      requiredTitle: e.target.value,
+    });
+  };
   addRecord = () => {};
   findRecord = () => {};
   render() {
@@ -32,6 +37,21 @@ class PersonalRoom extends Component {
               {/*  callback function */}
               Add record
               <i className={`fas fa-plus-circle ${css.autenticate_icon}`}></i>
+            </button>
+          </div>
+          <div className={css.search_container}>
+            <input
+              type='text'
+              value={this.state.requiredTitle}
+              onChange={this.handleRequiredTitleChange}
+              placeholder='Type required title here'
+              className={css.search_field}
+            />
+            <button className={css.search}>
+              <i class='fas fa-search'></i>
+            </button>
+            <button className={css.cancel_search}>
+              <i class='fas fa-window-close'></i>
             </button>
           </div>
         </div>
