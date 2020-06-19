@@ -3,6 +3,7 @@ import css from './PersonalRoom.module.css';
 import PersonalRoomHeader from './PersonalRoomHeader';
 import Records from './Records';
 import TransitionButton from './TransitionButton';
+
 class PersonalRoom extends Component {
   constructor(props) {
     super(props);
@@ -12,10 +13,94 @@ class PersonalRoom extends Component {
       email: '',
       aboutSelf: '',
       imageAddres: '',
-
-      records: [], // records from data base
+      searchStatus: false,
+      records: [
+        {
+          title: 'Title',
+          content:
+            'Contentdldlldlflflflflllflflprlpfpelrferkpgkeropkgoprkeopkgkerkgekgoperkgerkgkeprkgoperkgkoerkgoekrpgkerkgpeorvfklmdmvkdfmkvdmfkvkmdfkmvmdfvkdfmvmdfkmvmdkfmvkmdfmvmdfkmvmdfkmvkfmkmvkfmkvmkfmvmfkmvmfmvfkmvkfmmvkfmmkvfkmvfkm',
+          date: new Date().toString(),
+          image: '',
+        },
+        {
+          title: 'Title',
+          content:
+            'Contentdldlldlflflflflllflflprlpfpelrferkpgkeropkgoprkeopkgkerkgekgoperkgerkgkeprkgoperkgkoerkgoekrpgkerkgpeorvfklmdmvkdfmkvdmfkvkmdfkmvmdfvkdfmvmdfkmvmdkfmvkmdfmvmdfkmvmdfkmvkfmkmvkfmkvmkfmvmfkmvmfmvfkmvkfmmvkfmmkvfkmvfkm',
+          date: new Date().toString(),
+          image: '',
+        },
+        {
+          title: 'Title',
+          content:
+            'Contentdldlldlflflflflllflflprlpfpelrferkpgkeropkgoprkeopkgkerkgekgoperkgerkgkeprkgoperkgkoerkgoekrpgkerkgpeorvfklmdmvkdfmkvdmfkvkmdfkmvmdfvkdfmvmdfkmvmdkfmvkmdfmvmdfkmvmdfkmvkfmkmvkfmkvmkfmvmfkmvmfmvfkmvkfmmvkfmmkvfkmvfkm',
+          date: new Date().toString(),
+          image: '',
+        },
+        {
+          title: 'Title',
+          content:
+            'Contentdldlldlflflflflllflflprlpfpelrferkpgkeropkgoprkeopkgkerkgekgoperkgerkgkeprkgoperkgkoerkgoekrpgkerkgpeorvfklmdmvkdfmkvdmfkvkmdfkmvmdfvkdfmvmdfkmvmdkfmvkmdfmvmdfkmvmdfkmvkfmkmvkfmkvmkfmvmfkmvmfmvfkmvkfmmvkfmmkvfkmvfkm',
+          date: new Date().toString(),
+          image: '',
+        },
+        {
+          title: 'Title',
+          content:
+            'Contentdldlldlflflflflllflflprlpfpelrferkpgkeropkgoprkeopkgkerkgekgoperkgerkgkeprkgoperkgkoerkgoekrpgkerkgpeorvfklmdmvkdfmkvdmfkvkmdfkmvmdfvkdfmvmdfkmvmdkfmvkmdfmvmdfkmvmdfkmvkfmkmvkfmkvmkfmvmfkmvmfmvfkmvkfmmvkfmmkvfkmvfkm',
+          date: new Date().toString(),
+          image: '',
+        },
+        {
+          title: 'Title',
+          content:
+            'Contentdldlldlflflflflllflflprlpfpelrferkpgkeropkgoprkeopkgkerkgekgoperkgerkgkeprkgoperkgkoerkgoekrpgkerkgpeorvfklmdmvkdfmkvdmfkvkmdfkmvmdfvkdfmvmdfkmvmdkfmvkmdfmvmdfkmvmdfkmvkfmkmvkfmkvmkfmvmfkmvmfmvfkmvkfmmvkfmmkvfkmvfkm',
+          date: new Date().toString(),
+          image: '',
+        },
+        {
+          title: 'Title',
+          content:
+            'Contentdldlldlflflflflllflflprlpfpelrferkpgkeropkgoprkeopkgkerkgekgoperkgerkgkeprkgoperkgkoerkgoekrpgkerkgpeorvfklmdmvkdfmkvdmfkvkmdfkmvmdfvkdfmvmdfkmvmdkfmvkmdfmvmdfkmvmdfkmvkfmkmvkfmkvmkfmvmfkmvmfmvfkmvkfmmvkfmmkvfkmvfkm',
+          date: new Date().toString(),
+          image: '',
+        },
+        {
+          title: 'Title',
+          content:
+            'Contentdldlldlflflflflllflflprlpfpelrferkpgkeropkgoprkeopkgkerkgekgoperkgerkgkeprkgoperkgkoerkgoekrpgkerkgpeorvfklmdmvkdfmkvdmfkvkmdfkmvmdfvkdfmvmdfkmvmdkfmvkmdfmvmdfkmvmdfkmvkfmkmvkfmkvmkfmvmfkmvmfmvfkmvkfmmvkfmmkvfkmvfkm',
+          date: new Date().toString(),
+          image: '',
+        },
+        {
+          title: 'Title',
+          content:
+            'Contentdldlldlflflflflllflflprlpfpelrferkpgkeropkgoprkeopkgkerkgekgoperkgerkgkeprkgoperkgkoerkgoekrpgkerkgpeorvfklmdmvkdfmkvdmfkvkmdfkmvmdfvkdfmvmdfkmvmdkfmvkmdfmvmdfkmvmdfkmvkfmkmvkfmkvmkfmvmfkmvmfmvfkmvkfmmvkfmmkvfkmvfkm',
+          date: new Date().toString(),
+          image: '',
+        },
+        {
+          title: 'Title',
+          content:
+            'Contentdldlldlflflflflllflflprlpfpelrferkpgkeropkgoprkeopkgkerkgekgoperkgerkgkeprkgoperkgkoerkgoekrpgkerkgpeorvfklmdmvkdfmkvdmfkvkmdfkmvmdfvkdfmvmdfkmvmdkfmvkmdfmvmdfkmvmdfkmvkfmkmvkfmkvmkfmvmfkmvmfmvfkmvkfmmvkfmmkvfkmvfkm',
+          date: new Date().toString(),
+          image: '',
+        },
+        {
+          title: 'Title2',
+          content: 'Content2',
+          date: new Date().toString(),
+          image: '',
+        },
+        {
+          title: 'Title3',
+          content: 'Content3',
+          date: new Date().toString(),
+          image: '',
+        },
+      ], // records from data base
       requiredTitle: '',
     };
+    this.searchField = React.createRef();
   }
   handleRequiredTitleChange = (e) => {
     this.setState({
@@ -23,13 +108,32 @@ class PersonalRoom extends Component {
     });
   };
   addRecord = () => {};
-  findRecord = () => {};
+  findRecord = () => {
+    return this.state.records.filter(
+      (record) => record.title === this.state.requiredTitle
+    );
+  };
+  setSearchStatus = () => {
+    this.setState({
+      searchStatus: true,
+    });
+  };
+  cancelSearch = () => {
+    this.searchField.current.value = '';
+    this.setState({
+      searchStatus: false,
+    });
+  };
   render() {
     return (
       <div className={css.intro}>
         <div className={css.darker}>
           <PersonalRoomHeader user='Alex' />
-          <Records />
+          <Records
+            records={
+              this.state.searchStatus ? this.findRecord() : this.state.records
+            }
+          />
 
           <div className={css.autenticate} style={this.props.style}>
             <button onClick={this.props.act}>
@@ -42,17 +146,18 @@ class PersonalRoom extends Component {
           <div className={css.search_container}>
             <div>
               <input
+                ref={this.searchField}
                 type='text'
                 value={this.state.requiredTitle}
                 onChange={this.handleRequiredTitleChange}
                 placeholder='Type required title here'
                 className={css.search_field}
               />
-              <button className={css.search}>
+              <button onClick={this.setSearchStatus} className={css.search}>
                 <i class='fas fa-search'></i>
               </button>
-              <button className={css.cancel_search}>
-                <i class='fas fa-window-close'></i>
+              <button onClick={this.cancelSearch} className={css.cancel_search}>
+                <i class='fas fa-times'></i>
               </button>
             </div>
           </div>

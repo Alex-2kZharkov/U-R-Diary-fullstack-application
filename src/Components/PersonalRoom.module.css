@@ -48,7 +48,8 @@
 .search_container {
     position: fixed;
     right: 0.2%;
-    top: 18%;
+    bottom: 18%;
+
 }
 
 .search_container div {
@@ -68,16 +69,22 @@
     top: 100%;
     left: 30%;
     margin: 5px 10px 0 10px;
+    color: #FFDE00;
+    background-color: #097054;
     font-size: 30px;
     border-radius: 10px;
     cursor: pointer;
 }
 
 .cancel_search {
+    display: block;
     position: absolute;
     top: 100%;
     right: 30%;
+    padding: 0 8px;
     margin-top: 5px;
+    color: #FFDE00;
+    background-color: #097054;
     font-size: 30px;
     border-radius: 10px;
     cursor: pointer;
