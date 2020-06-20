@@ -28,9 +28,15 @@ export class Profile extends Component {
             src={this.props.image}
             alt={"User's avatar"}
           ></img>
-          <div className={css.list_icon} onClick={this.toggle}>
-            <i class='fas fa-chevron-down'></i>
-          </div>
+          {this.state.isProfileClicked ? (
+            <div className={css.list_icon} onClick={this.toggle}>
+              <i class='fas fa-chevron-down'></i>
+            </div>
+          ) : (
+            <div className={css.list_icon} onClick={this.toggle}>
+              <i class='fas fa-chevron-up'></i>
+            </div>
+          )}
         </div>
         {this.state.isProfileClicked ? (
           <div className={css.sub_profile}>
@@ -40,9 +46,11 @@ export class Profile extends Component {
               alt={"User's avatar"}
             ></img>
             <div className={css.sub_profile_info}>
-                <div className={css.sub_profile_nickname}>{this.props.nickname}</div>
-                <div className={css.sub_profile_email}>{this.props.email}</div>
-                <div className={css.sub_profile_about}>{this.props.about}</div>
+              <div className={css.sub_profile_nickname}>
+                {this.props.nickname}
+              </div>
+              <div className={css.sub_profile_email}>{this.props.email}</div>
+              <div className={css.sub_profile_about}>{this.props.about}</div>
             </div>
           </div>
         ) : (

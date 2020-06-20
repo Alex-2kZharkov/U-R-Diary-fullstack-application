@@ -36,6 +36,7 @@
 
 .image {
     display: block;
+    border: solid 2px #000000;
     width: 90px;
     height: 90px;
 }
@@ -54,20 +55,39 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffdd57;
+    background-color: #FFFBD0;
     padding: 20px 20px;
     border: solid 3px #000000;
     transition: .1s background linear;
-    min-width: 340px;
-    max-width: 300px;
+    width: 390px;
 }
+
 .sub_profile_info {
-    
+    margin-left: 15px;
+    word-break: break-all;
 }
 
 .sub_profile_nickname {
     color: #6600CC;
+
     font-weight: 700;
     font-family: 'Kaushan Script', Georgia, Times, 'Times New Roman', serif;
     font-size: 34px;
+}
+
+.sub_profile_email {
+    color: #FF9900;
+    font-size: 26px;
+}
+
+.sub_profile_email:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.sub_profile_about {
+    margin-top: 10px;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    font-size: 26px;
+    color: #C13100;
 }
