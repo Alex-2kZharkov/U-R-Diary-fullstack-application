@@ -2,8 +2,10 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 50px;
     position: relative;
+    margin-bottom: 100px;
+    padding-bottom: 50px;
+    border-bottom: solid #FFDE00 3px;
 }
 
 .record:last-child {
@@ -56,20 +58,33 @@
 .edit {
     position: absolute;
     right: -8%;
-    top: 20%;
+    top: 0%;
     background-color: #0080ff;
+    color: #ffffff;
     padding: 10px 10px 15px 20px;
     border-radius: 50%;
     border: solid 1px #333;
     font-size: 50px;
     text-align: center;
-    color: #ffffff;
     text-decoration: none;
     transition: background .0s linear;
     transition: color .0s linear;
 }
 
+.download_modif {
+    top: 50%;
+    padding: 15px 25px 12px 25px;
+    background-color: #F20056;
+    color: #ffffff;
+    cursor: pointer;
+}
+
 .edit:hover {
     background-color: #ffffff;
     color: #0080ff;
+}
+
+.download_modif:hover {
+    background-color: #ffffff;
+    color: #F20056;
 }

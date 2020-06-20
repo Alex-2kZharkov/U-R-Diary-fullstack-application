@@ -19,6 +19,9 @@ function Record(props) {
           {' '}
           <i class='fas fa-edit'></i>
         </Link>
+        <button className={`${css.edit} ${css.download_modif}`}>
+          <i class='fas fa-file-download'></i>
+        </button>
       </div>
     </div>
   );

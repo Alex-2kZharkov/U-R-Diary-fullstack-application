@@ -148,7 +148,7 @@ class PersonalRoom extends Component {
               padding: '0 20%',
               fontSize: '80px',
               fontFamily: 'Cambria, Times New Roman',
-              color: '#d7d7f6',
+              color: '#ffffff',
               textAlign: 'center',
             }}
           >
