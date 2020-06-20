@@ -1,19 +1,22 @@
 .header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: nowrap;
-    position: fixed;
     top: 0;
     left: 0;
-    width: 90%;
-    padding: 20px 5%;
+    width: 95%;
+    padding: 10px 2.5%;
     background-color: #ff8000;
     color: rgb(255, 255, 255);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 48px;
     z-index: 5;
+}
 
+.user_link_container {
+    max-width: 40%;
+    word-break: break-all;
 }
 
 .user_link {
@@ -100,7 +103,11 @@
 .link {
     text-decoration: none;
     color: #fff;
-    padding: 0px 30px;
+    padding: 0px 15px;
+}
+
+.link:last-child {
+    padding-right: 0;
 }
 
 .link:hover {

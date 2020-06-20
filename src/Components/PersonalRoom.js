@@ -3,16 +3,18 @@ import css from './PersonalRoom.module.css';
 import PersonalRoomHeader from './PersonalRoomHeader';
 import Records from './Records';
 import TransitionButton from './TransitionButton';
+import Profile from './Profile';
 
 class PersonalRoom extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      nickname: '',
+      nickname: 'AntoninaPoliAntonina',
       email: '',
       aboutSelf: '',
-      imageAddres: '',
+      imageAddres:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTUq71y6yGEk94T1hyj89lV-khy9OMkgZt0Dl1hecguJxUpLU6a&usqp=CAU',
       searchStatus: false,
       requiredTitle: '',
       records: [
@@ -166,20 +168,17 @@ class PersonalRoom extends Component {
         />
       );
     }
-    console.log(`Status: ${this.state.searchStatus}`);
+
     return (
       <div className={css.intro}>
         <div className={css.darker}>
-          <PersonalRoomHeader user='Alex' />
+          <PersonalRoomHeader user={this.state.nickname} />
           {records}
-          <div className={css.autenticate} style={this.props.style}>
-            <button onClick={this.props.act}>
-              {' '}
-              {/*  callback function */}
-              Add record
-              <i className={`fas fa-plus-circle ${css.autenticate_icon}`}></i>
-            </button>
-          </div>
+          <Profile
+            nickname={this.state.nickname}
+            image={this.state.imageAddres}
+          />
+
           <div className={css.search_container}>
             <div>
               <input
@@ -197,6 +196,14 @@ class PersonalRoom extends Component {
                 <i class='fas fa-times'></i>
               </button>
             </div>
+          </div>
+          <div className={css.autenticate} style={this.props.style}>
+            <button onClick={this.props.act}>
+              {' '}
+              {/*  callback function */}
+              Add record
+              <i className={`fas fa-plus-circle ${css.autenticate_icon}`}></i>
+            </button>
           </div>
         </div>
       </div>

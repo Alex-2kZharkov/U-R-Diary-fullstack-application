@@ -5,7 +5,7 @@ export class PersonalRoomHeader extends Component {
   render() {
     return (
       <header className={css.header}>
-        <div>
+        <div className={css.user_link_container}>
           <Link to='/personalRoom' className={css.user_link}>
             {' '}
             {this.props.user} {"'s"} Diary
