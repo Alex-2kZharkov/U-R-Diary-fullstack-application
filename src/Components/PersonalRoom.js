@@ -11,8 +11,8 @@ class PersonalRoom extends Component {
 
     this.state = {
       nickname: 'Polina',
-      email: '',
-      aboutSelf: '',
+      email: 'polina_2k_kalashinokova@gmail.com',
+      aboutSelf: 'I like kick buts in video games and in real life',
       imageAddres:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTUq71y6yGEk94T1hyj89lV-khy9OMkgZt0Dl1hecguJxUpLU6a&usqp=CAU',
       searchStatus: false,
@@ -176,6 +176,8 @@ class PersonalRoom extends Component {
           {records}
           <Profile
             nickname={this.state.nickname}
+            email={this.state.email}
+            about={this.state.aboutSelf}
             image={this.state.imageAddres}
           />
 

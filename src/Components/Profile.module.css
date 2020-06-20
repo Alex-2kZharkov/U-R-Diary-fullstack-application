@@ -6,12 +6,13 @@
     justify-content: space-between;
     align-items: center;
     background-color: #ffdd57;
-    padding: 20px 20px;
-    min-width: 200px;
-    border: solid 2px #000000;
-    transition: .1s background linear;
+    border: solid 3px #000000;
     min-width: 250px;
     max-width: 250px;
+    padding: 20px 20px;
+    cursor: pointer;
+    transition: .1s background linear;
+
 }
 
 .nickname {
@@ -30,8 +31,6 @@
 
 .container:hover .nickname {
     color: #8000ff;
-    /* color: #de5ae0;
-    text-shadow: 1px 0 0 #a5121e, -1px 0 0 #a5121e, 0 1px 0 #a5121e, 0 -1px 0 #a5121e, 0px 0px #a5121e, -0px -0px 0 #a5121e, 0px -1px 0 #a5121e, 0px 0px 0 #a5121e; */
 }
 
 
@@ -39,5 +38,36 @@
     display: block;
     width: 90px;
     height: 90px;
+}
 
+.list_icon {
+    font-size: 34px;
+    color: #8000ff;
+    cursor: pointer;
+}
+
+/*Sub profile*/
+.sub_profile {
+    position: fixed;
+    top: 18em;
+    right: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffdd57;
+    padding: 20px 20px;
+    border: solid 3px #000000;
+    transition: .1s background linear;
+    min-width: 340px;
+    max-width: 300px;
+}
+.sub_profile_info {
+    
+}
+
+.sub_profile_nickname {
+    color: #6600CC;
+    font-weight: 700;
+    font-family: 'Kaushan Script', Georgia, Times, 'Times New Roman', serif;
+    font-size: 34px;
 }
