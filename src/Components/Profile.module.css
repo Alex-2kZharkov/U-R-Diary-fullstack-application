@@ -1,0 +1,43 @@
+.container {
+    position: fixed;
+    top: 9em;
+    right: 0.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffdd57;
+    padding: 20px 20px;
+    min-width: 200px;
+    border: solid 2px #000000;
+    transition: .1s background linear;
+    min-width: 250px;
+    max-width: 250px;
+}
+
+.nickname {
+    color: #6600CC;
+    font-weight: 700;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 34px;
+    transition: color 0.1s linear;
+    transition: text-shadow 0.1s linear;
+}
+
+.container:hover {
+    background-color: #ffcc00;
+
+}
+
+.container:hover .nickname {
+    color: #8000ff;
+    /* color: #de5ae0;
+    text-shadow: 1px 0 0 #a5121e, -1px 0 0 #a5121e, 0 1px 0 #a5121e, 0 -1px 0 #a5121e, 0px 0px #a5121e, -0px -0px 0 #a5121e, 0px -1px 0 #a5121e, 0px 0px 0 #a5121e; */
+}
+
+
+.image {
+    display: block;
+    width: 90px;
+    height: 90px;
+
+}

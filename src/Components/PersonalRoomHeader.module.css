@@ -10,13 +10,14 @@
     background-color: #ff8000;
     color: rgb(255, 255, 255);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 48px;
+    font-size: 46px;
     z-index: 5;
 }
 
 .user_link_container {
-    max-width: 40%;
+    max-width: 44%;
     word-break: break-all;
+    text-align: center;
 }
 
 .user_link {

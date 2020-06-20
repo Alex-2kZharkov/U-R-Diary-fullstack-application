@@ -10,7 +10,7 @@ class PersonalRoom extends Component {
     super(props);
 
     this.state = {
-      nickname: 'AntoninaPoliAntonina',
+      nickname: 'Polina',
       email: '',
       aboutSelf: '',
       imageAddres:
