@@ -143,15 +143,17 @@ class PersonalRoom extends Component {
           <div
             style={{
               position: 'absolute',
-              top: '25%',
-              left: '25%',
-              fontSize: '40px',
-              fontFamily: 'Cartoonish',
+              top: '30%',
+              left: '2%',
+              padding: '0 20%',
+              fontSize: '80px',
+              fontFamily: 'Cambria, Times New Roman',
               color: '#d7d7f6',
               textAlign: 'center',
             }}
           >
             We were searching everywhere, but we couln't find anything...
+            <div>Please, try again</div>
           </div>
         );
       }
