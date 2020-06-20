@@ -14,6 +14,7 @@ class PersonalRoom extends Component {
       aboutSelf: '',
       imageAddres: '',
       searchStatus: false,
+      requiredTitle: '',
       records: [
         {
           title: 'Title',
@@ -98,33 +99,30 @@ class PersonalRoom extends Component {
           image: '',
         },
       ], // records from data base
-      requiredTitle: '',
     };
     this.searchField = React.createRef();
-    this.searchResultStatus = false;
   }
   handleRequiredTitleChange = (e) => {
     this.setState({
       requiredTitle: e.target.value,
     });
+    this.setState({
+      searchStatus: false,
+    });
   };
   addRecord = () => {};
-  findRecord = () => {
-    let result = this.state.records.filter(
-      (record) => record.title === this.state.requiredTitle
-    );
-    if (result.length) {
-      this.searchResultStatus = true;
-    } else {
-      this.searchResultStatus = false;
-    }
-    return result;
-  };
+
   setSearchStatus = () => {
     this.setState({
       searchStatus: true,
     });
   };
+  findRecord = () => {
+    return this.state.records.filter(
+      (record) => record.title === this.state.requiredTitle
+    );
+  };
+
   cancelSearch = () => {
     this.setState({
       searchStatus: false,
@@ -133,18 +131,45 @@ class PersonalRoom extends Component {
     this.searchField.current.value = '';
   };
   render() {
+    let records;
+    if (this.state.searchStatus) {
+      let searchResults = this.findRecord();
+
+      if (searchResults.length > 0) {
+        console.log(searchResults);
+        records = <Records records={searchResults} />;
+      } else {
+        records = (
+          <div
+            style={{
+              position: 'absolute',
+              top: '25%',
+              left: '25%',
+              fontSize: '40px',
+              fontFamily: 'Cartoonish',
+              color: '#d7d7f6',
+              textAlign: 'center',
+            }}
+          >
+            We were searching everywhere, but we couln't find anything...
+          </div>
+        );
+      }
+    } else {
+      records = (
+        <Records
+          searchStatus={this.state.searchStatus}
+          searchResultStatus={this.searchResultStatus}
+          records={this.state.records}
+        />
+      );
+    }
+    console.log(`Status: ${this.state.searchStatus}`);
     return (
       <div className={css.intro}>
         <div className={css.darker}>
           <PersonalRoomHeader user='Alex' />
-          <Records
-            searchStatus={this.state.searchStatus}
-            searchResultStatus={this.searchResultStatus}
-            records={
-              this.state.searchStatus ? this.findRecord() : this.state.records
-            }
-          />
-
+          {records}
           <div className={css.autenticate} style={this.props.style}>
             <button onClick={this.props.act}>
               {' '}
