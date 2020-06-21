@@ -25,15 +25,6 @@ connection.connect(function (err) {
   console.log('connected as id ' + connection.threadId);
 });
 
-let user = {
-  email: 'aleksis.zharkov@gmail.com',
-  nickname: 'Alex',
-  password: '123',
-  image: '',
-  about_self: 'I love to train my mind and body',
-};
-let insertion = 'INSERT INTO User SET ?';
-
 app.post('/registration', (req, res) => {
   console.log(req.body);
   connection.query('SELECT * FROM USER', (err, result) => {
@@ -48,6 +39,22 @@ app.post('/registration', (req, res) => {
           (element, index, array) => element.email == req.body.email
         ) == -1
       ) {
+        let user = {
+          email: req.body.email,
+          nickname: req.body.nickname,
+          password: req.body.password,
+          image: req.body.image,
+          about_self: req.body.something,
+        };
+        let insertion = 'INSERT INTO User SET ?';
+        connection.query(insertion, user, (err, result) => { // add new account to DB
+          if (err) {
+            console.log('Insertion error');
+          } else {
+            console.log('Successfully added');
+            console.log(result);
+          }
+        });
         res.status(200).send('Successfully registrated');
       } else {
         res.status(208).send('Email has already taken');
@@ -55,15 +62,6 @@ app.post('/registration', (req, res) => {
     }
   });
 });
-
-/* connection.query(insertion, user, (err, result) => {
-  if (err) {
-    console.log('Insertion error');
-  } else {
-    console.log('Successfully added');
-    console.log(result);
-  }
-}); */
 
 /* app.post('/registration', (req, res) => {
   
