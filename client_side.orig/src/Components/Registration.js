@@ -5,6 +5,8 @@ import Autenticattion from './Autenticattion';
 import { Link } from 'react-router-dom';
 import Quote from './Quote';
 import RegistrationMessage from './RegistrationMessage';
+import axios from 'axios';
+
 class Registration extends Component {
   constructor(props) {
     super(props);
@@ -45,13 +47,83 @@ class Registration extends Component {
       passwordAgain: e.target.value,
     });
   };
-  submitRegistration = e => {
-    
-  }
+  submitRegistration = (e) => {
+    e.preventDefault();
+    if (this.state.password !== this.state.passwordAgain) {
+      this.setState({
+        passwordError: (
+          <RegistrationMessage
+            style={{
+              position: 'absolute',
+              left: '20%',
+              bottom: '1%',
+              color: '#f30b0b',
+              fontWeight: '700',
+              fontSize: '18px',
+              fontFamily: 'Georgia',
+            }}
+            message='Passwords has to match!'
+          />
+        ),
+        emailError: null,
+        succesRegist: null,
+      });
+    } else {
+      axios
+        .post('http://localhost:4000/registration', this.state)
+        .then((response) => {
+          console.log(response);
+          if (response.status === 200) {
+            this.setState({
+              passwordError: null,
+              emailError: null,
+              succesRegist: (
+                <RegistrationMessage
+                  style={{
+                    position: 'absolute',
+                    left: '20%',
+                    bottom: '1%',
+                    color: '#00ff00',
+                    fontWeight: '700',
+                    fontSize: '18px',
+                    fontFamily: 'Georgia',
+                  }}
+                  message={response.data}
+                />
+              ),
+            });
+          } else {
+            this.setState({
+              succesRegist: null,
+              passwordError: null,
+              emailError: (
+                <RegistrationMessage
+                  style={{
+                    position: 'absolute',
+                    left: '20%',
+                    bottom: '1%',
+                    color: '#f30b0b',
+                    fontWeight: '700',
+                    fontSize: '18px',
+                    fontFamily: 'Georgia',
+                  }}
+                  message={response.data}
+                />
+              ),
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
   render() {
     return (
       <div className={css.intro}>
         <div className={css.book}>
+          {' '}
+          {/* // diary animation */}
           <span class={`${css.page} ${css.turn}`}></span>
           <span class={`${css.page} ${css.turn}`}></span>
           <span class={`${css.page} ${css.turn}`}></span>
@@ -94,6 +166,7 @@ class Registration extends Component {
           className={css.auten_form}
           onSubmit={this.authenticate}
           method='post'
+          onSubmit={(e) => this.submitRegistration}
         >
           <input
             type='text'
@@ -136,67 +209,7 @@ class Registration extends Component {
             onChange={this.handlePasswordAgainChange}
           />
 
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              if (this.state.password !== this.state.passwordAgain) {
-                this.setState({
-                  passwordError: (
-                    <RegistrationMessage
-                      style={{
-                        position: 'absolute',
-                        left: '27%',
-                        bottom: '19%',
-                        color: '#f30b0b',
-                        fontWeight: '700',
-                        fontSize: '18px',
-                        fontFamily: 'Georgia',
-                      }}
-                      message='Passwords has to match!'
-                    />
-                  ),
-                });
-              } else if (this.state.email === 'Email from server') {
-                this.setState({
-                  emailError: (
-                    <RegistrationMessage
-                      style={{
-                        position: 'absolute',
-                        left: '20%',
-                        bottom: '50%',
-                        color: '#f30b0b',
-                        fontWeight: '700',
-                        fontSize: '18px',
-                        fontFamily: 'Georgia',
-                      }}
-                      message='Email has already been using'
-                    />
-                  ),
-                });
-              } else {
-                this.setState({
-                  passwordError: null,
-                  emailError: null,
-                  succesRegist: (
-                    <RegistrationMessage
-                      style={{
-                        position: 'absolute',
-                        left: '20%',
-                        bottom: '1%',
-
-                        color: '#00ff00',
-                        fontWeight: '700',
-                        fontSize: '18px',
-                        fontFamily: 'Georgia',
-                      }}
-                      message='Registration was successful'
-                    />
-                  ),
-                });
-              }
-            }}
-            className={css.submit}
-          >
+          <button onClick={this.submitRegistration} className={css.submit}>
             Registrate now
           </button>
           {this.state.passwordError}
