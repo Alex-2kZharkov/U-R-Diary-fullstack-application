@@ -1,7 +1,8 @@
 import React from 'react';
+import css from './RegistrationMessage.module.css'
 
 function RegistrationMessage(props) {
-  return <div style={props.style}>{props.message}</div>;
+  return <div className={css.shadow} style={props.style}>{props.message}</div>;
 }
 
 export default RegistrationMessage;

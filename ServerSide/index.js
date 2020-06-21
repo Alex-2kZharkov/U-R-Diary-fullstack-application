@@ -50,7 +50,7 @@ app.post('/registration', (req, res) => {
       ) {
         res.status(200).send('Successfully registrated');
       } else {
-        res.status(400).send('Email has already taken');
+        res.status(208).send('Email has already taken');
       }
     }
   });

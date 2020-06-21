@@ -17,9 +17,7 @@ class Registration extends Component {
       email: '',
       password: '',
       passwordAgain: '',
-      passwordError: null,
-      emailError: null,
-      succesRegist: null,
+      message: null,
     };
   }
   handleNicknameChange = (e) => {
@@ -49,13 +47,36 @@ class Registration extends Component {
   };
   submitRegistration = (e) => {
     e.preventDefault();
-    if (this.state.password !== this.state.passwordAgain) {
+    if (
+      this.state.nickname === '' ||
+      this.state.something === '' ||
+      this.state.email === '' ||
+      this.state.password === '' ||
+      this.state.passwordAgain === ''
+    ) {
       this.setState({
-        passwordError: (
+        message: (
           <RegistrationMessage
             style={{
               position: 'absolute',
-              left: '20%',
+              left: '32%',
+              bottom: '1%',
+              color: '#f30b0b',
+              fontWeight: '700',
+              fontSize: '18px',
+              fontFamily: 'Georgia',
+            }}
+            message='Fill in all fields!'
+          />
+        ),
+      });
+    } else if (this.state.password !== this.state.passwordAgain) {
+      this.setState({
+        message: (
+          <RegistrationMessage
+            style={{
+              position: 'absolute',
+              left: '25%',
               bottom: '1%',
               color: '#f30b0b',
               fontWeight: '700',
@@ -65,8 +86,6 @@ class Registration extends Component {
             message='Passwords has to match!'
           />
         ),
-        emailError: null,
-        succesRegist: null,
       });
     } else {
       axios
@@ -75,13 +94,11 @@ class Registration extends Component {
           console.log(response);
           if (response.status === 200) {
             this.setState({
-              passwordError: null,
-              emailError: null,
-              succesRegist: (
+              message: (
                 <RegistrationMessage
                   style={{
                     position: 'absolute',
-                    left: '20%',
+                    left: '25%',
                     bottom: '1%',
                     color: '#00ff00',
                     fontWeight: '700',
@@ -94,13 +111,11 @@ class Registration extends Component {
             });
           } else {
             this.setState({
-              succesRegist: null,
-              passwordError: null,
-              emailError: (
+              message: (
                 <RegistrationMessage
                   style={{
                     position: 'absolute',
-                    left: '20%',
+                    left: '25%',
                     bottom: '1%',
                     color: '#f30b0b',
                     fontWeight: '700',
@@ -212,9 +227,7 @@ class Registration extends Component {
           <button onClick={this.submitRegistration} className={css.submit}>
             Registrate now
           </button>
-          {this.state.passwordError}
-          {this.state.emailError}
-          {this.state.succesRegist}
+          {this.state.message}
         </form>
       </div>
     );
