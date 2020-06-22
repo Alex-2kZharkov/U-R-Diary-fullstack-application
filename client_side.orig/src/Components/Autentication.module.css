@@ -1,14 +1,15 @@
 .auten_form {
-    position: fixed;
+    display: block;
+    position: relative;
+    padding: 6% 35% 0 35%;
     width: 29%;
-    left: 36.3%;
-    bottom: 30%;
     color: #fff;
     font-size: 40px;
 }
 
 fieldset {
     border: double 5px #eeeeee;
+    padding-bottom: 70px;
 }
 
 legend {
@@ -54,11 +55,16 @@ legend {
     margin-left: 5px;
 }
 
+.registration div {
+    margin-bottom: 20px;
+}
+
 .registration a {
     text-decoration: none;
     color: #fb5d7f;
     transition: color .1s linear;
     transition: text-decoration .1s linear;
+
 }
 
 .registration a:hover {

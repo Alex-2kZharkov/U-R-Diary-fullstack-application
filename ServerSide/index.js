@@ -30,7 +30,7 @@ app.post('/registration', (req, res) => {
   console.log(req.body);
   connection.query('SELECT * FROM USER', (err, result) => {
     if (err) {
-      console.log('Insertion error');
+      console.log('Selection error');
     } else {
       console.log('Successfully retrieved');
       console.log(result);
@@ -72,7 +72,7 @@ app.post('/registration', (req, res) => {
           from: "U'R Diary developer <alexpishnik@gmail.com>",
           to: req.body.email,
           subject: "U'R Diary account registration",
-          html: `<div style="font-family: Cambria, Rockwell;font-size: 32px;"> <h1 style="color: #000000">Dear, ${req.body.email}</h1> <p style="color: #000000">Thanks for joining <span style="font-family: Kaushan Script; font-size: 44px; color: #FF9900;">U'R Diary</span>!</p><p style="color: #000000"><span style="font-family: Kaushan Script; font-size: 44px; color: #FF9900;">U'R Diary</span> is the best place to write down your thoughts, memories, daily routine and big events</p> 
+          html: `<div style="font-family: Cambria, Rockwell;font-size: 32px;"> <h1 style="color: #000000">Dear, ${req.body.email}</h1> <p style="color: #000000">Thanks for joining <span style="font-family: Kaushan Script; font-size: 44px; color: #FF9900;">U'R Diary!</span></p><p style="color: #000000"><span style="font-family: Kaushan Script; font-size: 44px; color: #FF9900;">U'R Diary</span> is the best place to write down your thoughts, memories, daily routine and big events</p> 
             <p style="color: #000000">We are happy you chose us among other and promise your data will be secured.Believe in yourself and make it happen</p>
             <p><span style="color: #0280ff; font-weight: bold;">Write and share. </span><span style="color: #f20056";font-weight: bold;>Or just write</span></p>
             <p style="color: #000000">Best wishes, <br><span style="font-family: Kaushan Script; color: #8000ff";>U'R Diary developer, Alexander -2kZharkov</span></p>
@@ -95,6 +95,29 @@ app.post('/registration', (req, res) => {
   });
 });
 
+// checking login data
+
+app.post('/', (req, res) => {
+  connection.query('SELECT * FROM USER', (err, result) => {
+    if (err) {
+      console.log('Selection error');
+    } else {
+      console.log('Successfully retrieved');
+      console.log(result);
+      let match = result.find(
+        (item, index, array) =>
+          item.email == req.body.email && item.password == req.body.password
+      );
+      if (match) {
+        console.log('Welcome to your personal room');
+        res.status(200).send('Welcome to your personal room');
+      } else {
+        console.log('No match, try again');
+        res.status(203).send('No match, try again');
+      }
+    }
+  });
+});
 /* app.post('/registration', (req, res) => {
   
 });

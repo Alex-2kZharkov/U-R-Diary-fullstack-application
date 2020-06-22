@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import st from './Autentication.module.css';
 import TransitionButton from './TransitionButton';
+import RegistrationMessage from './RegistrationMessage';
+import axios from 'axios';
 class Autenticattion extends Component {
   constructor(props) {
     super(props);
@@ -9,6 +11,7 @@ class Autenticattion extends Component {
     this.state = {
       email: '',
       password: '',
+      message: null,
     };
   }
 
@@ -23,9 +26,66 @@ class Autenticattion extends Component {
     });
   };
   submitToServer = (e) => {
+    e.preventDefault();
+    if (!this.state.email || !this.state.password) {
+      this.setState({
+        message: (
+          <RegistrationMessage
+            style={{
+              position: 'absolute',
+              left: '45%',
+              bottom: '3%',
+              color: '#f30b0b',
+              fontWeight: '700',
+              fontSize: '18px',
+              fontFamily: 'Georgia',
+            }}
+            message='Fill in all fields!'
+          />
+        ),
+      });
+    } else {
+      axios
+        .post('http://localhost:4000', this.state)
+        .then((response) => {
+          response.status == 200
+            ? this.setState({
+                message: (
+                  <RegistrationMessage
+                    style={{
+                      position: 'absolute',
+                      left: '41%',
+                      bottom: '3%',
+                      color: '#00ff00',
+                      fontWeight: '700',
+                      fontSize: '18px',
+                      fontFamily: 'Georgia',
+                    }}
+                    message={response.data}
+                  />
+                ),
+              })
+            : this.setState({
+                message: (
+                  <RegistrationMessage
+                    style={{
+                      position: 'absolute',
+                      left: '44%',
+                      bottom: '3%',
+                      color: '#f30b0b',
+                      fontWeight: '700',
+                      fontSize: '18px',
+                      fontFamily: 'Georgia',
+                    }}
+                    message={response.data}
+                  />
+                ),
+              });
+        })
+        .catch((error) => {});
+    }
+  };
 
-  }
-  
   render() {
     return (
       <div>
@@ -34,11 +94,7 @@ class Autenticattion extends Component {
           label='Main page'
           icon='fas fa-laptop-house'
         />
-        <form
-          className={st.auten_form}
-          onSubmit={this.authenticate}
-          method='post'
-        >
+        <form className={st.auten_form}>
           <fieldset>
             <legend>Authentication</legend>
             <input
@@ -57,12 +113,7 @@ class Autenticattion extends Component {
               value={this.state.password}
               onChange={this.handlePasswordChange}
             />
-            <button
-              onClick={() =>
-                alert(`${this.state.email}\n${this.state.password}`)
-              }
-              className={st.submit}
-            >
+            <button onClick={this.submitToServer} className={st.submit}>
               Sign in
             </button>
             <div className={st.registration}>
@@ -74,6 +125,7 @@ class Autenticattion extends Component {
                 Click here to get absolutely free account
               </Link>
             </div>
+            {this.state.message}
           </fieldset>
         </form>
       </div>
