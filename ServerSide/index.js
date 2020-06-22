@@ -2,6 +2,7 @@ const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
 const app = express();
 const serverPort = 4000;
 
@@ -39,6 +40,7 @@ app.post('/registration', (req, res) => {
           (element, index, array) => element.email == req.body.email
         ) == -1
       ) {
+        // add new account to DB
         let user = {
           email: req.body.email,
           nickname: req.body.nickname,
@@ -47,7 +49,7 @@ app.post('/registration', (req, res) => {
           about_self: req.body.something,
         };
         let insertion = 'INSERT INTO User SET ?';
-        connection.query(insertion, user, (err, result) => { // add new account to DB
+        connection.query(insertion, user, (err, result) => {
           if (err) {
             console.log('Insertion error');
           } else {
@@ -55,7 +57,37 @@ app.post('/registration', (req, res) => {
             console.log(result);
           }
         });
-        res.status(200).send('Successfully registrated');
+
+        //sending an email
+
+        let mailTransporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: 'alexpishnik@gmail.com',
+            pass: '2000-2000',
+          },
+        });
+
+        let mailDetails = {
+          from: "U'R Diary developer <alexpishnik@gmail.com>",
+          to: req.body.email,
+          subject: "U'R Diary account registration",
+          html: `<div style="font-family: Cambria, Rockwell;font-size: 32px;"> <h1>Dear, ${req.body.email}</h1> <p>Thanks for joining U'R Diary</p><p>U'R Diary is the best place to write down your thoughts, memories, daily routine and big events</p> 
+            <p>We are happy you chose us among other and promise your data will be secured.Believe in yourself and make it happen</p>
+            <p><span style="color: #0280ff;">Write and share</span><span style="color: #f20056">Or just write</span></p>
+            <p>Best wishes, <br>U'R developer, Alexander -2kZharkov</p>
+            </div>`,
+        };
+
+        mailTransporter.sendMail(mailDetails, function (err, data) {
+          if (err) {
+            console.log(`Error occurs ${err}`);
+          } else {
+            console.log(`Email sent successfully ${data.response}`);
+          }
+        });
+        // send response
+        res.status(200).send('Successfully registrated. Check your email');
       } else {
         res.status(208).send('Email has already taken');
       }

@@ -139,7 +139,7 @@ class Registration extends Component {
   render() {
     let comp;
     if (this.state.isRegistrated) {
-      setTimeout((comp = <PersonalRoom />), 1500);
+      setTimeout((comp = <PersonalRoom />), 1500); // assign component to variable after 1.5 s
     } else {
       comp = (
         <div className={css.intro}>
