@@ -12,12 +12,14 @@ class App extends Component {
     super(props);
 
     this.state = {
+      id: null,
       roomRoute: `/personalRoom/`,
     };
   }
 
   openRoom = (id) => {
     this.setState({
+      id: id,
       roomRoute: `/personalRoom/:${id}`,
     });
     console.log(this.state.roomRoute);
@@ -38,7 +40,7 @@ class App extends Component {
             <Registration {...props} openRoom={this.openRoom} /> // passing callback to change state. After it App.js will fetch data from server and pass it to PersonalRoom
           )}
         />
-        <Route exact path={this.state.roomRoute} component={PersonalRoom} />
+        <Route exact path={this.state.roomRoute} render={(props) => <PersonalRoom {...props} id={this.state.id} />}  />
         <Route path='/personalRoom/notifications' component={Notifications} />
         <Route path='/personalRoom/friends' component={Friends} />
         <Route path='/personalRoom/comments' component={Comments} />

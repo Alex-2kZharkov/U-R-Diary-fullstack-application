@@ -121,6 +121,12 @@ app.post('/', (req, res) => {
   });
 });
 
+// sending data to personal room
+
+app.get('/personalRoom/:id', (req, res) => {
+  console.log(req.params);
+  /* connection.query(`Select * from user u, Record r where  u.id = r.user_id and u.id=${};`) */
+})
 
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);

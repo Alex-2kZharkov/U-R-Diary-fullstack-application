@@ -4,15 +4,15 @@ import PersonalRoomHeader from './PersonalRoomHeader';
 import Records from './Records';
 import TransitionButton from './TransitionButton';
 import Profile from './Profile';
-
+import axios from 'axios';
 class PersonalRoom extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      nickname: 'Polina',
-      email: 'polina_2k_kalashinokova@gmail.com',
-      aboutSelf: 'I like kick buts in video games and in real life',
+      nickname: '',
+      email: '',
+      aboutSelf: '',
       imageAddres:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTUq71y6yGEk94T1hyj89lV-khy9OMkgZt0Dl1hecguJxUpLU6a&usqp=CAU',
       searchStatus: false,
@@ -62,6 +62,22 @@ class PersonalRoom extends Component {
     });
     this.searchField.current.value = '';
   };
+  // fetching data from DB through server
+  componentDidMount() {
+    axios
+      .get(`htpp://localhost:3000/personalRoom/:${this.props.id}`)
+      .then((response) => {
+        this.setState({
+          nickname: response.data.nickname,
+          email: response.data.email,
+          aboutSelf: response.data.about_self,
+        });
+      }).catch(error => {
+        console.log(error)
+      });
+      
+    console.log(this.props.id);
+  }
   render() {
     let records;
     if (this.state.searchStatus) {
