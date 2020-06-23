@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import st from './TransitionButton.module.css';
 
 class TransitionButton extends Component {
@@ -9,12 +10,10 @@ class TransitionButton extends Component {
   render() {
     return (
       <div className={st.autenticate} style={this.props.style}>
-        <button onClick={this.props.act}>
-          {' '}
-          {/*  callback function */}
+        <Link to={this.props.route} className={st.link}>
           {this.props.label}
           <i className={`${this.props.icon} ${st.autenticate_icon}`}></i>
-        </button>
+        </Link>
       </div>
     );
   }

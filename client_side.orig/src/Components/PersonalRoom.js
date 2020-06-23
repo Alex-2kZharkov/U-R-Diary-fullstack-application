@@ -64,18 +64,21 @@ class PersonalRoom extends Component {
   };
   // fetching data from DB through server
   componentDidMount() {
+    const id = this.props.match.params.id;
     axios
-      .get(`htpp://localhost:3000/personalRoom/:${this.props.id}`)
+      .get(`http://localhost:4000/personalRoom/${id}`)
       .then((response) => {
+        console.log(response);
         this.setState({
-          nickname: response.data.nickname,
-          email: response.data.email,
-          aboutSelf: response.data.about_self,
+          nickname: response.data[0].nickname,
+          email: response.data[0].email,
+          aboutSelf: response.data[0].about_self,
         });
-      }).catch(error => {
-        console.log(error)
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      
+
     console.log(this.props.id);
   }
   render() {

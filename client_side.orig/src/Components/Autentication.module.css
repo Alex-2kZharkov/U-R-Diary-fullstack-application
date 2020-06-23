@@ -1,7 +1,8 @@
 .auten_form {
-    display: block;
-    position: relative;
-    padding: 6% 35% 0 35%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
     width: 29%;
     color: #fff;
     font-size: 40px;

@@ -33,7 +33,6 @@ app.post('/registration', (req, res) => {
       console.log('Selection error');
     } else {
       console.log('Successfully retrieved');
-      console.log(result);
       if (
         // checking if email alreary exists in database
         result.findIndex(
@@ -98,20 +97,19 @@ app.post('/registration', (req, res) => {
 
 // checking login data
 
-app.post('/', (req, res) => {
+app.post('/login', (req, res) => {
   // DON'T FORGET TO set right url at react
   connection.query('SELECT * FROM USER', (err, result) => {
     if (err) {
       console.log('Selection error');
     } else {
       console.log('Successfully retrieved');
-      console.log(result);
       let match = result.find(
         (item, index, array) =>
           item.email == req.body.email && item.password == req.body.password
       );
       if (match) {
-        console.log('Welcome to your personal room' + match);
+        console.log('Welcome to your personal room ' + match);
         res.status(200).send(match);
       } else {
         console.log('No match, try again');
@@ -125,8 +123,14 @@ app.post('/', (req, res) => {
 
 app.get('/personalRoom/:id', (req, res) => {
   console.log(req.params);
-  /* connection.query(`Select * from user u, Record r where  u.id = r.user_id and u.id=${};`) */
-})
+  connection.query(
+    `Select * from user u, Record r where  u.id = r.user_id and u.id=${req.params.id}`,
+    (err, result) => {
+      console.log(result);
+      res.send(result);
+    }
+  );
+});
 
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);

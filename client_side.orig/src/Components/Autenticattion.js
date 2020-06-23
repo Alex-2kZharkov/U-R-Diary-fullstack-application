@@ -14,7 +14,6 @@ class Autenticattion extends Component {
       email: '',
       password: '',
       message: null,
-      isAccessed:false ,
     };
   }
 
@@ -49,43 +48,42 @@ class Autenticattion extends Component {
       });
     } else {
       axios
-        .post('http://localhost:4000', this.state)
+        .post('http://localhost:4000/login', this.state)
         .then((response) => {
           console.log(response);
-          response.status === 200
-            ? this.setState({
-                isAccessed: true,
-                id: response.data.id
-              })
-            : this.setState({
-                message: (
-                  <RegistrationMessage
-                    style={{
-                      position: 'absolute',
-                      left: '44%',
-                      bottom: '3%',
-                      color: '#f30b0b',
-                      fontWeight: '700',
-                      fontSize: '18px',
-                      fontFamily: 'Georgia',
-                    }}
-                    message={response.data}
-                  />
-                ),
-              });
+          if (response.status === 200) {
+            this.setState({
+              id: response.data.id,
+            });
+            this.props.history.push(`/personalRoom/${response.data.id}`);
+          } else {
+            this.setState({
+              message: (
+                <RegistrationMessage
+                  style={{
+                    position: 'absolute',
+                    left: '44%',
+                    bottom: '3%',
+                    color: '#f30b0b',
+                    fontWeight: '700',
+                    fontSize: '18px',
+                    fontFamily: 'Georgia',
+                  }}
+                  message={response.data}
+                />
+              ),
+            });
+          }
         })
         .catch((error) => {});
     }
   };
 
   render() {
-    if (this.state.isAccessed) {
-      return <Redirect to={this.props.openRoom(this.state.id)} />;
-    }
     return (
       <div>
         <TransitionButton
-          act={this.props.act}
+          route='/'
           label='Main page'
           icon='fas fa-laptop-house'
         />
