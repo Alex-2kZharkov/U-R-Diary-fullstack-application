@@ -122,10 +122,10 @@ class PersonalRoom extends Component {
                 className={css.search_field}
               />
               <button onClick={this.setSearchStatus} className={css.search}>
-                <i class='fas fa-search'></i>
+                <i className='fas fa-search'></i>
               </button>
               <button onClick={this.cancelSearch} className={css.cancel_search}>
-                <i class='fas fa-times'></i>
+                <i className='fas fa-times'></i>
               </button>
             </div>
           </div>

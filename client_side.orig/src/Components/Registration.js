@@ -147,19 +147,19 @@ class Registration extends Component {
           <div className={css.book}>
             {' '}
             {/* // diary animation */}
-            <span class={`${css.page} ${css.turn}`}></span>
-            <span class={`${css.page} ${css.turn}`}></span>
-            <span class={`${css.page} ${css.turn}`}></span>
-            <span class={`${css.page} ${css.turn}`}></span>
-            <span class={`${css.page} ${css.turn}`}></span>
-            <span class={`${css.page} ${css.turn}`}></span>
-            <span class={`${css.page} ${css.turn}`}></span>
-            <span class={`${css.page} ${css.turn}`}></span>
-            <span class={`${css.page} ${css.turn}`}></span>
-            <span class={`${css.page} ${css.turn}`}></span>
-            <span class={css.cover}></span>
-            <span class={css.page}></span>
-            <span class={`${css.cover} ${css.turn}`}></span>
+            <span className={`${css.page} ${css.turn}`}></span>
+            <span className={`${css.page} ${css.turn}`}></span>
+            <span className={`${css.page} ${css.turn}`}></span>
+            <span className={`${css.page} ${css.turn}`}></span>
+            <span className={`${css.page} ${css.turn}`}></span>
+            <span className={`${css.page} ${css.turn}`}></span>
+            <span className={`${css.page} ${css.turn}`}></span>
+            <span className={`${css.page} ${css.turn}`}></span>
+            <span className={`${css.page} ${css.turn}`}></span>
+            <span className={`${css.page} ${css.turn}`}></span>
+            <span className={css.cover}></span>
+            <span className={css.page}></span>
+            <span className={`${css.cover} ${css.turn}`}></span>
           </div>
           <div className={css.transition}>
             <button onClick={this.props.act}>

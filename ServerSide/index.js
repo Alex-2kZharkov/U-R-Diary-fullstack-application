@@ -98,7 +98,7 @@ app.post('/registration', (req, res) => {
 
 // checking login data
 
-app.post('/login', (req, res) => {
+app.post('/', (req, res) => {
   // DON'T FORGET TO set right url at react
   connection.query('SELECT * FROM USER', (err, result) => {
     if (err) {
@@ -111,8 +111,8 @@ app.post('/login', (req, res) => {
           item.email == req.body.email && item.password == req.body.password
       );
       if (match) {
-        console.log('Welcome to your personal room');
-        res.status(200).send('Welcome to your personal room');
+        console.log('Welcome to your personal room' + match);
+        res.status(200).send(match);
       } else {
         console.log('No match, try again');
         res.status(203).send('No match, try again');
@@ -120,21 +120,7 @@ app.post('/login', (req, res) => {
     }
   });
 });
-// fetching data for 1 user
-app.post('/', (req, res) => {
-  connection.query(
-    `SELECT * FROM USER WHERE email=${req.body.email}`,
-    (err, result) => {
-      if (err) {
-        console.log('Selection error');
-      } else {
-        console.log('Successfully retrieved');
-        console.log(result);
-        res.send(result[0]);
-      }
-    }
-  );
-});
+
 
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);

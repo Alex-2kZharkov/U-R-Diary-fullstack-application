@@ -17,10 +17,10 @@ function Record(props) {
         <div className={css.content}>{props.content}</div>
         <Link to='/personalRoom/record1' className={css.edit}>
           {' '}
-          <i class='fas fa-edit'></i>
+          <i className='fas fa-edit'></i>
         </Link>
         <button className={`${css.edit} ${css.download_modif}`}>
-          <i class='fas fa-file-download'></i>
+          <i className='fas fa-file-download'></i>
         </button>
       </div>
     </div>

@@ -17,21 +17,21 @@ export class PersonalRoomHeader extends Component {
             activeClassName={css.active}
             className={css.link}
           >
-            <i class='fas fa-bell'></i> Notifications
+            <i className='fas fa-bell'></i> Notifications
           </NavLink>
           <NavLink
             to='/personalRoom/friends'
             activeClassName={css.active}
             className={css.link}
           >
-            <i class='fas fa-users'></i> Friends
+            <i className='fas fa-users'></i> Friends
           </NavLink>
           <NavLink
             to='/personalRoom/comments'
             activeClassName={css.active}
             className={css.link}
           >
-            <i class='fas fa-comments'></i> Comments
+            <i className='fas fa-comments'></i> Comments
           </NavLink>
         </div>
       </header>

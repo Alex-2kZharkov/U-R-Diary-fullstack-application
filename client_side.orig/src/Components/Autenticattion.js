@@ -10,10 +10,11 @@ class Autenticattion extends Component {
     super(props);
 
     this.state = {
+      id: null,
       email: '',
       password: '',
       message: null,
-      personalRoomRoute: null,
+      isAccessed:false ,
     };
   }
 
@@ -50,9 +51,11 @@ class Autenticattion extends Component {
       axios
         .post('http://localhost:4000', this.state)
         .then((response) => {
+          console.log(response);
           response.status === 200
             ? this.setState({
-                personalRoomRoute: '/personalRoom',
+                isAccessed: true,
+                id: response.data.id
               })
             : this.setState({
                 message: (
@@ -76,9 +79,8 @@ class Autenticattion extends Component {
   };
 
   render() {
-    if (this.state.personalRoomRoute) {
-      this.props.openRoom();
-      return <Redirect to={this.state.personalRoomRoute} />;
+    if (this.state.isAccessed) {
+      return <Redirect to={this.props.openRoom(this.state.id)} />;
     }
     return (
       <div>

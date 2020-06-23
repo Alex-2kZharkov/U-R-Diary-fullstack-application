@@ -22,7 +22,12 @@ class Home extends Component {
   render() {
     let activeComponent;
     if (this.state.isAutenFormOpen) {
-      activeComponent = <Autenticattion act={this.hideAutenForm} openRoom={this.props.openRoom}/>;
+      activeComponent = (
+        <Autenticattion
+          act={this.hideAutenForm}
+          openRoom={this.props.openRoom}
+        />
+      );
     } else {
       activeComponent = (
         <div className={st.wrapper}>
@@ -104,7 +109,7 @@ class Home extends Component {
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                <i class='fab fa-github-alt'></i>
+                <i className='fab fa-github-alt'></i>
               </a>
               <a
                 href='https://www.instagram.com/aleksis.zharkov/'

@@ -30,11 +30,11 @@ export class Profile extends Component {
           ></img>
           {this.state.isProfileClicked ? (
             <div className={css.list_icon} onClick={this.toggle}>
-              <i class='fas fa-chevron-down'></i>
+              <i className='fas fa-chevron-down'></i>
             </div>
           ) : (
             <div className={css.list_icon} onClick={this.toggle}>
-              <i class='fas fa-chevron-up'></i>
+              <i className='fas fa-chevron-up'></i>
             </div>
           )}
         </div>

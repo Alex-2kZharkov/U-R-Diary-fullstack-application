@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './Components/Home';
 import Registration from './Components/Registration';
 import PersonalRoom from './Components/PersonalRoom';
 import Notifications from './Components/Notifications';
 import Friends from './Components/Friends';
 import Comments from './Components/Comments';
-import axios from 'axios';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -35,11 +35,7 @@ class App extends Component {
         <Route
           path='/registration'
           render={(props) => (
-            <Registration
-              {...props}
-              openRoom={this.openRoom}
-              route={this.state.roomRoute}
-            /> // passing callback to change state. After it App.js will fetch data from server and pass it to PersonalRoom
+            <Registration {...props} openRoom={this.openRoom} /> // passing callback to change state. After it App.js will fetch data from server and pass it to PersonalRoom
           )}
         />
         <Route exact path={this.state.roomRoute} component={PersonalRoom} />

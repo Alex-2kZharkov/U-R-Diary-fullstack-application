@@ -7,13 +7,14 @@ class Records extends Component {
   }
   render() {
    
-    let records = this.props.records.map((item) => {
+    let records = this.props.records.map((item, index) => {
       return (
         <Record
           date={item.date}
           content={item.content}
           image={item.image}
           title={item.title}
+          key={index}
         />
       );
     });
