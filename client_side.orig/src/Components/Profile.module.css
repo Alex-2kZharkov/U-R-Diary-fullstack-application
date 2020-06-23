@@ -16,12 +16,14 @@
 }
 
 .nickname {
+    margin-right: 5px;
     color: #6600CC;
     font-weight: 700;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 34px;
+    font-size: 24px;
     transition: color 0.1s linear;
     transition: text-shadow 0.1s linear;
+    word-break: break-all;
 }
 
 .container:hover {
@@ -42,7 +44,8 @@
 }
 
 .list_icon {
-    font-size: 34px;
+    font-size: 28px;
+    margin-left: 5px;
     color: #8000ff;
     cursor: pointer;
 }
@@ -53,7 +56,6 @@
     top: 18em;
     right: 2%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: #FFFBD0;
     padding: 20px 20px;

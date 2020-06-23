@@ -119,9 +119,19 @@ app.post('/login', (req, res) => {
   });
 });
 
-// sending data to personal room
+// process user data
 
 app.get('/personalRoom/:id', (req, res) => {
+  console.log(req.params);
+  connection.query(
+    `Select * from User Where User.id=${req.params.id}`,
+    (err, result) => {
+      console.log(result);
+      res.send(result);
+    }
+  );
+});
+/* app.get('/personalRoom/:id', (req, res) => {
   console.log(req.params);
   connection.query(
     `Select * from user u, Record r where  u.id = r.user_id and u.id=${req.params.id}`,
@@ -130,7 +140,7 @@ app.get('/personalRoom/:id', (req, res) => {
       res.send(result);
     }
   );
-});
+}); */
 
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
