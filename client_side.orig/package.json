@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "react": "^16.13.1",
+    "react-delay": "^0.1.0",
+    "react-delay-render": "^0.1.2",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"

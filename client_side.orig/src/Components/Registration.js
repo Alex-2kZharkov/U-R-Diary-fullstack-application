@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import css from './Registration.module.css';
-import TransitionButton from './TransitionButton';
-import Autenticattion from './Autenticattion';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Quote from './Quote';
 import RegistrationMessage from './RegistrationMessage';
 import axios from 'axios';
-import PersonalRoom from './PersonalRoom';
 
 class Registration extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      id: null,
       nickname: '',
       something: '',
       email: '',
@@ -51,7 +49,7 @@ class Registration extends Component {
     e.preventDefault();
     if (
       this.state.nickname === '' ||
-      this.state.something === '' ||
+      this.state.something === '' || // checking if any field is empty
       this.state.email === '' ||
       this.state.password === '' ||
       this.state.passwordAgain === ''
@@ -73,6 +71,7 @@ class Registration extends Component {
         ),
       });
     } else if (this.state.password !== this.state.passwordAgain) {
+      // checking if password and password again aint match
       this.setState({
         message: (
           <RegistrationMessage
@@ -91,11 +90,12 @@ class Registration extends Component {
       });
     } else {
       axios
-        .post('http://localhost:4000/registration', this.state)
+        .post('http://localhost:4000/registration', this.state) // send request
         .then((response) => {
           console.log(response);
           if (response.status === 200) {
             this.setState({
+              id: response.data.insertId,
               isRegistrated: true,
               message: (
                 <RegistrationMessage
@@ -108,7 +108,7 @@ class Registration extends Component {
                     fontSize: '18px',
                     fontFamily: 'Georgia',
                   }}
-                  message={response.data}
+                  message='Successfully registrated. Check your email'
                 />
               ),
             });
@@ -125,7 +125,7 @@ class Registration extends Component {
                     fontSize: '18px',
                     fontFamily: 'Georgia',
                   }}
-                  message={response.data}
+                  message='Email has already taken'
                 />
               ),
             });
@@ -139,7 +139,8 @@ class Registration extends Component {
   render() {
     let comp;
     if (this.state.isRegistrated) {
-      setTimeout((comp = <PersonalRoom />), 1500); // assign component to variable after 1.5 s
+      let route = this.props.openRoom(this.state.id); // getting personal route for user
+      return <Redirect to={route} />;
     } else {
       comp = (
         <div className={css.intro}>

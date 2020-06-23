@@ -40,24 +40,6 @@ app.post('/registration', (req, res) => {
           (element, index, array) => element.email == req.body.email
         ) == -1
       ) {
-        // add new account to DB
-        let user = {
-          email: req.body.email,
-          nickname: req.body.nickname,
-          password: req.body.password,
-          image: req.body.image,
-          about_self: req.body.something,
-        };
-        let insertion = 'INSERT INTO User SET ?';
-        connection.query(insertion, user, (err, result) => {
-          if (err) {
-            console.log('Insertion error');
-          } else {
-            console.log('Successfully added');
-            console.log(result);
-          }
-        });
-
         //sending an email
 
         let mailTransporter = nodemailer.createTransport({
@@ -86,10 +68,29 @@ app.post('/registration', (req, res) => {
             console.log(`Email sent successfully ${data.response}`);
           }
         });
-        // send response
-        res.status(200).send('Successfully registrated. Check your email');
+
+        // add new account to DB
+        let user = {
+          email: req.body.email,
+          nickname: req.body.nickname,
+          password: req.body.password,
+          image: req.body.image,
+          about_self: req.body.something,
+        };
+        let insertion = 'INSERT INTO User SET ?';
+        connection.query(insertion, user, (err, result) => {
+          if (err) {
+            console.log('Insertion error');
+          } else {
+            console.log('Successfully added');
+            console.log(`New inserted record ${result.insertId}`);
+            res.status(200).send(result);
+          }
+        });
       } else {
+        // send negative response
         res.status(208).send('Email has already taken');
+        return;
       }
     }
   });
@@ -97,7 +98,8 @@ app.post('/registration', (req, res) => {
 
 // checking login data
 
-app.post('/', (req, res) => {
+app.post('/login', (req, res) => {
+  // DON'T FORGET TO set right url at react
   connection.query('SELECT * FROM USER', (err, result) => {
     if (err) {
       console.log('Selection error');
@@ -118,10 +120,22 @@ app.post('/', (req, res) => {
     }
   });
 });
-/* app.post('/registration', (req, res) => {
-  
+// fetching data for 1 user
+app.post('/', (req, res) => {
+  connection.query(
+    `SELECT * FROM USER WHERE email=${req.body.email}`,
+    (err, result) => {
+      if (err) {
+        console.log('Selection error');
+      } else {
+        console.log('Successfully retrieved');
+        console.log(result);
+        res.send(result[0]);
+      }
+    }
+  );
 });
-*/
+
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });

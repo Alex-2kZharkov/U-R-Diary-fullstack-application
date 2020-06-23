@@ -18,7 +18,6 @@ class PersonalRoom extends Component {
       searchStatus: false,
       requiredTitle: '',
       records: [
-        
         {
           title: 'Title2',
           content: 'Content2',

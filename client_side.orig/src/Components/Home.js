@@ -22,7 +22,7 @@ class Home extends Component {
   render() {
     let activeComponent;
     if (this.state.isAutenFormOpen) {
-      activeComponent = <Autenticattion act={this.hideAutenForm} />;
+      activeComponent = <Autenticattion act={this.hideAutenForm} openRoom={this.props.openRoom}/>;
     } else {
       activeComponent = (
         <div className={st.wrapper}>

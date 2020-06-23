@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import st from './Autentication.module.css';
 import TransitionButton from './TransitionButton';
 import RegistrationMessage from './RegistrationMessage';
 import axios from 'axios';
+
 class Autenticattion extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +13,7 @@ class Autenticattion extends Component {
       email: '',
       password: '',
       message: null,
+      personalRoomRoute: null,
     };
   }
 
@@ -48,22 +50,9 @@ class Autenticattion extends Component {
       axios
         .post('http://localhost:4000', this.state)
         .then((response) => {
-          response.status == 200
+          response.status === 200
             ? this.setState({
-                message: (
-                  <RegistrationMessage
-                    style={{
-                      position: 'absolute',
-                      left: '41%',
-                      bottom: '3%',
-                      color: '#00ff00',
-                      fontWeight: '700',
-                      fontSize: '18px',
-                      fontFamily: 'Georgia',
-                    }}
-                    message={response.data}
-                  />
-                ),
+                personalRoomRoute: '/personalRoom',
               })
             : this.setState({
                 message: (
@@ -87,6 +76,10 @@ class Autenticattion extends Component {
   };
 
   render() {
+    if (this.state.personalRoomRoute) {
+      this.props.openRoom();
+      return <Redirect to={this.state.personalRoomRoute} />;
+    }
     return (
       <div>
         <TransitionButton
