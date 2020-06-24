@@ -149,11 +149,32 @@ app.get('/personalRoom/:id/new-record', (req, res) => {
   connection.query(
     `Select nickname from User Where User.id=${req.params.id}`,
     (err, result) => {
-      console.log(`NEw record`);
-      console.log(result);
+      console.log(`NEw record ${result}`);
       res.send(result);
     }
   );
+});
+
+// adding new record
+app.post('/personalRoom/:id/new-record', (req, res) => {
+  let date = new Date();
+  let record = {
+    content: req.body.content,
+    image: req.body.image,
+    date: date,
+    user_id: req.params.id,
+  };
+  console.log(`${date.toDateString()} ${date.toTimeString()}`);
+  let insertion = 'INSERT INTO Note SET ?';
+  connection.query(insertion, record, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(`NEw record`);
+      console.log(result);
+    }
+    res.send(result);
+  });
 });
 
 app.listen(serverPort, () => {
