@@ -131,6 +131,8 @@ app.get('/personalRoom/:id', (req, res) => {
     }
   );
 });
+// get user records
+
 /* app.get('/personalRoom/:id', (req, res) => {
   console.log(req.params);
   connection.query(
@@ -141,6 +143,18 @@ app.get('/personalRoom/:id', (req, res) => {
     }
   );
 }); */
+
+// get user nickname
+app.get('/personalRoom/:id/new-record', (req, res) => {
+  connection.query(
+    `Select nickname from User Where User.id=${req.params.id}`,
+    (err, result) => {
+      console.log(`NEw record`);
+      console.log(result);
+      res.send(result);
+    }
+  );
+});
 
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);

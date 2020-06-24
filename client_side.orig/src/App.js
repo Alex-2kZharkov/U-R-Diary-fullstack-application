@@ -7,6 +7,7 @@ import Notifications from './Components/Notifications';
 import Friends from './Components/Friends';
 import Comments from './Components/Comments';
 import Autenticattion from './Components/Autenticattion';
+import NewRecordPage from './Components/NewRecord/NewRecordPage';
 
 class App extends Component {
   constructor(props) {
@@ -18,13 +19,10 @@ class App extends Component {
     };
   }
 
-  openRoom = (id) => {
+  setId = (id) => {
     this.setState({
       id: id,
-      roomRoute: `/personalRoom/${id}`,
     });
-    console.log(this.state.roomRoute);
-    return `${this.state.roomRoute}${id}`; // cause setState is async
   };
   render() {
     console.log(`App ID ${this.state.roomRoute}`);
@@ -43,10 +41,10 @@ class App extends Component {
               <Registration {...props} openRoom={this.openRoom} /> // passing callback to change state. After it App.js will fetch data from server and pass it to PersonalRoom
             )}
           />
+          <Route exact path='/personalRoom/:id' render={(props) => <PersonalRoom {...props} setId={this.setId} />} />
           <Route
-            exact
-            path='/personalRoom/:id'
-            component={PersonalRoom}
+            path={'/personalRoom/:id/new-record'}
+            component={NewRecordPage}
           />
           <Route path='/personalRoom/notifications' component={Notifications} />
           <Route path='/personalRoom/friends' component={Friends} />

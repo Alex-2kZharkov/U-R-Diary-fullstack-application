@@ -16,6 +16,15 @@
     position: fixed;
     right: 0.1%;
     bottom: 1%;
+    transition: border .0s linear;
+    cursor: pointer;
+}
+
+.new_record {
+    text-decoration: none;
+    color: #ffffff;
+    transition: color .0s linear;
+    transition: text-shadow .0s linear;
 }
 
 .autenticate button {
@@ -33,15 +42,18 @@
 }
 
 .autenticate button:hover {
-    cursor: pointer;
-    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-    color: #0080ff;
     border: solid 2px #0080ff;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 
 }
+
+.new_record:hover {
+    color: #0080ff;
+}
+
+.new_record:hover {}
 
 .autenticate_icon {
     display: inline-block;
     margin-left: 15px;
 }
-

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import css from './PersonalRoom.module.css';
 import PersonalRoomHeader from './PersonalRoomHeader';
 import Records from './Records';
-import TransitionButton from './TransitionButton';
+import { Link } from 'react-router-dom';
 import Profile from './Profile';
 import axios from 'axios';
 class PersonalRoom extends Component {
@@ -64,7 +64,8 @@ class PersonalRoom extends Component {
   };
   // fetching data from DB through server
   componentDidMount() {
-    const id = this.props.match.params.id;
+    const id = this.props.match.params.id; // parameters of current url
+    this.props.setId(this.props.match.params.id);
     axios
       .get(`http://localhost:4000/personalRoom/${id}`)
       .then((response) => {
@@ -141,8 +142,13 @@ class PersonalRoom extends Component {
             <button onClick={this.props.act}>
               {' '}
               {/*  callback function */}
-              Add record
-              <i className={`fas fa-plus-circle ${css.autenticate_icon}`}></i>
+              <Link
+                to={`/personalRoom/${this.props.match.params.id}/new-record`}
+                className={css.new_record}
+              >
+                Add record
+                <i className={`fas fa-plus-circle ${css.autenticate_icon}`}></i>
+              </Link>
             </button>
           </div>
         </div>
