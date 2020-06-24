@@ -34,6 +34,22 @@ export class PersonalRoomHeader extends Component {
             <i className='fas fa-comments'></i> Comments
           </NavLink>
         </div>
+        <div className={css.search_container}>
+          <input
+            ref={this.props.searchField}
+            type='text'
+            value={this.props.requiredTitle}
+            onChange={this.props.handleRequiredTitleChange}
+            placeholder='Type required title here'
+            className={css.search_field}
+          />
+          <div onClick={this.props.setSearchStatus} className={css.icon}>
+            <i className='fas fa-search'></i>
+          </div>
+          <div onClick={this.props.cancelSearch} className={css.icon}>
+            <i className='fas fa-times'></i>
+          </div>
+        </div>
       </header>
     );
   }

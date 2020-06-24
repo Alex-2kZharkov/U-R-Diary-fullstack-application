@@ -121,7 +121,14 @@ class PersonalRoom extends Component {
     return (
       <div className={css.intro}>
         <div className={css.darker}>
-          <PersonalRoomHeader user={this.state.nickname} />
+          <PersonalRoomHeader
+            user={this.state.nickname}
+            requiredTitle={this.state.requiredTitle}
+            handleRequiredTitleChange={this.handleRequiredTitleChange}
+            setSearchStatus={this.setSearchStatus}
+            cancelSearch={this.cancelSearch}
+            searchField={this.searchField}
+          />
           {records}
           <Profile
             nickname={this.state.nickname}
@@ -130,24 +137,6 @@ class PersonalRoom extends Component {
             image={this.state.imageAddres}
           />
 
-          <div className={css.search_container}>
-            <div>
-              <input
-                ref={this.searchField}
-                type='text'
-                value={this.state.requiredTitle}
-                onChange={this.handleRequiredTitleChange}
-                placeholder='Type required title here'
-                className={css.search_field}
-              />
-              <button onClick={this.setSearchStatus} className={css.search}>
-                <i className='fas fa-search'></i>
-              </button>
-              <button onClick={this.cancelSearch} className={css.cancel_search}>
-                <i className='fas fa-times'></i>
-              </button>
-            </div>
-          </div>
           <div className={css.autenticate} style={this.props.style}>
             <button onClick={this.props.act}>
               {' '}
