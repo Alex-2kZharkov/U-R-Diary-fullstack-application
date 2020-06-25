@@ -207,13 +207,13 @@ app.post('/personalRoom/:id/download/:rec_id', (req, res) => {
     });
   };
 
-  download(req.body.image, `./image.jpeg`, () => {
-    console.log('✅ Done!');
-  });
+  download(req.body.image, `./image.jpeg`, () => {});
   console.log('We are here');
+  console.log(req.body.content.props);
 
   const doc = new PDFDocument();
-  doc.pipe(fs.createWriteStream('record.pdf'));
+
+  doc.pipe(fs.createWriteStream(`./record${req.body.id}.pdf`));
   doc
     .font('/Users/alex/Library/Fonts/TravelingTypewriter.ttf')
     .fontSize(30)
@@ -226,9 +226,52 @@ app.post('/personalRoom/:id/download/:rec_id', (req, res) => {
     .fontSize(26)
     .fillColor('#000000')
     .text(req.body.content.props.children, 35, 560);
-  console.log(req.body.content.props.children);
-
   doc.end();
+
+  res.status(201).send('File created');
+});
+app.get('/:id', function (req, res) {
+  res.download(`${__dirname}/${req.params.id}`, `${req.params.id}`);
+});
+/* app.post('/personalRoom/:id/download/:rec_id', (req, res) => {
+  const download = (url, path, callback) => {
+    request.head(url, (err, res, body) => {
+      request(url).pipe(fs.createWriteStream(path)).on('close', callback);
+    });
+  };
+
+  download(req.body.image, `./image.jpeg`, () => {
+    console.log('✅ Done!');
+  });
+  console.log('We are here');
+
+  const doc = new PDFDocument();
+
+  doc.pipe(fs.createWriteStream(`./record${req.body.id}.pdf`));
+  doc
+    .font('/Users/alex/Library/Fonts/TravelingTypewriter.ttf')
+    .fontSize(30)
+    .fillColor('#0080ff')
+    .text(req.body.date, 175, 40);
+
+  doc
+    .image('image.jpeg', 85, 85, { width: 450, height: 450, align: 'center' })
+    .font('/Users/alex/Library/Fonts/MarckScript-Regular.ttf')
+    .fontSize(26)
+    .fillColor('#000000')
+    .text(req.body.content.props.children, 35, 560);
+  doc.end();
+  // new record in pdf format created
+  res.status(201).send({ recordName: `record${req.body.id}.pdf` });
+});
+//
+app.get('/:id', function (req, res) {
+  const bookPath = req.params.id;
+  res.sendFile(__dirname + '/' + bookPath);
+}); */
+app.get('/:id', function (req, res) {
+  const bookPath = req.params.id;
+  res.sendFile(__dirname + '/' + bookPath);
 });
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);

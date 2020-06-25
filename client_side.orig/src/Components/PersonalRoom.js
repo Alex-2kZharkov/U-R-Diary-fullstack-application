@@ -121,9 +121,6 @@ class PersonalRoom extends Component {
       );
     }
 
-    console.log(this.props.match.params.id);
-    console.log(this.props.match.path);
-    console.log(this.props.match.url);
     return (
       <div className={css.intro}>
         <div className={css.darker}>
