@@ -8,6 +8,7 @@ import Friends from './Components/Friends';
 import Comments from './Components/Comments';
 import Autenticattion from './Components/Autenticattion';
 import NewRecordPage from './Components/NewRecord/NewRecordPage';
+import EditRecordPage from './Components/EditRecord/EditRecordPage';
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +16,6 @@ class App extends Component {
 
     this.state = {
       id: null,
-      roomRoute: `/personalRoom/`,
     };
   }
 
@@ -25,7 +25,6 @@ class App extends Component {
     });
   };
   render() {
-    console.log(`App ID ${this.state.roomRoute}`);
     return (
       <BrowserRouter>
         <Switch>
@@ -41,10 +40,18 @@ class App extends Component {
               <Registration {...props} openRoom={this.openRoom} /> // passing callback to change state. After it App.js will fetch data from server and pass it to PersonalRoom
             )}
           />
-          <Route exact path='/personalRoom/:id' render={(props) => <PersonalRoom {...props} setId={this.setId} />} />
+          <Route
+            exact
+            path='/personalRoom/:id'
+            render={(props) => <PersonalRoom {...props} setId={this.setId} />}
+          />
           <Route
             path={'/personalRoom/:id/new-record'}
             component={NewRecordPage}
+          />
+          <Route
+            path='/personalRoom/:id/edit-record/:rec_id'
+            component={EditRecordPage}
           />
           <Route path='/personalRoom/notifications' component={Notifications} />
           <Route path='/personalRoom/friends' component={Friends} />

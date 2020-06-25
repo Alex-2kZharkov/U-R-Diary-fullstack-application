@@ -17,20 +17,7 @@ class PersonalRoom extends Component {
         'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTUq71y6yGEk94T1hyj89lV-khy9OMkgZt0Dl1hecguJxUpLU6a&usqp=CAU',
       searchStatus: false,
       substring: '',
-      records: [
-        {
-          title: 'Title2',
-          content: 'Content2',
-          date: new Date().toString(),
-          image: '',
-        },
-        {
-          title: 'Title3',
-          content: 'Content3',
-          date: new Date().toString(),
-          image: '',
-        },
-      ], // records from data base
+      records: [], // records from data base
     };
     this.searchField = React.createRef();
   }
@@ -80,9 +67,11 @@ class PersonalRoom extends Component {
             aboutSelf: response.data[response.data.length - 1].about_self,
             records: response.data.map((item) => {
               let record = {
+                id: item.id,
                 content: item.content,
                 image: item.image,
                 date: new Date(item.date).toLocaleString(),
+                url: this.props.match.url,
               };
               return record;
             }),
@@ -131,10 +120,14 @@ class PersonalRoom extends Component {
       );
     }
 
+    console.log(this.props.match.params.id);
+    console.log(this.props.match.path);
+    console.log(this.props.match.url);
     return (
       <div className={css.intro}>
         <div className={css.darker}>
           <PersonalRoomHeader
+            id={this.props.match.params.id}
             user={this.state.nickname}
             substring={this.state.substring}
             handleSubstringChange={this.handleSubstringChange}

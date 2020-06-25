@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
+import PersonalRoomHeader from '../PersonalRoomHeader';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Link } from 'react-router-dom';
-import './NewRecord.css';
+import './EditRecord.css';
 import axios from 'axios';
-export class NewRecord extends Component {
+
+export class EditRecordPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      nickname: '',
       content: '',
-      image:
-        'https://www.themorgan.org/sites/default/files/images/exhibitions/hawthorne-sophia.jpg', // default image
+      image: '',
+      roomId: '',
     };
   }
   handleImageAddressChange = (e) => {
@@ -32,9 +35,27 @@ export class NewRecord extends Component {
         console.log(error);
       });
   };
+  componentDidMount() {
+    axios
+      .get(`http://localhost:4000${this.props.location.pathname}`) // path
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          nickname: response.data[0].nickname,
+          roomId: response.data[0].id,
+          content: response.data[0].content,
+          image: response.data[0].image,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   render() {
     return (
       <div className='intro'>
+        <PersonalRoomHeader user={this.state.nickname} id={this.state.roomId} />
+
         <div className='editor'>
           <CKEditor
             editor={ClassicEditor}
@@ -70,8 +91,8 @@ export class NewRecord extends Component {
             {' '}
             {/*  callback function */}
             <Link to={`/personalRoom/${this.props.id}`} className='save'>
-              Save
-              <i className={`fas fa-save save_icon`}></i>
+              Update
+              <i className={`fas fa-edit save_icon`}></i>
             </Link>
           </button>
         </div>
@@ -80,4 +101,4 @@ export class NewRecord extends Component {
   }
 }
 
-export default NewRecord;
+export default EditRecordPage;

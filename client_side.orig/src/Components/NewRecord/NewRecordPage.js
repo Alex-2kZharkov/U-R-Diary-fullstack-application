@@ -28,7 +28,10 @@ export class NewRecordPage extends Component {
   render() {
     return (
       <div>
-        <PersonalRoomHeader user={this.state.nickname} />
+        <PersonalRoomHeader
+          user={this.state.nickname}
+          id={this.props.match.params.id}
+        />
         <NewRecord id={this.props.match.params.id} />
       </div>
     );

@@ -6,7 +6,6 @@ class Records extends Component {
     super(props);
   }
   render() {
-   
     let records = this.props.records.map((item, index) => {
       return (
         <Record
@@ -15,6 +14,8 @@ class Records extends Component {
           image={item.image}
           title={item.title}
           key={index}
+          id={item.id}
+          url={item.url}
         />
       );
     });

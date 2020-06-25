@@ -6,7 +6,7 @@ export class PersonalRoomHeader extends Component {
     return (
       <header className={css.header}>
         <div className={css.user_link_container}>
-          <Link to='/personalRoom' className={css.user_link}>
+          <Link to={`/personalRoom/${this.props.id}`} className={css.user_link}>
             {' '}
             {this.props.user} {"'s"} Diary
           </Link>

@@ -16,7 +16,7 @@ function Record(props) {
           <span className={css.date}> {props.date}</span>
         </div>
         <div className={css.content}>{parse(props.content)}</div>
-        <Link to='/personalRoom/record1' className={css.edit}>
+        <Link to={`${props.url}/edit-record/${props.id}`} className={css.edit}>
           {' '}
           <i className='fas fa-edit'></i>
         </Link>
