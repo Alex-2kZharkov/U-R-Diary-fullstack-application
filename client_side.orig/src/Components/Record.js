@@ -1,8 +1,18 @@
 import React from 'react';
 import css from './Record.module.css';
 import { Link } from 'react-router-dom';
-import parse from 'html-react-parser';
+
+import axios from 'axios';
+
 function Record(props) {
+  const downloadRecord = () => {
+    axios
+      .post(`http://localhost:4000${props.url}/download/${props.id}`, props)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {});
+  };
   return (
     <div className={css.record}>
       <img
@@ -15,12 +25,15 @@ function Record(props) {
           {props.title}
           <span className={css.date}> {props.date}</span>
         </div>
-        <div className={css.content}>{parse(props.content)}</div>
+        <div className={css.content}>{props.content}</div>
         <Link to={`${props.url}/edit-record/${props.id}`} className={css.edit}>
           {' '}
           <i className='fas fa-edit'></i>
         </Link>
-        <button className={`${css.edit} ${css.download_modif}`}>
+        <button
+          className={`${css.edit} ${css.download_modif}`}
+          onClick={downloadRecord}
+        >
           <i className='fas fa-file-download'></i>
         </button>
       </div>

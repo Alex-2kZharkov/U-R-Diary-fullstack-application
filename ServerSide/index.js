@@ -3,6 +3,11 @@ const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const PDFDocument = require('pdfkit');
+
+const request = require('request');
+const fs = require('fs');
+
 const app = express();
 const serverPort = 4000;
 
@@ -193,6 +198,37 @@ app.put('/personalRoom/:id/edit-record/:rec_id', (req, res) => {
       res.send(result);
     }
   );
+});
+// download single record
+app.post('/personalRoom/:id/download/:rec_id', (req, res) => {
+  const download = (url, path, callback) => {
+    request.head(url, (err, res, body) => {
+      request(url).pipe(fs.createWriteStream(path)).on('close', callback);
+    });
+  };
+
+  download(req.body.image, `./image.jpeg`, () => {
+    console.log('✅ Done!');
+  });
+  console.log('We are here');
+
+  const doc = new PDFDocument();
+  doc.pipe(fs.createWriteStream('record.pdf'));
+  doc
+    .font('/Users/alex/Library/Fonts/TravelingTypewriter.ttf')
+    .fontSize(30)
+    .fillColor('#0080ff')
+    .text(req.body.date, 175, 40);
+
+  doc
+    .image('image.jpeg', 85, 85, { width: 450, height: 450, align: 'center' })
+    .font('/Users/alex/Library/Fonts/MarckScript-Regular.ttf')
+    .fontSize(26)
+    .fillColor('#000000')
+    .text(req.body.content.props.children, 35, 560);
+  console.log(req.body.content.props.children);
+
+  doc.end();
 });
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);

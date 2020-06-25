@@ -5,6 +5,7 @@ import Records from './Records';
 import { Link } from 'react-router-dom';
 import Profile from './Profile';
 import axios from 'axios';
+import parse from 'html-react-parser';
 class PersonalRoom extends Component {
   constructor(props) {
     super(props);
@@ -68,7 +69,7 @@ class PersonalRoom extends Component {
             records: response.data.map((item) => {
               let record = {
                 id: item.id,
-                content: item.content,
+                content: parse(item.content),
                 image: item.image,
                 date: new Date(item.date).toLocaleString(),
                 url: this.props.match.url,
