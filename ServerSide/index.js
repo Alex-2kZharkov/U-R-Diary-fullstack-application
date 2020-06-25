@@ -119,30 +119,22 @@ app.post('/login', (req, res) => {
   });
 });
 
-// process user data
+// find user data and relevant to him records
 
 app.get('/personalRoom/:id', (req, res) => {
   console.log(req.params);
   connection.query(
-    `Select * from User Where User.id=${req.params.id}`,
+    `Select User.* , Note.* from Note INNER JOIN User On Note.user_id=User.id where User.id=${req.params.id}`,
     (err, result) => {
-      console.log(result);
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+      }
       res.send(result);
     }
   );
 });
-// get user records
-
-/* app.get('/personalRoom/:id', (req, res) => {
-  console.log(req.params);
-  connection.query(
-    `Select * from user u, Record r where  u.id = r.user_id and u.id=${req.params.id}`,
-    (err, result) => {
-      console.log(result);
-      res.send(result);
-    }
-  );
-}); */
 
 // get user nickname
 app.get('/personalRoom/:id/new-record', (req, res) => {

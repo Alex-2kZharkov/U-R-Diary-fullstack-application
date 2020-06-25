@@ -70,17 +70,26 @@ class PersonalRoom extends Component {
       .get(`http://localhost:4000/personalRoom/${id}`)
       .then((response) => {
         console.log(response);
-        this.setState({
-          nickname: response.data[0].nickname,
-          email: response.data[0].email,
-          aboutSelf: response.data[0].about_self,
-        });
+        this.setState(
+          {
+            nickname: response.data[response.data.length - 1].nickname,
+            email: response.data[response.data.length - 1].mail,
+            aboutSelf: response.data[response.data.length - 1].about_self,
+            records: response.data.map((item) => {
+              let record = {
+                content: item.content,
+                image: item.image,
+                date: item.date,
+              };
+              return record;
+            }),
+          },
+          () => console.log(this.state.records)
+        );
       })
       .catch((error) => {
         console.log(error);
       });
-
-    console.log(this.props.id);
   }
   render() {
     let records;
