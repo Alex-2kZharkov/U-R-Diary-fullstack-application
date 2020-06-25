@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import st from './Autentication.module.css';
 import TransitionButton from './TransitionButton';
 import RegistrationMessage from './RegistrationMessage';

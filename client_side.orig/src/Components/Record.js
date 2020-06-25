@@ -6,14 +6,13 @@ import axios from 'axios';
 
 function Record(props) {
   const downloadRecord = () => {
-
     axios({
       url: `http://localhost:4000${props.url}/download/${props.id}`, // at first server will create pdf file, so it need data
       method: 'POST',
       data: props,
     }).then((response) => {
       console.log(response);
-      if (response.status == 201) {
+      if (response.status === 201) {
         window.open(`http://localhost:4000/record${props.id}.pdf`); // open link to download file
       }
     });

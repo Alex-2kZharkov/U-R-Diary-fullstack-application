@@ -207,26 +207,56 @@ app.post('/personalRoom/:id/download/:rec_id', (req, res) => {
     });
   };
 
-  download(req.body.image, `./image.jpeg`, () => {});
-  console.log('We are here');
-  console.log(req.body.content.props);
+  download(req.body.image, `./image.jpeg`, () => {
+    // has to be at callback cause we have to wait till image downloaded
+    console.log('We are here');
+    let content = '';
+    if (req.body.content.length) {
+      for (let i = 0; i < req.body.content.length; i++) {
+        /* content += req.body.content[i].props.children;
+        console.log(req.body.content[i].props.children); */
+        let startProps = req.body.content[i].props;
+        while (true) {
+          if (
+            !!startProps.children &&
+            typeof startProps.children === 'string'
+          ) {
+            content += '\n' + startProps.children;
+            break;
+          } else if (
+            !!startProps.children &&
+            typeof startProps.children === 'object'
+          ) {
+            startProps = startProps.children;
+          } else if (!!startProps.props) {
+            startProps = startProps.props;
+          }
+        }
+        console.log(content);
+      }
+      console.log('Many ' + req.body.content.length);
+    } else {
+      console.log('One ' + req.body.content.props);
+      content += req.body.content.props.children;
+    }
 
-  const doc = new PDFDocument();
+    const doc = new PDFDocument();
 
-  doc.pipe(fs.createWriteStream(`./record${req.body.id}.pdf`));
-  doc
-    .font('/Users/alex/Library/Fonts/TravelingTypewriter.ttf')
-    .fontSize(30)
-    .fillColor('#0080ff')
-    .text(req.body.date, 175, 40);
+    doc.pipe(fs.createWriteStream(`./record${req.body.id}.pdf`));
+    doc
+      .font('/Users/alex/Library/Fonts/TravelingTypewriter.ttf')
+      .fontSize(30)
+      .fillColor('#0080ff')
+      .text(req.body.date, 175, 40);
 
-  doc
-    .image('image.jpeg', 85, 85, { width: 450, height: 450, align: 'center' })
-    .font('/Users/alex/Library/Fonts/MarckScript-Regular.ttf')
-    .fontSize(26)
-    .fillColor('#000000')
-    .text(req.body.content.props.children, 35, 560);
-  doc.end();
+    doc
+      .image('image.jpeg', 85, 85, { width: 450, height: 450, align: 'center' })
+      .font('/Users/alex/Library/Fonts/MarckScript-Regular.ttf')
+      .fontSize(26)
+      .fillColor('#000000')
+      .text(content, 35, 560);
+    doc.end();
+  });
 
   res.status(201).send('File created');
 });

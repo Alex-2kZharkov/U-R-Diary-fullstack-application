@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import css from './Registration.module.css';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Quote from './Quote';
 import RegistrationMessage from './RegistrationMessage';
 import axios from 'axios';
