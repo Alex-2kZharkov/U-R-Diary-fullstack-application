@@ -38,8 +38,8 @@ export class PersonalRoomHeader extends Component {
           <input
             ref={this.props.searchField}
             type='text'
-            value={this.props.requiredTitle}
-            onChange={this.props.handleRequiredTitleChange}
+            value={this.props.substring}
+            onChange={this.props.handleSubstringChange}
             placeholder='Type required title here'
             className={css.search_field}
           />

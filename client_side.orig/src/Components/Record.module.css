@@ -15,39 +15,39 @@
 
 .record_image {
     display: block;
-    min-width: 150px;
-    min-height: 150px;
-    max-width: 150px;
-    max-height: 150px;
+    min-width: 170px;
+    min-height: 170px;
+    max-width: 170px;
+    max-height: 170px;
     border-radius: 50%;
-    border: solid 1px #333;
+    border: solid 2px #000000;
 }
 
 .data_container {
     flex-basis: 85%;
 }
 
-.title {
-    color: #ff8000;
-    text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
-    font-weight: 700;
-    font-size: 30px;
-    font-family: Cambria, sans-serif;
-    font-weight: 900;
-}
-
 .date {
     font-family: Cochin, Cambria, Georgia, Times, 'Times New Roman', serif;
     color: #0080ff;
     font-style: italic;
+    text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+    font-weight: 700;
+    font-size: 30px;
+    font-weight: 900;
 
 }
 
 .content {
     margin-top: 10px;
     color: #d7d7f6;
-    font-size: 24px;
-    font-family: Geneva, Tahoma, sans-serif, sans-serif;
+
+    text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+    font-weight: 700;
+    font-size: 30px;
+    font-weight: 900;
+    font-size: 28px;
+    font-family: 'Marck Script', Geneva, Tahoma, sans-serif, sans-serif;
     word-break: break-all;
 }
 

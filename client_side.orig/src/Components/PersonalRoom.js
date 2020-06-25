@@ -16,7 +16,7 @@ class PersonalRoom extends Component {
       imageAddres:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTUq71y6yGEk94T1hyj89lV-khy9OMkgZt0Dl1hecguJxUpLU6a&usqp=CAU',
       searchStatus: false,
-      requiredTitle: '',
+      substring: '',
       records: [
         {
           title: 'Title2',
@@ -34,9 +34,9 @@ class PersonalRoom extends Component {
     };
     this.searchField = React.createRef();
   }
-  handleRequiredTitleChange = (e) => {
+  handleSubstringChange = (e) => {
     this.setState({
-      requiredTitle: e.target.value,
+      substring: e.target.value,
     });
     this.setState({
       searchStatus: false,
@@ -50,17 +50,20 @@ class PersonalRoom extends Component {
     });
   };
   findRecord = () => {
-    return this.state.records.filter(
-      (record) => record.title === this.state.requiredTitle
-    );
+    return this.state.records.filter((record) => {
+      if (record.content.search(this.state.substring) != -1) {
+        // if substing found at record , then it goes to result array
+        return record;
+      }
+    });
   };
 
   cancelSearch = () => {
     this.setState({
       searchStatus: false,
-      requiredTitle: '',
+      substring: '',
     });
-    this.searchField.current.value = '';
+    this.searchField.current.value = ''; // empty search field
   };
   // fetching data from DB through server
   componentDidMount() {
@@ -133,8 +136,8 @@ class PersonalRoom extends Component {
         <div className={css.darker}>
           <PersonalRoomHeader
             user={this.state.nickname}
-            requiredTitle={this.state.requiredTitle}
-            handleRequiredTitleChange={this.handleRequiredTitleChange}
+            substring={this.state.substring}
+            handleSubstringChange={this.handleSubstringChange}
             setSearchStatus={this.setSearchStatus}
             cancelSearch={this.cancelSearch}
             searchField={this.searchField}
