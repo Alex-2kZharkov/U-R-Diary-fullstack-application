@@ -128,8 +128,6 @@ app.get('/personalRoom/:id', (req, res) => {
     (err, result) => {
       if (err) {
         console.log(err);
-      } else {
-        console.log(result);
       }
       res.send(result);
     }
@@ -180,6 +178,22 @@ app.get('/personalRoom/:id/edit-record/:rec_id', (req, res) => {
   );
 });
 
+// updating record
+app.put('/personalRoom/:id/edit-record/:rec_id', (req, res) => {
+  console.log(req.body);
+  let updateDate = new Date();
+  connection.query(
+    `UPDATE Note SET Note.content='${req.body.content}', Note.image='${req.body.image}', Note.date=NOW() Where Note.id='${req.params.rec_id}'`,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+      }
+      res.send(result);
+    }
+  );
+});
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });

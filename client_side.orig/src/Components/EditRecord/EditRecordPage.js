@@ -22,12 +22,10 @@ export class EditRecordPage extends Component {
       image: e.target.value,
     });
   };
-  saveRecord = () => {
+  updateRecord = () => {
+    // request to update current opened post
     axios
-      .post(
-        `http://localhost:4000/personalRoom/${this.props.id}/new-record`,
-        this.state
-      )
+      .put(`http://localhost:4000${this.props.location.pathname}`, this.state)
       .then((response) => {
         console.log(response);
       })
@@ -36,6 +34,7 @@ export class EditRecordPage extends Component {
       });
   };
   componentDidMount() {
+    // get user data and single record
     axios
       .get(`http://localhost:4000${this.props.location.pathname}`) // path
       .then((response) => {
@@ -86,13 +85,13 @@ export class EditRecordPage extends Component {
             />
           </div>
         </div>
-        <div className='save_container'>
-          <button onClick={this.saveRecord}>
+        <div className='update_container'>
+          <button onClick={this.updateRecord}>
             {' '}
             {/*  callback function */}
-            <Link to={`/personalRoom/${this.props.id}`} className='save'>
+            <Link to={`/personalRoom/${this.state.roomId}`} className='update'>
               Update
-              <i className={`fas fa-edit save_icon`}></i>
+              <i className={`fas fa-edit update_icon`}></i>
             </Link>
           </button>
         </div>

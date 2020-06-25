@@ -28,7 +28,7 @@
     font-size: 20px;
 }
 
-.save_container {
+.update_container {
     position: fixed;
     right: 0.1%;
     bottom: 1%;
@@ -36,14 +36,14 @@
     cursor: pointer;
 }
 
-.save {
+.update {
     text-decoration: none;
     color: #ffffff;
     transition: color 0s linear;
     transition: text-shadow 0s linear;
 }
 
-.save_container button {
+.update_container button {
     padding: 10px 30px;
     border-radius: 20px;
     background-color: #ff8000;
@@ -57,19 +57,19 @@
     outline: none;
 }
 
-.save_container button:hover,
-.save_container button:hover .save {
+.update_container button:hover,
+.update_container button:hover .update {
     text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
         1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
     color: #0080ff;
 }
 
-.save_container button:hover {
+.update_container button:hover {
     border: solid 2px #0080ff;
 
 }
 
-.save_icon {
+.update_icon {
     display: inline-block;
     margin-left: 15px;
 }
