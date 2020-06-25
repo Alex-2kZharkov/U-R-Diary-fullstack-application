@@ -168,6 +168,18 @@ app.post('/personalRoom/:id/new-record', (req, res) => {
   });
 });
 
+// get user nickname and id within editing component
+app.get('/personalRoom/:id/edit-record/:rec_id', (req, res) => {
+  console.log(req.params);
+  connection.query(
+    `Select User.id, User.nickname, Note.content, Note.image from Note INNER JOIN User ON Note.user_id=User.id Where User.id=${req.params.id} and Note.id=${req.params.rec_id}`,
+    (err, result) => {
+      console.log(result);
+      res.send(result);
+    }
+  );
+});
+
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });
