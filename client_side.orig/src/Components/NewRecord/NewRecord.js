@@ -10,7 +10,8 @@ export class NewRecord extends Component {
 
     this.state = {
       content: '<p>What is on your mind, dear friend ?</p>',
-      image: '',
+      image:
+        'https://www.themorgan.org/sites/default/files/images/exhibitions/hawthorne-sophia.jpg', // default image
     };
   }
   handleImageAddressChange = (e) => {

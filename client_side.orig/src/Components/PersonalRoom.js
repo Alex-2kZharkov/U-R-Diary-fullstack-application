@@ -73,13 +73,13 @@ class PersonalRoom extends Component {
         this.setState(
           {
             nickname: response.data[response.data.length - 1].nickname,
-            email: response.data[response.data.length - 1].mail,
+            email: response.data[response.data.length - 1].email,
             aboutSelf: response.data[response.data.length - 1].about_self,
             records: response.data.map((item) => {
               let record = {
                 content: item.content,
                 image: item.image,
-                date: item.date,
+                date: new Date(item.date).toLocaleString(),
               };
               return record;
             }),

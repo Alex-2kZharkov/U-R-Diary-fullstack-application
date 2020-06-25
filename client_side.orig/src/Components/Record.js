@@ -12,7 +12,7 @@ function Record(props) {
       <div className={css.data_container}>
         <div className={css.title}>
           {props.title}
-          <span className={css.date}> - {props.date}</span>
+          <span className={css.date}> {props.date}</span>
         </div>
         <div className={css.content}>{props.content}</div>
         <Link to='/personalRoom/record1' className={css.edit}>

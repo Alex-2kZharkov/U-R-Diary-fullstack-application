@@ -149,14 +149,13 @@ app.get('/personalRoom/:id/new-record', (req, res) => {
 
 // adding new record
 app.post('/personalRoom/:id/new-record', (req, res) => {
-  let date = new Date();
   let record = {
     content: req.body.content,
     image: req.body.image,
-    date: date,
+    date: new Date(),
     user_id: req.params.id,
   };
-  console.log(`${date.toDateString()} ${date.toTimeString()}`);
+  console.log(`DATE ${new Date().toLocaleDateString()}`);
   let insertion = 'INSERT INTO Note SET ?';
   connection.query(insertion, record, (err, result) => {
     if (err) {
