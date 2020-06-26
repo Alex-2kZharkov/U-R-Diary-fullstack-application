@@ -81,46 +81,48 @@ class Autenticattion extends Component {
 
   render() {
     return (
-      <div>
+      <div className={st.intro}>
         <TransitionButton
           route='/'
           label='Main page'
           icon='fas fa-laptop-house'
         />
-        <form className={st.auten_form}>
-          <fieldset>
-            <legend>Authentication</legend>
-            <input
-              type='email'
-              placeholder='Type your email here'
-              required
-              className={st.field}
-              value={this.state.email}
-              onChange={this.handleEmailChange}
-            />
-            <input
-              type='password'
-              placeholder='Type your password'
-              required
-              className={st.field}
-              value={this.state.password}
-              onChange={this.handlePasswordChange}
-            />
-            <button onClick={this.submitToServer} className={st.submit}>
-              Sign in
-            </button>
-            <div className={st.registration}>
-              <div>
-                Still haven't got an account?
-                <i className={`fas fa-arrow-circle-down ${st.down}`}></i>
+        <div className={st.form_container}>
+          <form className={st.auten_form}>
+            <fieldset>
+              <legend>Authentication</legend>
+              <input
+                type='email'
+                placeholder='Type your email here'
+                required
+                className={st.field}
+                value={this.state.email}
+                onChange={this.handleEmailChange}
+              />
+              <input
+                type='password'
+                placeholder='Type your password'
+                required
+                className={st.field}
+                value={this.state.password}
+                onChange={this.handlePasswordChange}
+              />
+              <button onClick={this.submitToServer} className={st.submit}>
+                Sign in
+              </button>
+              <div className={st.registration}>
+                <div>
+                  Still haven't got an account? The time has come!
+                  <i className={`fas fa-arrow-circle-down ${st.down}`}></i>
+                </div>
+                <Link to='/registration'>
+                  Click here to get absolutely free account
+                </Link>
               </div>
-              <Link to='/registration'>
-                Click here to get absolutely free account
-              </Link>
-            </div>
-            {this.state.message}
-          </fieldset>
-        </form>
+              {this.state.message}
+            </fieldset>
+          </form>
+        </div>
       </div>
     );
   }

@@ -1,16 +1,36 @@
+.intro {
+    background: url('../assets/background.jpg');
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.form_container {
+    position: relative;
+    width: 80vw;
+    height: 80vh;
+    margin: auto;
+    z-index: 1;
+}
+
 .auten_form {
     display: flex;
-
     justify-content: center;
     align-items: center;
-    width: 29%;
+    width: 35%;
     color: #fff;
     font-size: 40px;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    margin: auto;
 }
 
 fieldset {
     border: double 5px #eeeeee;
-    padding-bottom: 70px;
+    padding-bottom: 50px;
 }
 
 legend {
