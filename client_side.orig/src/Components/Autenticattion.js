@@ -35,8 +35,8 @@ class Autenticattion extends Component {
           <RegistrationMessage
             style={{
               position: 'absolute',
-              left: '45%',
-              bottom: '3%',
+              left: '32%',
+              bottom: '9%',
               color: '#f30b0b',
               fontWeight: '700',
               fontSize: '18px',
@@ -62,8 +62,8 @@ class Autenticattion extends Component {
                 <RegistrationMessage
                   style={{
                     position: 'absolute',
-                    left: '44%',
-                    bottom: '3%',
+                    left: '31%',
+                    bottom: '9%',
                     color: '#f30b0b',
                     fontWeight: '700',
                     fontSize: '18px',

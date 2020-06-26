@@ -14,7 +14,7 @@
 
 .autenticate {
     position: fixed;
-    right: 0.1%;
+    right: 0.5%;
     bottom: 1%;
     transition: border .0s linear;
     cursor: pointer;
@@ -30,7 +30,7 @@
 .autenticate button {
     padding: 10px 20px;
     border-radius: 20px;
-    background-color: #ff8000;
+    background-color: #0080ff;
     font-family: Cambria, sans-serif;
     font-size: 40px;
     color: #ffffff;
@@ -43,13 +43,50 @@
 
 .autenticate button:hover,
 .autenticate button:hover .new_record {
-    color: #0080ff;
+    color: #ff5e00;
     text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
 
 .autenticate button:hover {
     border: solid 2px #0080ff;
 }
+
+.autenticate_icon {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.download_all {
+    position: fixed;
+    right: 0.5%;
+    bottom: 20%;
+    transition: border .0s linear;
+    cursor: pointer;
+}
+
+
+.download_all_button {
+    padding: 10px 9px;
+    border-radius: 20px;
+    background-color: #F20056;
+    font-family: Cambria, sans-serif;
+    font-size: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: color .0s linear;
+    transition: text-shadow .0s ease;
+    transition: border .0s linear;
+    outline: none;
+    cursor: pointer;
+}
+
+.download_all_button:hover {
+    color: #0080ff;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    /* border: solid 2px #0080ff; */
+}
+
+.autenticate button:hover {}
 
 .autenticate_icon {
     display: inline-block;

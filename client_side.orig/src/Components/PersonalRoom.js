@@ -53,6 +53,23 @@ class PersonalRoom extends Component {
     });
     this.searchField.current.value = ''; // empty search field
   };
+  download_all = () => {
+    axios
+      .post(
+        `http://localhost:4000${this.props.match.url}/download-all`,
+        this.state.records
+      )
+      .then((response) => {
+        console.log(response);
+        if (response.status === 201) {
+          window.open(`http://localhost:4000/all_records.pdf`); // open link to download file
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   // fetching data from DB through server
   componentDidMount() {
     const id = this.props.match.params.id; // parameters of current url
@@ -151,6 +168,15 @@ class PersonalRoom extends Component {
             about={this.state.aboutSelf}
             image={this.state.imageAddres}
           />
+          <div className={css.download_all} style={this.props.style}>
+            <button
+              className={css.download_all_button}
+              onClick={this.download_all}
+            >
+              Download all
+              <i className={`fas  fa-file-archive ${css.autenticate_icon}`}></i>
+            </button>
+          </div>
 
           <div className={css.autenticate} style={this.props.style}>
             <button onClick={this.props.act}>
