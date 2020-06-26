@@ -219,6 +219,9 @@ class Registration extends Component {
           </button>
           {this.state.message}
         </form>
+        <div className={css.blink}>
+          Don't forget to check<br></br> your email after registration
+        </div>
       </div>
     );
   }
