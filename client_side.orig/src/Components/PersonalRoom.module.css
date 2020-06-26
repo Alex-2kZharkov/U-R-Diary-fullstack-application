@@ -41,14 +41,10 @@
     outline: none;
 }
 
-.autenticate button:hover,
-.autenticate button:hover .new_record {
-    color: #ff5e00;
-    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-}
-
 .autenticate button:hover {
-    border: solid 2px #0080ff;
+    text-shadow: 5px 5px 10px #ff0080, -5px -5px 10px #ff0080;
+    box-shadow: 5px 5px 10px #ff0080, -5px -5px 10px #ff0080;
+
 }
 
 .autenticate_icon {
@@ -81,8 +77,8 @@
 }
 
 .download_all_button:hover {
-    color: #0080ff;
-    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    text-shadow: 5px 5px 10px #0080ff, -5px -5px 10px #0080ff;
+    box-shadow: 5px 5px 10px #0080ff, -5px -5px 10px #0080ff;
     /* border: solid 2px #0080ff; */
 }
 

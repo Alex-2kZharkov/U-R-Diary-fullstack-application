@@ -213,9 +213,9 @@ app.put('/personalRoom/:id/edit-record/:rec_id', (req, res) => {
   );
 });
 // download single record
-app.post('/personalRoom/:id/download/:rec_id', (req, res) => {
+app.post('/personalRoom/:id/download/:rec_id', async (req, res) => {
   let total = req.body.content;
-  const download = (url, path, callback) => {
+  /*   const download = (url, path, callback) => {
     request.head(url, (err, res, body) => {
       request(url).pipe(fs.createWriteStream(path)).on('close', callback);
     });
@@ -223,91 +223,146 @@ app.post('/personalRoom/:id/download/:rec_id', (req, res) => {
 
   download(req.body.image, `./image.jpeg`, () => {
     // has to be at callback cause we have to wait till image downloaded
-
-    let tags = [
-      '<p>',
-      '</p>',
-      '</strong>',
-      '<strong>',
-      '</h2>',
-      '<h2>',
-      '</h1>',
-      '<h1>',
-      '<h3>',
-      '</h3>',
-      '<h4>',
-      '</h4>',
-      '</i>',
-      '<i>',
-      '</ul>',
-      '<ul>',
-      '<li>',
-      '</li>',
-      '</ol>',
-      '<ol>',
-      '</blockquote>',
-      '<blockquote>',
-      '&nbsp',
-    ];
-
-    console.log('*********' + req.body.content);
-    for (let item of tags) {
-      // replacing all tags
-      let exp = new RegExp(item, 'g');
-      total = total.replace(exp, ' ');
-    }
-
-    let f = total.indexOf('<figure');
-    let l = total.lastIndexOf('</figure>');
-    if (f != -1 && l != -1) {
-      let rep = total.slice(f, l + '</figure>'.length); // replacing all tags
-      total = total.replace(new RegExp(rep, 'g'), '');
-    }
-    console.log('*********' + total);
-
-    // creating and filling new pdf document
-    const doc = new PDFDocument();
-
-    doc.pipe(fs.createWriteStream(`./record${req.body.id}.pdf`));
-    doc
-      .font('/Users/alex/Library/Fonts/TravelingTypewriter.ttf')
-      .fontSize(30)
-      .fillColor('#0080ff')
-      .text(req.body.date, 175, 40);
-
-    doc
-      .image('image.jpeg', 85, 85, { width: 450, height: 450, align: 'center' })
-      .font('/Users/alex/Library/Fonts/MarckScript-Regular.ttf')
-      .fontSize(26)
-      .fillColor('#000000')
-      .text(total, 35, 560);
-    doc.addPage();
-    doc
-      .font('/Users/alex/Library/Fonts/TravelingTypewriter.ttf')
-      .fontSize(30)
-      .fillColor('#0080ff')
-      .text(req.body.date, 175, 40);
-
-    doc
-      .image('image.jpeg', 85, 85, { width: 450, height: 450, align: 'center' })
-      .font('/Users/alex/Library/Fonts/MarckScript-Regular.ttf')
-      .fontSize(26)
-      .fillColor('#000000')
-      .text(total, 35, 560);
-    doc.end();
+   
+  }); */
+  let file = fs.createWriteStream(`image.jpeg`);
+  await new Promise((resolve, reject) => {
+    let stream = request({
+      /* Here you should specify the exact link to the file you are trying to download */
+      uri: req.body.image,
+      headers: {
+        Accept:
+          'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Accept-Language':
+          'en-US,en;q=0.9,fr;q=0.8,ro;q=0.7,ru;q=0.6,la;q=0.5,pt;q=0.4,de;q=0.3',
+        'Cache-Control': 'max-age=0',
+        Connection: 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+        'User-Agent':
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+      },
+      /* GZIP true for most of the websites now, disable it if you don't need it */
+      gzip: true,
+    })
+      .pipe(file)
+      .on('finish', () => {
+        console.log(`Single file is finished downloading.`);
+        resolve();
+      })
+      .on('error', (error) => {
+        reject(error);
+      });
+  }).catch((error) => {
+    console.log(`Something happened: ${error}`);
   });
+  debugger;
+  let tags = [
+    '<p>',
+    '</p>',
+    '</strong>',
+    '<strong>',
+    '</h2>',
+    '<h2>',
+    '</h1>',
+    '<h1>',
+    '<h3>',
+    '</h3>',
+    '<h4>',
+    '</h4>',
+    '</i>',
+    '<i>',
+    '</ul>',
+    '<ul>',
+    '<li>',
+    '</li>',
+    '</ol>',
+    '<ol>',
+    '</blockquote>',
+    '<blockquote>',
+    '&nbsp',
+  ];
 
+  console.log('*********' + req.body.content);
+  for (let item of tags) {
+    // replacing all tags
+    let exp = new RegExp(item, 'g');
+    total = total.replace(exp, ' ');
+  }
+
+  let f = total.indexOf('<figure');
+  let l = total.lastIndexOf('</figure>');
+  if (f != -1 && l != -1) {
+    let rep = total.slice(f, l + '</figure>'.length); // replacing all tags
+    total = total.replace(new RegExp(rep, 'g'), '');
+  }
+  console.log('*********' + total);
+
+  // creating and filling new pdf document
+  const doc = new PDFDocument();
+
+  doc.pipe(fs.createWriteStream(`./record${req.body.id}.pdf`));
+  doc
+    .font('/Users/alex/Library/Fonts/TravelingTypewriter.ttf')
+    .fontSize(30)
+    .fillColor('#0080ff')
+    .text(req.body.date, 175, 40);
+
+  doc
+    .image('image.jpeg', 85, 85, { width: 450, height: 450, align: 'center' })
+    .font('/Users/alex/Library/Fonts/MarckScript-Regular.ttf')
+    .fontSize(26)
+    .fillColor('#000000')
+    .text(total, 35, 560);
+  doc.end();
   res.status(201).send('File created');
 });
+// send single pdf file
 app.get('/:id', function (req, res) {
   res.download(`${__dirname}/${req.params.id}`, `${req.params.id}`);
 });
 
-// downloading all records
+// creating single pdf file for all records
 app.post('/personalRoom/:id/download-all', async (req, res) => {
   const doc = new PDFDocument();
   const writeStream = fs.createWriteStream('all_records.pdf');
   doc.pipe(writeStream);
+
+  for (let i = 0; i < req.body.length; i++) {
+    let file = fs.createWriteStream(`image${req.body[i].id}.jpeg`);
+    /* Using Promises so that we can use the ASYNC AWAIT syntax */
+
+    await new Promise((resolve, reject) => {
+      let stream = request({
+        /* Here you should specify the exact link to the file you are trying to download */
+        uri: req.body[i].image,
+        headers: {
+          Accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+          'Accept-Encoding': 'gzip, deflate, br',
+          'Accept-Language':
+            'en-US,en;q=0.9,fr;q=0.8,ro;q=0.7,ru;q=0.6,la;q=0.5,pt;q=0.4,de;q=0.3',
+          'Cache-Control': 'max-age=0',
+          Connection: 'keep-alive',
+          'Upgrade-Insecure-Requests': '1',
+          'User-Agent':
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+        },
+        /* GZIP true for most of the websites now, disable it if you don't need it */
+        gzip: true,
+      })
+        .pipe(file)
+        .on('finish', () => {
+          console.log(`The file is finished downloading.`);
+          resolve();
+        })
+        .on('error', (error) => {
+          reject(error);
+        });
+    }).catch((error) => {
+      console.log(`Something happened: ${error}`);
+    });
+  }
 
   // do stuff with the PDF file
   for (let i = 0; i < req.body.length; i++) {
@@ -359,39 +414,6 @@ app.post('/personalRoom/:id/download-all', async (req, res) => {
       .fillColor('#0080ff')
       .text(req.body[i].date, 175, 40);
 
-    let file = fs.createWriteStream(`image${req.body[i].id}.jpeg`);
-    /* Using Promises so that we can use the ASYNC AWAIT syntax */
-    
-      await new Promise((resolve, reject) => {
-        let stream = request({
-          /* Here you should specify the exact link to the file you are trying to download */
-          uri: req.body[i].image,
-          headers: {
-            Accept:
-              'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Accept-Language':
-              'en-US,en;q=0.9,fr;q=0.8,ro;q=0.7,ru;q=0.6,la;q=0.5,pt;q=0.4,de;q=0.3',
-            'Cache-Control': 'max-age=0',
-            Connection: 'keep-alive',
-            'Upgrade-Insecure-Requests': '1',
-            'User-Agent':
-              'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
-          },
-          /* GZIP true for most of the websites now, disable it if you don't need it */
-          gzip: true,
-        })
-          .pipe(file)
-          .on('finish', () => {
-            console.log(`The file is finished downloading.`);
-            resolve();
-          })
-          .on('error', (error) => {
-            reject(error);
-          });
-      }).catch((error) => {
-        console.log(`Something happened: ${error}`);
-      });
     doc.image(`image${req.body[i].id}.jpeg`, 85, 85, {
       width: 450,
       height: 450,
