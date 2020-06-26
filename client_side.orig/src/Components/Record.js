@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './Record.module.css';
 import { Link } from 'react-router-dom';
-
+import parse from 'html-react-parser';
 import axios from 'axios';
 
 function Record(props) {
@@ -26,10 +26,9 @@ function Record(props) {
       ></img>
       <div className={css.data_container}>
         <div className={css.title}>
-          {props.title}
           <span className={css.date}> {props.date}</span>
         </div>
-        <div className={css.content}>{props.content}</div>
+        <div className={css.content}>{parse(props.content)}</div>
         <Link to={`${props.url}/edit-record/${props.id}`} className={css.edit}>
           {' '}
           <i className='fas fa-edit'></i>

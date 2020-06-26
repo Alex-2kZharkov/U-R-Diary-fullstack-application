@@ -20,6 +20,7 @@ export class NewRecord extends Component {
     });
   };
   saveRecord = () => {
+    console.log(this.state.content);
     axios
       .post(
         `http://localhost:4000/personalRoom/${this.props.id}/new-record`,

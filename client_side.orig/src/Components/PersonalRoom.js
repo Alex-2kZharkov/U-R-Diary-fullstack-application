@@ -5,7 +5,7 @@ import Records from './Records';
 import { Link } from 'react-router-dom';
 import Profile from './Profile';
 import axios from 'axios';
-import parse from 'html-react-parser';
+
 class PersonalRoom extends Component {
   constructor(props) {
     super(props);
@@ -61,24 +61,35 @@ class PersonalRoom extends Component {
       .get(`http://localhost:4000/personalRoom/${id}`)
       .then((response) => {
         console.log(response);
-        this.setState(
-          {
-            nickname: response.data[response.data.length - 1].nickname,
-            email: response.data[response.data.length - 1].email,
-            aboutSelf: response.data[response.data.length - 1].about_self,
-            records: response.data.map((item) => {
-              let record = {
-                id: item.id,
-                content: parse(item.content),
-                image: item.image,
-                date: new Date(item.date).toLocaleString(),
-                url: this.props.match.url,
-              };
-              return record;
-            }),
-          },
-          () => console.log(this.state.records)
-        );
+        if (response.status === 202) {
+          this.setState(
+            {
+              nickname: response.data[response.data.length - 1].nickname,
+              email: response.data[response.data.length - 1].email,
+              aboutSelf: response.data[response.data.length - 1].about_self,
+              records: response.data.map((item) => {
+                let record = {
+                  id: item.id,
+                  content: item.content,
+                  image: item.image,
+                  date: new Date(item.date).toLocaleString(),
+                  url: this.props.match.url,
+                };
+                return record;
+              }),
+            },
+            () => console.log(this.state.records[0].content)
+          );
+        } else {
+          this.setState(
+            {
+              nickname: response.data[response.data.length - 1].nickname,
+              email: response.data[response.data.length - 1].email,
+              aboutSelf: response.data[response.data.length - 1].about_self,
+            },
+            () => console.log(this.state.records)
+          );
+        }
       })
       .catch((error) => {
         console.log(error);

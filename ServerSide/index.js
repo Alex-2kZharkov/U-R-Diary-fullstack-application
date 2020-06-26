@@ -132,9 +132,19 @@ app.get('/personalRoom/:id', (req, res) => {
     `Select User.* , Note.* from Note INNER JOIN User On Note.user_id=User.id where User.id=${req.params.id}`,
     (err, result) => {
       if (err) {
-        console.log(err);
+        console.log('11111111');
       }
-      res.send(result);
+      if (result.length) {
+        res.status(202).send(result);
+      } else {
+        connection.query(
+          `Select * FROM User where User.id=${req.params.id}`,
+          (err, result) => {
+            console.log(result);
+            res.status(200).send(result);
+          }
+        );
+      }
     }
   );
 });
@@ -201,6 +211,7 @@ app.put('/personalRoom/:id/edit-record/:rec_id', (req, res) => {
 });
 // download single record
 app.post('/personalRoom/:id/download/:rec_id', (req, res) => {
+  let total = req.body.content;
   const download = (url, path, callback) => {
     request.head(url, (err, res, body) => {
       request(url).pipe(fs.createWriteStream(path)).on('close', callback);
@@ -210,36 +221,48 @@ app.post('/personalRoom/:id/download/:rec_id', (req, res) => {
   download(req.body.image, `./image.jpeg`, () => {
     // has to be at callback cause we have to wait till image downloaded
     console.log('We are here');
-    let content = '';
-    if (req.body.content.length) {
-      for (let i = 0; i < req.body.content.length; i++) {
-        /* content += req.body.content[i].props.children;
-        console.log(req.body.content[i].props.children); */
-        let startProps = req.body.content[i].props;
-        while (true) {
-          if (
-            !!startProps.children &&
-            typeof startProps.children === 'string'
-          ) {
-            content += '\n' + startProps.children;
-            break;
-          } else if (
-            !!startProps.children &&
-            typeof startProps.children === 'object'
-          ) {
-            startProps = startProps.children;
-          } else if (!!startProps.props) {
-            startProps = startProps.props;
-          }
-        }
-        console.log(content);
-      }
-      console.log('Many ' + req.body.content.length);
-    } else {
-      console.log('One ' + req.body.content.props);
-      content += req.body.content.props.children;
+    let tags = [
+      '<p>',
+      '</p>',
+      '</strong>',
+      '<strong>',
+      '</h2>',
+      '<h2>',
+      '</h1>',
+      '<h1>',
+      '<h3>',
+      '</h3>',
+      '<h4>',
+      '</h4>',
+      '</i>',
+      '<i>',
+      '</ul>',
+      '<ul>',
+      '<li>',
+      '</li>',
+      '</ol>',
+      '<ol>',
+      '</blockquote>',
+      '<blockquote>',
+      '&nbsp'
+    ];
+
+    console.log('*********' + req.body.content);
+    for (let item of tags) {
+      // replacing all tags
+      let exp = new RegExp(item, 'g');
+      total = total.replace(exp, ' ');
     }
 
+    let f = total.indexOf('<figure');
+    let l = total.lastIndexOf('</figure>');
+    if (f != -1 && l != -1) {
+      let rep = total.slice(f, l + '</figure>'.length); // replacing all tags
+      total = total.replace(new RegExp(rep, 'g'), '');
+    }
+    console.log('*********' + total);
+
+    // creating and filling new pdf document
     const doc = new PDFDocument();
 
     doc.pipe(fs.createWriteStream(`./record${req.body.id}.pdf`));
@@ -254,7 +277,7 @@ app.post('/personalRoom/:id/download/:rec_id', (req, res) => {
       .font('/Users/alex/Library/Fonts/MarckScript-Regular.ttf')
       .fontSize(26)
       .fillColor('#000000')
-      .text(content, 35, 560);
+      .text(total, 35, 560);
     doc.end();
   });
 
@@ -263,46 +286,7 @@ app.post('/personalRoom/:id/download/:rec_id', (req, res) => {
 app.get('/:id', function (req, res) {
   res.download(`${__dirname}/${req.params.id}`, `${req.params.id}`);
 });
-/* app.post('/personalRoom/:id/download/:rec_id', (req, res) => {
-  const download = (url, path, callback) => {
-    request.head(url, (err, res, body) => {
-      request(url).pipe(fs.createWriteStream(path)).on('close', callback);
-    });
-  };
 
-  download(req.body.image, `./image.jpeg`, () => {
-    console.log('✅ Done!');
-  });
-  console.log('We are here');
-
-  const doc = new PDFDocument();
-
-  doc.pipe(fs.createWriteStream(`./record${req.body.id}.pdf`));
-  doc
-    .font('/Users/alex/Library/Fonts/TravelingTypewriter.ttf')
-    .fontSize(30)
-    .fillColor('#0080ff')
-    .text(req.body.date, 175, 40);
-
-  doc
-    .image('image.jpeg', 85, 85, { width: 450, height: 450, align: 'center' })
-    .font('/Users/alex/Library/Fonts/MarckScript-Regular.ttf')
-    .fontSize(26)
-    .fillColor('#000000')
-    .text(req.body.content.props.children, 35, 560);
-  doc.end();
-  // new record in pdf format created
-  res.status(201).send({ recordName: `record${req.body.id}.pdf` });
-});
-//
-app.get('/:id', function (req, res) {
-  const bookPath = req.params.id;
-  res.sendFile(__dirname + '/' + bookPath);
-}); */
-app.get('/:id', function (req, res) {
-  const bookPath = req.params.id;
-  res.sendFile(__dirname + '/' + bookPath);
-});
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });
