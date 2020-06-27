@@ -129,12 +129,13 @@ app.post('/login', (req, res) => {
 app.get('/personalRoom/:id', (req, res) => {
   console.log(req.params);
   connection.query(
-    `Select User.* , Note.* from Note INNER JOIN User On Note.user_id=User.id where User.id=${req.params.id}`,
+    `Select User.*, User.image as user_image , Note.* from Note INNER JOIN User On Note.user_id=User.id where User.id=${req.params.id}`,
     (err, result) => {
       if (err) {
-        console.log('11111111');
+        console.log('err');
       }
       if (result.length) {
+        console.log(result);
         res.status(202).send(result);
       } else {
         connection.query(
@@ -215,16 +216,6 @@ app.put('/personalRoom/:id/edit-record/:rec_id', (req, res) => {
 // download single record
 app.post('/personalRoom/:id/download/:rec_id', async (req, res) => {
   let total = req.body.content;
-  /*   const download = (url, path, callback) => {
-    request.head(url, (err, res, body) => {
-      request(url).pipe(fs.createWriteStream(path)).on('close', callback);
-    });
-  };
-
-  download(req.body.image, `./image.jpeg`, () => {
-    // has to be at callback cause we have to wait till image downloaded
-   
-  }); */
   let file = fs.createWriteStream(`image.jpeg`);
   await new Promise((resolve, reject) => {
     let stream = request({
@@ -438,6 +429,32 @@ app.get('/:id', function (req, res) {
   res.download(`${__dirname}/${req.params.id}`, `${req.params.id}`);
 });
 
+// user image update
+app.put('/personalRoom/:id/image-change', (req, res) => {
+  console.log(req.body);
+  connection.query(
+    `UPDATE User SET User.image='${req.body.newImage}' Where User.id='${req.params.id}'`,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+      }
+    }
+  );
+  connection.query(
+    `Select image from User Where User.id='${req.params.id}'`,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        console.log(result);
+        res.send(result);
+      }
+    }
+  );
+});
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });

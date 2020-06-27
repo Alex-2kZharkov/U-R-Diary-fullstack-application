@@ -7,7 +7,6 @@ export class Profile extends Component {
     this.state = {
       isProfileClicked: false,
       isEditButtonClicked: false,
-      newImage: '',
     };
   }
 
@@ -34,11 +33,7 @@ export class Profile extends Component {
       });
     }
   };
-  handleNewImageChange = (e) => {
-    this.setState({
-      newImage: e.target.value,
-    });
-  };
+
   render() {
     return (
       <div>
@@ -68,7 +63,7 @@ export class Profile extends Component {
                 alt={"User's avatar"}
               ></img>
               <div className={css.edit_image} onClick={this.showEditing}>
-                <i class='fas fa-pencil-alt'></i>
+                <i className='fas fa-pencil-alt'></i>
               </div>
               <div className={css.sub_profile_info}>
                 <div className={css.sub_profile_nickname}>
@@ -82,17 +77,20 @@ export class Profile extends Component {
                   <input
                     className={css.editing_field}
                     type='text'
-                    onChange={this.handleNewImageChange}
-                    value={this.state.newImage}
+                    onChange={this.props.handleNewImageChange}
+                    value={this.props.newImage}
                   />
-                  <div className={css.editing_button}>
-                    <i class='fas fa-check-circle'></i>
+                  <div
+                    className={css.editing_button}
+                    onClick={this.props.changeUserImage}
+                  >
+                    <i className='fas fa-check-circle'></i>
                   </div>
                   <div
                     className={css.editing_button}
                     onClick={this.hideEditing}
                   >
-                    <i class='fas fa-times-circle'></i>
+                    <i className='fas fa-times-circle'></i>
                   </div>
                 </div>
               ) : (

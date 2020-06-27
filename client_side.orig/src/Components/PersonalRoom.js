@@ -14,14 +14,39 @@ class PersonalRoom extends Component {
       nickname: '',
       email: '',
       aboutSelf: '',
-      imageAddres:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTUq71y6yGEk94T1hyj89lV-khy9OMkgZt0Dl1hecguJxUpLU6a&usqp=CAU',
+      imageAddres: '',
+      newImage: '',
       searchStatus: false,
       substring: '',
       records: [], // records from data base
     };
     this.searchField = React.createRef();
   }
+
+  handleNewImageChange = (e) => {
+    this.setState({
+      newImage: e.target.value,
+    });
+  };
+  changeUserImage = () => {
+    if (this.state.newImage) {
+      axios
+        .put(
+          `http://localhost:4000${this.props.match.url}/image-change`,
+          this.state
+        )
+        .then((response) => {
+          console.log(response);
+          this.setState({
+            newImage: '',
+            imageAddres: response.data[response.data.length - 1].image,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
   handleSubstringChange = (e) => {
     this.setState({
       substring: e.target.value,
@@ -40,7 +65,7 @@ class PersonalRoom extends Component {
   findRecord = () => {
     return this.state.records.filter((record) => {
       if (record.content.search(this.state.substring) != -1) {
-        // if substing found at record , then it goes to result array
+        // if substring found at record , then it goes to result array
         return record;
       }
     });
@@ -84,6 +109,7 @@ class PersonalRoom extends Component {
               nickname: response.data[response.data.length - 1].nickname,
               email: response.data[response.data.length - 1].email,
               aboutSelf: response.data[response.data.length - 1].about_self,
+              imageAddres: response.data[response.data.length - 1].user_image,
               records: response.data.map((item) => {
                 let record = {
                   id: item.id,
@@ -103,6 +129,7 @@ class PersonalRoom extends Component {
               nickname: response.data[response.data.length - 1].nickname,
               email: response.data[response.data.length - 1].email,
               aboutSelf: response.data[response.data.length - 1].about_self,
+              imageAddres: response.data[response.data.length - 1].image,
             },
             () => console.log(this.state.records)
           );
@@ -167,6 +194,9 @@ class PersonalRoom extends Component {
             email={this.state.email}
             about={this.state.aboutSelf}
             image={this.state.imageAddres}
+            newImage={this.state.newImage}
+            handleNewImageChange={this.handleNewImageChange}
+            changeUserImage={this.changeUserImage}
           />
           <div className={css.download_all} style={this.props.style}>
             <button

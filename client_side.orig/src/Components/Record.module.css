@@ -53,7 +53,7 @@
 
 .edit {
     position: absolute;
-    right: -8%;
+    right: -6.5%;
     top: 0%;
     background-color: #0080ff;
     color: #ffffff;
@@ -68,7 +68,7 @@
 }
 
 .download_modif {
-    top: 40%;
+    top: 5rem;
     padding: 12px 20px 9.5px 20px;
     background-color: #F20056;
     color: #ffffff;
