@@ -22,9 +22,9 @@ export class EditRecordPage extends Component {
       image: e.target.value,
     });
   };
-  updateRecord = () => {
+  updateRecord = async () => {
     // request to update current opened post
-    axios
+    return axios
       .put(`http://localhost:4000${this.props.location.pathname}`, this.state)
       .then((response) => {
         console.log(response);
@@ -86,7 +86,7 @@ export class EditRecordPage extends Component {
           </div>
         </div>
         <div className='update_container'>
-          <button onClick={this.updateRecord}>
+          <button onClick={async() => await this.updateRecord()}>
             {' '}
             {/*  callback function */}
             <Link to={`/personalRoom/${this.state.roomId}`} className='update'>

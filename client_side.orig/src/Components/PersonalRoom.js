@@ -130,8 +130,9 @@ class PersonalRoom extends Component {
   };
   // fetching data from DB through server
   componentDidMount() {
+    console.log('COMPONENT DID');
     const id = this.props.match.params.id; // parameters of current url
-    this.props.setId(this.props.match.params.id);
+
     axios
       .get(`http://localhost:4000/personalRoom/${id}`)
       .then((response) => {
@@ -171,6 +172,9 @@ class PersonalRoom extends Component {
       .catch((error) => {
         console.log(error);
       });
+  }
+  componentDidUpdate() {
+    console.log('UPDATING');
   }
   render() {
     let records;

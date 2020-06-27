@@ -158,9 +158,9 @@ class Registration extends Component {
         </h3>
         <div className={css.quotes}>
           <Quote
-            img='https://i.guim.co.uk/img/media/7a770bbbaaf6ca9d56022829c6d31977b1d6f646/0_261_2520_1511/master/2520.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=db925f9d71adde000f2fff5aca7ffb3e'
-            quote='“I never travel without my diary. One should always have something sensational to read in the train.”'
-            author='Oscar Wilde'
+            img='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRlBg7WChNfODszDgXONnZS0-qbZG31AMlv2A&usqp=CAU'
+            quote='My diary entries allow me to keep track of all the things I would like to change about my life.'
+            author='Stefan Sagmeister'
           />
           <Quote
             img='https://cdn1.thr.com/sites/default/files/imagecache/landscape_928x523/2019/07/belle_nineties_1934_botnt-fsct005-h_2019.jpg'

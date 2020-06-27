@@ -200,16 +200,16 @@ app.put('/personalRoom/:id/edit-record/:rec_id', (req, res) => {
     req.body.content = req.body.content.replace(new RegExp("'", 'g'), "''");
   }
 
-  let updateDate = new Date();
   connection.query(
     `UPDATE Note SET Note.content='${req.body.content}', Note.image='${req.body.image}', Note.date=NOW() Where Note.id='${req.params.rec_id}'`,
     (err, result) => {
       if (err) {
         console.log(err);
+        res.send(err);
       } else {
-        console.log(result);
+        console.log('COMPLETED', result);
+        res.send(result);
       }
-      res.send(result);
     }
   );
 });
