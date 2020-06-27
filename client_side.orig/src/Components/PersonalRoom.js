@@ -19,10 +19,22 @@ class PersonalRoom extends Component {
       searchStatus: false,
       substring: '',
       records: [], // records from data base
+      isCopied: false,
     };
     this.searchField = React.createRef();
   }
 
+  copyEmail = () => {
+    this.setState({
+      isCopied: true,
+    });
+    setTimeout(this.hideCopiedMessage, 500);
+  };
+  hideCopiedMessage = () => {
+    this.setState({
+      isCopied: false,
+    });
+  };
   handleNewImageChange = (e) => {
     this.setState({
       newImage: e.target.value,
@@ -44,7 +56,7 @@ class PersonalRoom extends Component {
               newImage: '',
               imageAddres: response.data[response.data.length - 1].image,
             },
-           () =>  callback()
+            () => callback()
           );
         })
         .catch((error) => {
@@ -202,6 +214,8 @@ class PersonalRoom extends Component {
             newImage={this.state.newImage}
             handleNewImageChange={this.handleNewImageChange}
             changeUserImage={this.changeUserImage}
+            isCopied={this.state.isCopied}
+            copyEmail={this.copyEmail}
           />
           <div className={css.download_all} style={this.props.style}>
             <button

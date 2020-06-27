@@ -12,6 +12,7 @@
     "axios": "^0.19.2",
     "html-react-parser": "^0.13.0",
     "react": "^16.13.1",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-delay": "^0.1.0",
     "react-delay-render": "^0.1.2",
     "react-dom": "^16.13.1",

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import css from './Profile.module.css';
 export class Profile extends Component {
   constructor(props) {
@@ -69,7 +70,15 @@ export class Profile extends Component {
                 <div className={css.sub_profile_nickname}>
                   {this.props.nickname}
                 </div>
-                <div className={css.sub_profile_email}>{this.props.email}</div>
+                <CopyToClipboard
+                  text={this.props.email}
+                  onCopy={this.props.copyEmail}
+                >
+                  <div className={css.sub_profile_email}>
+                    {this.props.email}
+                  </div>
+                </CopyToClipboard>
+
                 <div className={css.sub_profile_about}>{this.props.about}</div>
               </div>
               {this.state.isEditButtonClicked ? (
@@ -96,6 +105,10 @@ export class Profile extends Component {
               ) : (
                 ''
               )}
+              {this.props.isCopied ? (
+                <div className={css.copied}>Copied</div>
+              ) : null}
+            
             </div>
           </div>
         ) : (
