@@ -82,7 +82,7 @@ export class Profile extends Component {
                   />
                   <div
                     className={css.editing_button}
-                    onClick={this.props.changeUserImage}
+                    onClick={() => this.props.changeUserImage(this.hideEditing)}
                   >
                     <i className='fas fa-check-circle'></i>
                   </div>

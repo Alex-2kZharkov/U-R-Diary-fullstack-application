@@ -28,7 +28,8 @@ class PersonalRoom extends Component {
       newImage: e.target.value,
     });
   };
-  changeUserImage = () => {
+
+  changeUserImage = (callback) => {
     if (this.state.newImage) {
       axios
         .put(
@@ -37,10 +38,14 @@ class PersonalRoom extends Component {
         )
         .then((response) => {
           console.log(response);
-          this.setState({
-            newImage: '',
-            imageAddres: response.data[response.data.length - 1].image,
-          });
+          this.setState(
+            {
+              imgUpdForceQuit: true,
+              newImage: '',
+              imageAddres: response.data[response.data.length - 1].image,
+            },
+           () =>  callback()
+          );
         })
         .catch((error) => {
           console.log(error);

@@ -75,7 +75,7 @@
 
 .edit_image {
     position: absolute;
-    bottom: 2em;
+    bottom: 1.8em;
     left: 7%;
     color: #fb00ff;
     text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
@@ -121,7 +121,7 @@
 
 .editing {
     position: absolute;
-    bottom: 5%;
+    bottom: 3%;
     padding: 10px 10px;
     background-color: #fff;
     border-radius: 10px;
