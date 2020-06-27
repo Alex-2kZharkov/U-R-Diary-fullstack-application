@@ -39,18 +39,23 @@ export class Profile extends Component {
           )}
         </div>
         {this.state.isProfileClicked ? (
-          <div className={css.sub_profile}>
-            <img
-              className={css.image}
-              src={this.props.image}
-              alt={"User's avatar"}
-            ></img>
-            <div className={css.sub_profile_info}>
-              <div className={css.sub_profile_nickname}>
-                {this.props.nickname}
+          <div className={css.sub_profile_container}>
+            <div className={css.sub_profile}>
+              <img
+                className={css.image}
+                src={this.props.image}
+                alt={"User's avatar"}
+              ></img>
+              <div className={css.edit_image}>
+                <i class='fas fa-pencil-alt'></i>
               </div>
-              <div className={css.sub_profile_email}>{this.props.email}</div>
-              <div className={css.sub_profile_about}>{this.props.about}</div>
+              <div className={css.sub_profile_info}>
+                <div className={css.sub_profile_nickname}>
+                  {this.props.nickname}
+                </div>
+                <div className={css.sub_profile_email}>{this.props.email}</div>
+                <div className={css.sub_profile_about}>{this.props.about}</div>
+              </div>
             </div>
           </div>
         ) : (

@@ -35,9 +35,8 @@
     font-size: 40px;
     color: #ffffff;
     font-weight: bold;
-    transition: color .0s linear;
     transition: text-shadow .0s ease;
-    transition: border .0s linear;
+    transition: box-shadow .0s linear;
     outline: none;
 }
 
@@ -69,9 +68,8 @@
     font-size: 40px;
     color: #ffffff;
     font-weight: bold;
-    transition: color .0s linear;
     transition: text-shadow .0s ease;
-    transition: border .0s linear;
+    transition: box-shadow .0s linear;
     outline: none;
     cursor: pointer;
 }
@@ -79,10 +77,7 @@
 .download_all_button:hover {
     text-shadow: 5px 5px 10px #0080ff, -5px -5px 10px #0080ff;
     box-shadow: 5px 5px 10px #0080ff, -5px -5px 10px #0080ff;
-    /* border: solid 2px #0080ff; */
 }
-
-.autenticate button:hover {}
 
 .autenticate_icon {
     display: inline-block;

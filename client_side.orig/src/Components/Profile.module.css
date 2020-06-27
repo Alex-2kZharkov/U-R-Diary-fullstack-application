@@ -5,34 +5,36 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffdd57;
+    /*     background-color: #ffdd57; */
+    background-color: #ff7b00;
     border: solid 3px #000000;
     min-width: 250px;
     max-width: 250px;
     padding: 20px 20px;
     cursor: pointer;
-    transition: .1s background linear;
+    transition: .1s border linear;
 
 }
 
 .nickname {
     margin-right: 5px;
-    color: #6600CC;
+    color: #fff;
     font-weight: 700;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 24px;
-    transition: color 0.1s linear;
     transition: text-shadow 0.1s linear;
+    transition: color 0.1s linear;
     word-break: break-all;
 }
 
 .container:hover {
-    background-color: #ffcc00;
-
+    border: solid 2px #fff;
 }
 
-.container:hover .nickname {
-    color: #8000ff;
+.container:hover .nickname,
+.container:hover .list_icon {
+    color: #0080ff;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
 
 
@@ -46,8 +48,10 @@
 .list_icon {
     font-size: 28px;
     margin-left: 5px;
-    color: #8000ff;
+    color: #fff;
     cursor: pointer;
+    transition: color 0.1s linear;
+    transition: text-shadow 0.1s linear;
 }
 
 /*Sub profile*/
@@ -57,11 +61,30 @@
     right: 2%;
     display: flex;
     align-items: center;
-    background-color: #FFFBD0;
+    background-color: #2492ff;
     padding: 20px 20px;
     border: solid 3px #000000;
     transition: .1s background linear;
     width: 390px;
+}
+
+.sub_profile_container {
+    position: relative;
+}
+
+.edit_image {
+    position: absolute;
+    bottom: 16%;
+    left: 7%;
+    color: #fb00ff;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.edit_image:hover {
+    color: #fff;
+    text-shadow: 2px 0 0 #fb00ff, -2px 0 0 #fb00ff, 0 2px 0 #fb00ff, 0 -2px 0 #fb00ff, 1px 1px #fb00ff, -1px -1px 0 #fb00ff, 1px -1px 0 #fb00ff, -1px 1px 0 #fb00ff;
 }
 
 .sub_profile_info {
@@ -70,7 +93,7 @@
 }
 
 .sub_profile_nickname {
-    color: #6600CC;
+    color: #fff;
 
     font-weight: 700;
     font-family: 'Kaushan Script', Georgia, Times, 'Times New Roman', serif;
@@ -78,7 +101,8 @@
 }
 
 .sub_profile_email {
-    color: #FF9900;
+    color: #fb00ff;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
     font-size: 26px;
 }
 
@@ -91,5 +115,5 @@
     margin-top: 10px;
     font-family: Georgia, Times, 'Times New Roman', serif;
     font-size: 26px;
-    color: #C13100;
+    color: #fbfbfb;
 }
