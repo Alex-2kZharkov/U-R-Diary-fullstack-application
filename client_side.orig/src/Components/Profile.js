@@ -6,6 +6,8 @@ export class Profile extends Component {
 
     this.state = {
       isProfileClicked: false,
+      isEditButtonClicked: false,
+      newImage: '',
     };
   }
 
@@ -17,6 +19,25 @@ export class Profile extends Component {
       : this.setState({
           isProfileClicked: true,
         });
+  };
+  showEditing = () => {
+    if (!this.state.isEditButtonClicked) {
+      this.setState({
+        isEditButtonClicked: true,
+      });
+    }
+  };
+  hideEditing = () => {
+    if (this.state.isEditButtonClicked) {
+      this.setState({
+        isEditButtonClicked: false,
+      });
+    }
+  };
+  handleNewImageChange = (e) => {
+    this.setState({
+      newImage: e.target.value,
+    });
   };
   render() {
     return (
@@ -46,7 +67,7 @@ export class Profile extends Component {
                 src={this.props.image}
                 alt={"User's avatar"}
               ></img>
-              <div className={css.edit_image}>
+              <div className={css.edit_image} onClick={this.showEditing}>
                 <i class='fas fa-pencil-alt'></i>
               </div>
               <div className={css.sub_profile_info}>
@@ -56,6 +77,27 @@ export class Profile extends Component {
                 <div className={css.sub_profile_email}>{this.props.email}</div>
                 <div className={css.sub_profile_about}>{this.props.about}</div>
               </div>
+              {this.state.isEditButtonClicked ? (
+                <div className={css.editing}>
+                  <input
+                    className={css.editing_field}
+                    type='text'
+                    onChange={this.handleNewImageChange}
+                    value={this.state.newImage}
+                  />
+                  <div className={css.editing_button}>
+                    <i class='fas fa-check-circle'></i>
+                  </div>
+                  <div
+                    className={css.editing_button}
+                    onClick={this.hideEditing}
+                  >
+                    <i class='fas fa-times-circle'></i>
+                  </div>
+                </div>
+              ) : (
+                ''
+              )}
             </div>
           </div>
         ) : (
