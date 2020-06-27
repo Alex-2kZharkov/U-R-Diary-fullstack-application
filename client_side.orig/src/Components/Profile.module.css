@@ -153,7 +153,6 @@
 
 .editing_button:hover {
     color: #ff8000;
-    /* text-shadow: 2px 0 0 #0080ff, -2px 0 0 #0080ff, 0 2px 0 #0080ff, 0 -2px 0 #0080ff, 1px 1px #0080ff, -1px -1px 0 #0080ff, 1px -1px 0 #0080ff, -1px 1px 0 #0080ff; */
 }
 
 .copied {

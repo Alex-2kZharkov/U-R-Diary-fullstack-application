@@ -71,7 +71,7 @@ export class NewRecord extends Component {
             {' '}
             {/*  callback function */}
             <Link to={`/personalRoom/${this.props.id}`} className='save'>
-              Save
+              Save record
               <i className={`fas fa-save save_icon`}></i>
             </Link>
           </button>

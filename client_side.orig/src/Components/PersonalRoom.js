@@ -118,11 +118,12 @@ class PersonalRoom extends Component {
       .then((result) => {
         console.log(result);
         let index = this.state.records.indexOf(
-          this.state.records.find((item) => (item.id = rec_id))
+          this.state.records.find((item) => item.id == rec_id)
         );
-        this.setState((prevState) => ({
-          records: this.state.records.splice(index, 1),
-        }));
+        this.state.records.splice(index, 1);
+        this.setState({
+          records: this.state.records,
+        });
       })
       .catch((error) => {
         console.log(error);
