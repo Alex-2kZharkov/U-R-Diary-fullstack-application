@@ -1,168 +1,169 @@
 .container {
-  position: fixed;
-  top: 9em;
-  right: 0.5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /*     background-color: #ffdd57; */
-  background-color: #ff7b00;
-  border: solid 3px #000000;
-  min-width: 270px;
-  max-width: 270px;
-  padding: 20px 20px;
-  cursor: pointer;
-  transition: 0.1s border linear;
+    position: fixed;
+    top: 9em;
+    right: 0.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*     background-color: #ffdd57; */
+    background-color: #ff7b00;
+    border: solid 3px #000000;
+    min-width: 270px;
+    max-width: 270px;
+    padding: 20px 20px;
+    cursor: pointer;
+    transition: 0.1s border linear;
 }
 
 .nickname {
-  margin-right: 5px;
-  margin-bottom: 5px;
-  color: #fff;
-  font-weight: 700;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 24px;
-  transition: text-shadow 0.1s linear;
-  transition: color 0.1s linear;
-  word-break: break-all;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    color: #fff;
+    font-weight: 700;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 24px;
+    transition: text-shadow 0.1s linear;
+    transition: color 0.1s linear;
+    word-break: break-all;
 }
 
 .container:hover {
-  border: solid 2px #fff;
+    border: solid 2px #fff;
 }
 
 .container:hover .nickname,
 .container:hover .list_icon {
-  color: #0080ff;
-  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
-    1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    color: #0080ff;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
+        1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
 
 .image {
-  display: block;
-  border: solid 2px #000000;
-  width: 90px;
-  height: 90px;
+    display: block;
+    border: solid 2px #000000;
+    width: 90px;
+    height: 90px;
 }
 
 .list_icon {
-  font-size: 28px;
-  margin-left: 5px;
-  color: #fff;
-  cursor: pointer;
-  transition: color 0.1s linear;
-  transition: text-shadow 0.1s linear;
+    font-size: 28px;
+    margin-left: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.1s linear;
+    transition: text-shadow 0.1s linear;
 }
 
 /*Sub profile*/
 .sub_profile {
-  position: fixed;
-  top: 18em;
-  right: 2%;
-  display: flex;
-  align-items: center;
-  background-color: #2492ff;
-  padding: 20px 20px;
-  border: solid 3px #000000;
-  transition: 0.1s background linear;
-  min-width: 390px;
-  min-width: 300px;
+    position: fixed;
+    top: 18em;
+    right: 2%;
+    display: flex;
+    align-items: center;
+    background-color: #2492ff;
+    padding: 20px 20px;
+    border: solid 3px #000000;
+    transition: 0.1s background linear;
+    min-width: 390px;
+    min-width: 300px;
 }
 
 .sub_profile_container {
-  position: relative;
+    position: relative;
 }
 
 .edit_image {
-  position: absolute;
-  bottom: 0.5em;
-  left: 7%;
-  color: #fb00ff;
-  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
-    1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-  font-size: 18px;
-  cursor: pointer;
+    position: absolute;
+    bottom: 0.5em;
+    left: 7%;
+    color: #fb00ff;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
+        1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    font-size: 18px;
+    cursor: pointer;
 }
 
 .edit_image:hover {
-  color: #fff;
-  text-shadow: 2px 0 0 #fb00ff, -2px 0 0 #fb00ff, 0 2px 0 #fb00ff,
-    0 -2px 0 #fb00ff, 1px 1px #fb00ff, -1px -1px 0 #fb00ff, 1px -1px 0 #fb00ff,
-    -1px 1px 0 #fb00ff;
+    color: #fff;
+    text-shadow: 2px 0 0 #fb00ff, -2px 0 0 #fb00ff, 0 2px 0 #fb00ff,
+        0 -2px 0 #fb00ff, 1px 1px #fb00ff, -1px -1px 0 #fb00ff, 1px -1px 0 #fb00ff,
+        -1px 1px 0 #fb00ff;
 }
 
 .sub_profile_info {
-  margin-left: 15px;
-  word-break: break-all;
+    margin-left: 15px;
+    word-break: break-all;
 }
 
 .sub_profile_nickname {
-  color: #fff;
+    color: #fff;
 
-  font-weight: 700;
-  font-family: 'Kaushan Script', Georgia, Times, 'Times New Roman', serif;
-  font-size: 34px;
+    font-weight: 700;
+    font-family: 'Kaushan Script', Georgia, Times, 'Times New Roman', serif;
+    font-size: 34px;
 }
 
 .sub_profile_email {
-  color: #fb00ff;
-  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
-    1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-  font-size: 26px;
+    color: #fb00ff;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
+        1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    font-size: 26px;
 }
 
 .sub_profile_email:hover {
-  cursor: pointer;
-  text-decoration: underline;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .sub_profile_about {
-  margin-top: 10px;
-  font-family: Georgia, Times, 'Times New Roman', serif;
-  font-size: 26px;
-  color: #fbfbfb;
+    margin-top: 10px;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    font-size: 26px;
+    color: #fbfbfb;
 }
 
 .editing {
-  position: absolute;
-  bottom: 3%;
-  padding: 10px 10px;
-  background-color: #fff;
-  border-radius: 10px;
-  z-index: 5;
-  width: 86%;
+    position: absolute;
+    bottom: 3%;
+    padding: 10px 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 5;
+    width: 86%;
 }
 
 .editing_field {
-  display: inline-block;
-  padding: 5px;
-  border: solid 2px #0004ff;
+    display: inline-block;
+    padding: 5px;
+    border: solid 2px #0004ff;
 
-  width: 76%;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  outline: none;
+    width: 76%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    outline: none;
 }
 
 .editing_button {
-  display: inline-block;
-  font-size: 20px;
-  margin-left: 8px;
-  cursor: pointer;
-  color: #0004ff;
+    display: inline-block;
+    font-size: 20px;
+    margin-left: 8px;
+    cursor: pointer;
+    color: #0004ff;
 }
 
 .editing_button:hover {
-  color: #ff8000;
-  /* text-shadow: 2px 0 0 #0080ff, -2px 0 0 #0080ff, 0 2px 0 #0080ff, 0 -2px 0 #0080ff, 1px 1px #0080ff, -1px -1px 0 #0080ff, 1px -1px 0 #0080ff, -1px 1px 0 #0080ff; */
+    color: #ff8000;
+    /* text-shadow: 2px 0 0 #0080ff, -2px 0 0 #0080ff, 0 2px 0 #0080ff, 0 -2px 0 #0080ff, 1px 1px #0080ff, -1px -1px 0 #0080ff, 1px -1px 0 #0080ff, -1px 1px 0 #0080ff; */
 }
+
 .copied {
-  position: absolute;
-  bottom: 0.1em;
-  left: 7em;
-  color: #0004ff;
-  font-size: 20px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  text-shadow: 1px 0 0 #0004ff, -1px 0 0 #0004ff, 0 1px 0 #0004ff,
-    0 -1px 0 #0004ff, 0.5px 0.5px #0004ff, -0.5px -0.5px 0 #0004ff,
-    0.5px -0.5px 0 #0004ff, -0.5px 0.5px 0 #0004ff;
+    position: absolute;
+    bottom: 0.1em;
+    left: 7em;
+    color: #0004ff;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-shadow: 1px 0 0 #0004ff, -1px 0 0 #0004ff, 0 1px 0 #0004ff,
+        0 -1px 0 #0004ff, 0.5px 0.5px #0004ff, -0.5px -0.5px 0 #0004ff,
+        0.5px -0.5px 0 #0004ff, -0.5px 0.5px 0 #0004ff;
 }

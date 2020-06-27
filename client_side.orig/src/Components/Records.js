@@ -16,6 +16,7 @@ class Records extends Component {
           key={index}
           id={item.id}
           url={item.url}
+          deleteRecord={this.props.deleteRecord}
         />
       );
     });

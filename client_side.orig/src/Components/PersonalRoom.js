@@ -112,6 +112,22 @@ class PersonalRoom extends Component {
       });
   };
 
+  deleteRecord = (rec_id) => {
+    axios
+      .delete(`http://localhost:4000${this.props.match.url}/delete/${rec_id}`)
+      .then((result) => {
+        console.log(result);
+        let index = this.state.records.indexOf(
+          this.state.records.find((item) => (item.id = rec_id))
+        );
+        this.setState((prevState) => ({
+          records: this.state.records.splice(index, 1),
+        }));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   // fetching data from DB through server
   componentDidMount() {
     const id = this.props.match.params.id; // parameters of current url
@@ -189,6 +205,7 @@ class PersonalRoom extends Component {
           searchStatus={this.state.searchStatus}
           searchResultStatus={this.searchResultStatus}
           records={this.state.records}
+          deleteRecord={this.deleteRecord}
         />
       );
     }

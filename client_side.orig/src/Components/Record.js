@@ -17,6 +17,7 @@ function Record(props) {
       }
     });
   };
+
   return (
     <div className={css.record}>
       <img
@@ -38,6 +39,12 @@ function Record(props) {
           onClick={downloadRecord}
         >
           <i className='fas fa-file-download'></i>
+        </button>
+        <button
+          className={`${css.edit} ${css.delete_modif}`}
+          onClick={() => props.deleteRecord(props.id)}
+        >
+          <i className='fas fa-trash-alt'></i>
         </button>
       </div>
     </div>

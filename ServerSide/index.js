@@ -455,6 +455,20 @@ app.put('/personalRoom/:id/image-change', (req, res) => {
     }
   );
 });
+
+//delete specific record
+app.delete('/personalRoom/:id/delete/:rec_id', async (req, res) => {
+  connection.query(
+    `Delete from Note Where id=${req.params.rec_id}`,
+    (err, result) => {
+      if (err) console.log(err);
+      else {
+        console.log(result);
+        res.send(result);
+      }
+    }
+  );
+});
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });
