@@ -67,14 +67,16 @@ export class NewRecord extends Component {
           </div>
         </div>
         <div className='save_container'>
-          <button onClick={this.saveRecord}>
-            {' '}
-            {/*  callback function */}
-            <Link to={`/personalRoom/${this.props.id}`} className='save'>
-              Save record
-              <i className={`fas fa-save save_icon`}></i>
-            </Link>
-          </button>
+          {' '}
+          {/*  callback function */}
+          <Link
+            onClick={this.saveRecord}
+            to={`/personalRoom/${this.props.id}`}
+            className='save'
+          >
+            Save record
+            <i className={`fas fa-save save_icon`}></i>
+          </Link>
         </div>
       </div>
     );

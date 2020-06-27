@@ -43,7 +43,7 @@
     transition: text-shadow 0s linear;
 }
 
-.save_container button {
+.save_container {
     padding: 10px 20px;
     border-radius: 20px;
     background-color: #ff8000;
@@ -57,14 +57,13 @@
     outline: none;
 }
 
-.save_container button:hover {
+.save_container:hover {
     border: solid 2px #d7d6d7;
     box-shadow: 5px 5px 10px #d7d6d7, -5px -5px 10px #d7d6d7;
 }
 
-.save_container button:hover .save {
+.save_container:hover .save {
     text-shadow: 5px 5px 10px #d7d6d7, -5px -5px 10px #d7d6d7;
-
 }
 
 .save_icon {
