@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import css from './PersonalRoomHeader.module.css';
 import { NavLink, Link } from 'react-router-dom';
 export class PersonalRoomHeader extends Component {
+  
   render() {
     return (
       <header className={css.header}>
@@ -13,21 +14,21 @@ export class PersonalRoomHeader extends Component {
         </div>
         <div className={css.nav}>
           <NavLink
-            to='/personalRoom/notifications'
+            to={`/personalRoom/${this.props.id}/notifications`}
             activeClassName={css.active}
             className={css.link}
           >
             <i className='fas fa-bell'></i> Notifications
           </NavLink>
           <NavLink
-            to='/personalRoom/friends'
+            to={`/personalRoom/${this.props.id}/friends`}
             activeClassName={css.active}
             className={css.link}
           >
             <i className='fas fa-users'></i> Friends
           </NavLink>
           <NavLink
-            to='/personalRoom/comments'
+            to={`/personalRoom/${this.props.id}/comments`}
             activeClassName={css.active}
             className={css.link}
           >

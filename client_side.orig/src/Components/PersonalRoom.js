@@ -145,16 +145,18 @@ class PersonalRoom extends Component {
               email: response.data[response.data.length - 1].email,
               aboutSelf: response.data[response.data.length - 1].about_self,
               imageAddres: response.data[response.data.length - 1].user_image,
-              records: response.data.map((item) => {
-                let record = {
-                  id: item.id,
-                  content: item.content,
-                  image: item.image,
-                  date: new Date(item.date).toLocaleString(),
-                  url: this.props.match.url,
-                };
-                return record;
-              }),
+              records: response.data
+                .map((item) => {
+                  let record = {
+                    id: item.id,
+                    content: item.content,
+                    image: item.image,
+                    date: new Date(item.date).toLocaleString(),
+                    url: this.props.match.url,
+                  };
+                  return record;
+                })
+                .reverse(),
             },
             () => console.log(this.state.records[0].content)
           );

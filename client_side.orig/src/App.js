@@ -9,6 +9,7 @@ import Comments from './Components/Comments';
 import Autenticattion from './Components/Autenticattion';
 import NewRecordPage from './Components/NewRecord/NewRecordPage';
 import EditRecordPage from './Components/EditRecord/EditRecordPage';
+import Axios from 'axios';
 
 class App extends Component {
   constructor(props) {
@@ -16,14 +17,32 @@ class App extends Component {
 
     this.state = {
       id: null,
+      userNickname: '',
     };
   }
+  setUserNickname = (id) => {
+    Axios.get(
+      `http://localhost:4000/personalroom/communications/${id}`
+    )
+      .then((response) => {
+        this.setState(
+          {
+            userNickname: response.data[response.data.length - 1].nickname,
+          },
+          () => this.state.userNickname
+        );
+      })
+      .catch((error) => {
+        console.log();
+      });
+  };
 
   setId = (id) => {
     this.setState({
       id: id,
     });
   };
+
   render() {
     return (
       <BrowserRouter>
@@ -53,9 +72,36 @@ class App extends Component {
             path='/personalRoom/:id/edit-record/:rec_id'
             component={EditRecordPage}
           />
-          <Route path='/personalRoom/notifications' component={Notifications} />
-          <Route path='/personalRoom/friends' component={Friends} />
-          <Route path='/personalRoom/comments' component={Comments} />
+          <Route
+            path='/personalRoom/:id/notifications'
+            render={(props) => (
+              <Notifications
+                {...props}
+                setUserNickname={this.setUserNickname}
+                userNickname={this.state.userNickname}
+              />
+            )}
+          />
+          <Route
+            path='/personalRoom/:id/friends'
+            render={(props) => (
+              <Friends
+                {...props}
+                setUserNickname={this.setUserNickname}
+                userNickname={this.state.userNickname}
+              />
+            )}
+          />
+          <Route
+            path='/personalRoom/:id/comments'
+            render={(props) => (
+              <Comments
+                {...props}
+                setUserNickname={this.setUserNickname}
+                userNickname={this.state.userNickname}
+              />
+            )}
+          />
           {/*    <Route path='/personalRoom' component={} /> */}
         </Switch>
       </BrowserRouter>

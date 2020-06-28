@@ -8,6 +8,7 @@ const { DownloaderHelper } = require('node-downloader-helper');
 const axios = require('axios');
 const request = require('request');
 const fs = require('fs');
+const { response } = require('express');
 const app = express();
 const serverPort = 4000;
 
@@ -463,6 +464,22 @@ app.delete('/personalRoom/:id/delete/:rec_id', async (req, res) => {
     (err, result) => {
       if (err) console.log(err);
       else {
+        console.log(result);
+        res.send(result);
+      }
+    }
+  );
+});
+
+// get just user nickname
+app.get('/personalRoom/communications/:id', (req, res) => {
+  connection.query(
+    `Select nickname from User where id=${req.params.id}`,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
         console.log(result);
         res.send(result);
       }
