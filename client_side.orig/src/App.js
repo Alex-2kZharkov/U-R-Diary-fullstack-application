@@ -4,7 +4,7 @@ import Home from './Components/Home';
 import Registration from './Components/Registration';
 import PersonalRoom from './Components/PersonalRoom';
 import Notifications from './Components/Notifications';
-import Friends from './Components/Friends';
+import Friends from './Components/Friends/Friends';
 import Comments from './Components/Comments';
 import Autenticattion from './Components/Autenticattion';
 import NewRecordPage from './Components/NewRecord/NewRecordPage';
