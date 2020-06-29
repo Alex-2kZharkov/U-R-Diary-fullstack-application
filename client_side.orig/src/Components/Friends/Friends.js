@@ -53,10 +53,13 @@ export class Friends extends Component {
             </button>
           </form>
         </div>
-
         <div className={css.result_users}>
-          <SearchResult />
-          <SearchResult />
+   {/*        <SearchResult />
+          <SearchResult /> */}
+          <div className={css.negative_result}>
+            Sorry, but we coun't find anything about <span>ferifjeriferi</span>{' '}
+            . Please, try again
+          </div>
         </div>
       </div>
     );

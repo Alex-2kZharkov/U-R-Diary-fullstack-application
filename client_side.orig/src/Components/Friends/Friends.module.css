@@ -83,6 +83,30 @@
 }
 
 .result_users {
+    /*  border: solid 2px blue; */
+    padding: 2rem 5% 70px 5%;
+    margin: 0 20%;
     margin-top: 7em;
-    padding: 0px 25% 70px 25%;
+    /*    box-shadow: 5px 5px 10px pink, -4px -4px 9px pink; */
+    /*  box-shadow: 0 -20px 15px -10px pink inset,
+        0 20px 15px -10px pink inset, 0 -20px 15px -10px blue,
+        0 20px 15px -10px blue,
+        0 0 50px pink; */
+    box-shadow: -10px -10px 30px 5px rgb(255, 153, 94),
+        5px 5px 30px 5px rgb(0, 110, 255);
+    border-radius: 15px;
+
+}
+
+.negative_result {
+    text-align: center;
+    font-family: Lato, Arial, Helvetica, sans-serif;
+    color: #fff;
+    font-size: 32px;
+}
+
+.negative_result span {
+
+    font-weight: 700;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
