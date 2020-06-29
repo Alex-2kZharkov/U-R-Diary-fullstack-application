@@ -470,9 +470,19 @@ app.delete('/personalRoom/:id/delete/:rec_id', async (req, res) => {
     }
   );
 });
+app.get('/personalRoom/:id/communications/required-users', (req, res) => {
+  console.log('I am here', req.query);
+  connection.query(
+    `Select nickname, image, registration_date from User Where nickname=${req.body.requiredNickname}`,
+    (err, result) => {
+      console.log(result);
+      res.send(result);
+    }
+  );
+});
 
 // get just user nickname
-app.get('/personalRoom/communications/:id', (req, res) => {
+app.get('/personalRoom/:id/communications', (req, res) => {
   connection.query(
     `Select nickname from User where id=${req.params.id}`,
     (err, result) => {
@@ -486,6 +496,8 @@ app.get('/personalRoom/communications/:id', (req, res) => {
     }
   );
 });
+// get list of users with typed nickname
+
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });

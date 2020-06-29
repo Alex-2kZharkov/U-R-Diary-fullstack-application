@@ -2,14 +2,28 @@ import React, { Component } from 'react';
 import PersonalRoomHeader from '../PersonalRoomHeader';
 import css from './Friends.module.css';
 import SearchResult from './SearchResult';
+import Axios from 'axios';
 export class Friends extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      requireNickname: '',
+      requiredNickname: '',
+      users: [],
     };
   }
+  findUsers = () => {
+    Axios.get(
+      `http://localhost:4000/personalRoom/${this.props.match.params.id}/communications/required-users`,
+      {
+          params: {
+              requiredNickname: this.state.requiredNickname
+          }
+      }
+    )
+      .then((response) => {})
+      .catch((error) => console.log(error));
+  };
   componentDidMount() {
     this.props.setUserNickname(this.props.match.params.id);
   }
@@ -27,23 +41,24 @@ export class Friends extends Component {
               type='text'
               placeholder='Who are we looking for ?'
               className={css.search_field}
-              value={this.state.requireNickname}
+              value={this.state.requiredNickname}
               onChange={(event) =>
                 this.setState({
-                  requireNickname: event.target.value,
+                  requiredNickname: event.target.value,
                 })
               }
             />{' '}
             <button
               type='button'
               className={`${css.submit} ${css.search_modif}`}
+              onClick={this.findUsers}
             >
               <i className={`fas fa-search ${css.search_icon}`}></i>
             </button>
             <button
               onClick={(event) =>
                 this.setState({
-                  requireNickname: '',
+                  requiredNickname: '',
                 })
               }
               type='button'
@@ -54,7 +69,7 @@ export class Friends extends Component {
           </form>
         </div>
         <div className={css.result_users}>
-   {/*        <SearchResult />
+          {/*        <SearchResult />
           <SearchResult /> */}
           <div className={css.negative_result}>
             Sorry, but we coun't find anything about <span>ferifjeriferi</span>{' '}
