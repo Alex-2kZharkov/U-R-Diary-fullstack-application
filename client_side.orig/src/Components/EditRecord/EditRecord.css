@@ -44,7 +44,7 @@
 }
 
 .update_container button {
-    padding: 10px 30px;
+    padding: 10px 15px;
     border-radius: 20px;
     background-color: #ff8000;
     font-family: Cambria, sans-serif;
@@ -57,15 +57,13 @@
     outline: none;
 }
 
-.update_container button:hover,
-.update_container button:hover .update {
-    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
-        1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-    color: #0080ff;
+.update_container button:hover {
+    border: solid 2px #d7d6d7;
+    box-shadow: 5px 5px 10px #d7d6d7, -5px -5px 10px #d7d6d7;
 }
 
-.update_container button:hover {
-    border: solid 2px #0080ff;
+.update_container button:hover .update {
+    text-shadow: 5px 5px 10px #d7d6d7, -5px -5px 10px #d7d6d7;
 
 }
 
@@ -73,6 +71,7 @@
     display: inline-block;
     margin-left: 15px;
 }
+
 .blink {
     position: absolute;
     left: 12em;

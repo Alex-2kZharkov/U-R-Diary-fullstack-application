@@ -13,7 +13,9 @@ function SearchResult(props) {
       <div className={css.data_container}>
         <div className={css.nickname}>Erkaim</div>
         <div className={css.join_date}>5 days ago</div>
-        <button>Send friendship invitation</button>
+        <button type='button' className={css.friendship_request}>
+          Send friendship invitation
+        </button>
       </div>
     </div>
   );

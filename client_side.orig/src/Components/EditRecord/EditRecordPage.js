@@ -90,7 +90,7 @@ export class EditRecordPage extends Component {
             {' '}
             {/*  callback function */}
             <Link to={`/personalRoom/${this.state.roomId}`} className='update'>
-              Update
+              Update record
               <i className={`fas fa-edit update_icon`}></i>
             </Link>
           </button>
