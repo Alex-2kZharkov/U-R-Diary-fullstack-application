@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PersonalRoomHeader from '../PersonalRoomHeader';
 import css from './Friends.module.css';
+import SearchResult from './SearchResult';
 export class Friends extends Component {
   constructor(props) {
     super(props);
@@ -51,6 +52,11 @@ export class Friends extends Component {
               <i className={`fas fa-times ${css.search_icon}`}></i>
             </button>
           </form>
+        </div>
+
+        <div className={css.result_users}>
+          <SearchResult />
+          <SearchResult />
         </div>
       </div>
     );

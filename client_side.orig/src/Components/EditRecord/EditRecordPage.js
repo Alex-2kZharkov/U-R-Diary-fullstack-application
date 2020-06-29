@@ -86,7 +86,7 @@ export class EditRecordPage extends Component {
           </div>
         </div>
         <div className='update_container'>
-          <button onClick={async() => await this.updateRecord()}>
+          <button onClick={async () => await this.updateRecord()}>
             {' '}
             {/*  callback function */}
             <Link to={`/personalRoom/${this.state.roomId}`} className='update'>
@@ -94,6 +94,9 @@ export class EditRecordPage extends Component {
               <i className={`fas fa-edit update_icon`}></i>
             </Link>
           </button>
+        </div>
+        <div className='blink'>
+          Change image address at field above to update image of note
         </div>
       </div>
     );

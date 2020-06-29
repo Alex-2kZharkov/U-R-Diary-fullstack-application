@@ -41,7 +41,6 @@
 .content {
     margin-top: 10px;
     color: #d7d7f6;
-
     text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
     font-weight: 700;
     font-size: 30px;

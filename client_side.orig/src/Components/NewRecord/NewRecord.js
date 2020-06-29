@@ -78,6 +78,9 @@ export class NewRecord extends Component {
             <i className={`fas fa-save save_icon`}></i>
           </Link>
         </div>
+        <div className='blink'>
+          Change image address at field above to update image of note
+        </div>
       </div>
     );
   }

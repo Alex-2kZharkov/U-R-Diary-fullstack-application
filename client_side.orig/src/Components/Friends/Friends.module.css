@@ -29,9 +29,9 @@
     font-size: 55px;
     width: 700px;
     padding: 3px 3px 3px 3px;
-    margin-top: 25px;
-    font-family: "Lato";
-    font-weight: 350;
+    margin-top: 10px;
+    font-family: "Lato", Georgia, 'Times New Roman', Times, serif;
+    font-weight: 300;
     outline: none;
     color: #fff;
     background: none;
@@ -53,7 +53,7 @@
     border: none;
     cursor: pointer;
     transition: opacity .4s ease;
-    font-size: 55px;
+    font-size: 44px;
     margin-left: 1rem;
     outline: none;
     transition: opacity 0.1s ease;
@@ -80,4 +80,9 @@
 
 .cancel_modification i {
     right: -1.6em;
+}
+
+.result_users {
+    margin-top: 7em;
+    padding: 0px 25% 70px 25%;
 }

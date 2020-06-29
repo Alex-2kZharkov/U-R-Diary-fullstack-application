@@ -73,3 +73,21 @@
     display: inline-block;
     margin-left: 15px;
 }
+.blink {
+    position: absolute;
+    left: 12em;
+    bottom: 8rem;
+    margin: auto;
+    text-align: center;
+    animation: blinker 4s step-start infinite;
+    animation-delay: 1s;
+    font-size: 2rem;
+    color: pink;
+    text-shadow: 5px 5px 10px blue, -4px -4px 9px blue;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
