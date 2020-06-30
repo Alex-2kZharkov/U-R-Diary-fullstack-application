@@ -14,7 +14,6 @@
     position: relative;
     right: -53em;
     top: 5em;
-
 }
 
 .wrap form {
@@ -83,15 +82,9 @@
 }
 
 .result_users {
-    /*  border: solid 2px blue; */
     padding: 2rem 5% 70px 5%;
     margin: 0 20%;
     margin-top: 7em;
-    /*    box-shadow: 5px 5px 10px pink, -4px -4px 9px pink; */
-    /*  box-shadow: 0 -20px 15px -10px pink inset,
-        0 20px 15px -10px pink inset, 0 -20px 15px -10px blue,
-        0 20px 15px -10px blue,
-        0 0 50px pink; */
     box-shadow: -10px -10px 30px 5px rgb(255, 153, 94),
         5px 5px 30px 5px rgb(0, 110, 255);
     border-radius: 15px;
