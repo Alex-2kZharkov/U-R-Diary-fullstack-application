@@ -81,6 +81,7 @@ app.post('/registration', (req, res) => {
           password: req.body.password,
           image: req.body.image,
           about_self: req.body.something,
+          date: new Date(),
         };
         let insertion = 'INSERT INTO User SET ?';
         connection.query(insertion, user, (err, result) => {
@@ -473,14 +474,27 @@ app.delete('/personalRoom/:id/delete/:rec_id', async (req, res) => {
 app.get('/personalRoom/:id/friends/required-users', (req, res) => {
   console.log('I am here', req.query);
   connection.query(
-    `Select nickname, image, registration_date from User Where User.nickname='${req.query.requiredNickname}'`,
+    `Select nickname, image, date from User Where User.nickname='${req.query.requiredNickname}'`,
     (err, result) => {
       if (err) {
         console.log(err);
         res.send(err);
       } else {
         console.log(result);
-        res.send(result);
+
+        res.send(
+          result.map((item) => ({ // counting how many days passed since registrtion
+            nickname: item.nickname,
+            image: item.image,
+            days: Math.floor(
+              Math.abs(
+                new Date(new Date().toISOString()) -
+                  new Date(item.date.toISOString())
+              ) /
+                (1000 * 60 * 60 * 24)
+            ),
+          }))
+        );
       }
     }
   );

@@ -12,7 +12,9 @@ function SearchResult(props) {
       ></img>
       <div className={css.data_container}>
         <div className={css.nickname}>{props.nickname}</div>
-        <div className={css.join_date}>{props.date}</div>
+        <div className={css.join_date}>
+          {props.days === 0 ? 'Joined today' : `Joined ${props.days} ago`}
+        </div>
         <button type='button' className={css.friendship_request}>
           Send friendship invitation
         </button>

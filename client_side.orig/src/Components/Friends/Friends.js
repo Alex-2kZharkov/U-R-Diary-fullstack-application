@@ -11,7 +11,6 @@ export class Friends extends Component {
       requiredNickname: '',
       isSearched: false,
       users: [],
-      
     };
   }
   findUsers = () => {
@@ -38,6 +37,7 @@ export class Friends extends Component {
     this.props.setUserNickname('friends', this.props.match.params.id);
   }
   render() {
+   
     return (
       <div className={css.container}>
         <PersonalRoomHeader
@@ -88,7 +88,7 @@ export class Friends extends Component {
                   key={index}
                   image={item.image}
                   nickname={item.nickname}
-                  date={item.registration_date}
+                  days={item.days}
                 />
               ))
             ) : (
