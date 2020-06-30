@@ -21,19 +21,19 @@ export class Friends extends Component {
           requiredNickname: this.state.requiredNickname,
         },
       }
-    ).then((response) => {
-      console.log(response.data);
-      Axios.get(
-        `http://localhost:4000/personalRoom/${this.props.match.params.id}/friends/notifications-of-users`,
-        {
-          params: {
-            users: response.data,
-          },
-        }
-      ).then(response2 => {
-          console.log(response2)
+    )
+      .then((response) => {
+        console.log(response.data);
+       /*  Axios.get(
+          `http://localhost:4000/personalRoom/${this.props.match.params.id}/friends/notifications-of-users`,
+          response.data
+        )
+          .then((response2) => {
+            console.log(response2);
+          })
+          .catch((error) => console.log(error)); */
       })
-    });
+      .catch((error) => console.log(error));
     /*  this.setState(
           {
             isSearched: true,
@@ -44,7 +44,7 @@ export class Friends extends Component {
       })
       .catch((error) => console.log(error)); */
   };
-
+  //////////////////////////////////////////////////////////////////////
   sendFriendshipRequest = (recepient_id) => {
     Axios.post(
       `http://localhost:4000/personalRoom/${this.props.match.params.id}/friends/required-user/${recepient_id}`

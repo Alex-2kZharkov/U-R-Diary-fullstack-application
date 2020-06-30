@@ -9,6 +9,7 @@ const axios = require('axios');
 const request = require('request');
 const fs = require('fs');
 const { response } = require('express');
+const promise = require('promise');
 const app = express();
 const serverPort = 4000;
 
@@ -490,79 +491,79 @@ app.get('/personalRoom/:id/:section', (req, res) => {
 });
 
 // get list of users with typed nickname
-app.get('/personalRoom/:id/friends/required-users', (req, res) => {
+app.get('/personalRoom/:id/friends/required-users', async (req, res) => {
   console.log('I am here', req.query);
   let users = [];
-  connection.query(
-    `Select id, nickname, image, date from User Where User.nickname='${req.query.requiredNickname}'`,
-    async (err, result) => {
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else {
-        console.log(result);
-        res.send(result);
+  let new_users = [];
+  await new Promise(function (resolve, reject) {
+    connection.query(
+      `Select id, nickname, image, date from User Where User.nickname='${req.query.requiredNickname}'`,
+      (err, result) => {
+        if (err) {
+          console.log(err);
+          reject(err);
+          /*   res.send(err); */
+        } else {
+          console.log(result);
+          users = result;
+          resolve(result);
+          /*   res.send(result); */
+        }
       }
-    }
-  );
+    );
+  });
+
+  for (let i = 0; i < users.length; i++) {
+    await new promise((resolve, reject) => {
+      connection.query(
+        `Select * from Notification Where author_id=${req.params.id} and recepient_id=${users[i].id}`,
+        (err, result) => {
+          if (result.length) {
+            new_users.push({
+              id: users[i].id,
+              nickname: users[i].nickname,
+              image: users[i].image,
+              days: Math.floor(
+                Math.abs(
+                  new Date(new Date().toISOString()) -
+                    new Date(users[i].date.toISOString())
+                ) /
+                  (1000 * 60 * 60 * 24)
+              ),
+              isHavingReq: true,
+            });
+            if (i == users.length - 1) resolve();
+          } else {
+            new_users.push({
+              id: users[i].id,
+              nickname: users[i].nickname,
+              image: users[i].image,
+              days: Math.floor(
+                Math.abs(
+                  new Date(new Date().toISOString()) -
+                    new Date(users[i].date.toISOString())
+                ) /
+                  (1000 * 60 * 60 * 24)
+              ),
+              isHavingReq: false,
+            });
+            if (i == users.length - 1) resolve();
+          }
+        }
+      );
+    });
+  }
   console.log('USERS', users);
-  /* res.send(result.map(async (item) => {
-          await connection.query(
-            `Select * from Notification Where author_id=${req.params.id} and recepient_id=${item.id}`,
-            (err, result) => {
-              if (result.length) {
-                let user = {
-                  id: item.id,
-                  nickname: item.nickname,
-                  image: item.image,
-                  days: Math.floor(
-                    Math.abs(
-                      new Date(new Date().toISOString()) -
-                        new Date(item.date.toISOString())
-                    ) /
-                      (1000 * 60 * 60 * 24)
-                  ),
-                  isHavingReq: true,
-                };
-                console.log('Sub request', user);
-                return user;
-              } else {
-                let user = {
-                  id: item.id,
-                  nickname: item.nickname,
-                  image: item.image,
-                  days: Math.floor(
-                    Math.abs(
-                      new Date(new Date().toISOString()) -
-                        new Date(item.date.toISOString())
-                    ) /
-                      (1000 * 60 * 60 * 24)
-                  ),
-                  isHavingReq: false,
-                };
-                console.log('Sub request', user);
-                return user;
-              }
-            }
-          );
-        }) */
+  console.log('NEWUSERS', new_users);
+
+  res.send(new_users);
 });
-app.get('/personalRoom/:id/friends/required-users', (req, res) => {
-  console.log('I am here', req.query);
-  let users = [];
-  connection.query(
-    `Select id, nickname, image, date from User Where User.nickname='${req.query.requiredNickname}'`,
-    async (err, result) => {
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else {
-        console.log(result);
-        res.send(result);
-      }
-    }
-  );
-})
+app.get('/personalRoom/:id/friends/notifications-of-users', (req, res) => {
+  console.log('Seconds', req.body);
+  console.log('Seconds', req.params);
+  console.log('Seconds', req.query);
+  res.send('okay');
+});
 // creating notification
 app.post('/personalRoom/:id/friends/required-user/:recepient', (req, res) => {
   console.log(req.params, req.body);
