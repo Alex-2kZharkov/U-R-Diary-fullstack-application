@@ -492,35 +492,77 @@ app.get('/personalRoom/:id/:section', (req, res) => {
 // get list of users with typed nickname
 app.get('/personalRoom/:id/friends/required-users', (req, res) => {
   console.log('I am here', req.query);
+  let users = [];
   connection.query(
     `Select id, nickname, image, date from User Where User.nickname='${req.query.requiredNickname}'`,
-    (err, result) => {
+    async (err, result) => {
       if (err) {
         console.log(err);
         res.send(err);
       } else {
         console.log(result);
-
-        res.send(
-          result.map((item) => ({
-            // counting how many days passed since registrtion
-            id: item.id,
-            nickname: item.nickname,
-            image: item.image,
-            days: Math.floor(
-              Math.abs(
-                new Date(new Date().toISOString()) -
-                  new Date(item.date.toISOString())
-              ) /
-                (1000 * 60 * 60 * 24)
-            ),
-          }))
-        );
+        res.send(result);
       }
     }
   );
+  console.log('USERS', users);
+  /* res.send(result.map(async (item) => {
+          await connection.query(
+            `Select * from Notification Where author_id=${req.params.id} and recepient_id=${item.id}`,
+            (err, result) => {
+              if (result.length) {
+                let user = {
+                  id: item.id,
+                  nickname: item.nickname,
+                  image: item.image,
+                  days: Math.floor(
+                    Math.abs(
+                      new Date(new Date().toISOString()) -
+                        new Date(item.date.toISOString())
+                    ) /
+                      (1000 * 60 * 60 * 24)
+                  ),
+                  isHavingReq: true,
+                };
+                console.log('Sub request', user);
+                return user;
+              } else {
+                let user = {
+                  id: item.id,
+                  nickname: item.nickname,
+                  image: item.image,
+                  days: Math.floor(
+                    Math.abs(
+                      new Date(new Date().toISOString()) -
+                        new Date(item.date.toISOString())
+                    ) /
+                      (1000 * 60 * 60 * 24)
+                  ),
+                  isHavingReq: false,
+                };
+                console.log('Sub request', user);
+                return user;
+              }
+            }
+          );
+        }) */
 });
-
+app.get('/personalRoom/:id/friends/required-users', (req, res) => {
+  console.log('I am here', req.query);
+  let users = [];
+  connection.query(
+    `Select id, nickname, image, date from User Where User.nickname='${req.query.requiredNickname}'`,
+    async (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        console.log(result);
+        res.send(result);
+      }
+    }
+  );
+})
 // creating notification
 app.post('/personalRoom/:id/friends/required-user/:recepient', (req, res) => {
   console.log(req.params, req.body);
