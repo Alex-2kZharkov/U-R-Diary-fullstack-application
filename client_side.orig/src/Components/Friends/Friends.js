@@ -9,23 +9,33 @@ export class Friends extends Component {
 
     this.state = {
       requiredNickname: '',
+      isSearched: false,
       users: [],
+      
     };
   }
   findUsers = () => {
     Axios.get(
-      `http://localhost:4000/personalRoom/${this.props.match.params.id}/communications/required-users`,
+      `http://localhost:4000/personalRoom/${this.props.match.params.id}/friends/required-users`,
       {
-          params: {
-              requiredNickname: this.state.requiredNickname
-          }
+        params: {
+          requiredNickname: this.state.requiredNickname,
+        },
       }
     )
-      .then((response) => {})
+      .then((response) => {
+        this.setState(
+          {
+            isSearched: true,
+            users: response.data,
+          },
+          () => console.log(this.state.users)
+        );
+      })
       .catch((error) => console.log(error));
   };
   componentDidMount() {
-    this.props.setUserNickname(this.props.match.params.id);
+    this.props.setUserNickname('friends', this.props.match.params.id);
   }
   render() {
     return (
@@ -45,6 +55,7 @@ export class Friends extends Component {
               onChange={(event) =>
                 this.setState({
                   requiredNickname: event.target.value,
+                  isSearched: false,
                 })
               }
             />{' '}
@@ -59,6 +70,7 @@ export class Friends extends Component {
               onClick={(event) =>
                 this.setState({
                   requiredNickname: '',
+                  isSearched: false,
                 })
               }
               type='button'
@@ -69,12 +81,23 @@ export class Friends extends Component {
           </form>
         </div>
         <div className={css.result_users}>
-          {/*        <SearchResult />
-          <SearchResult /> */}
-          <div className={css.negative_result}>
-            Sorry, but we coun't find anything about <span>ferifjeriferi</span>{' '}
-            . Please, try again
-          </div>
+          {this.state.isSearched ? (
+            this.state.users.length ? (
+              this.state.users.map((item, index) => (
+                <SearchResult
+                  key={index}
+                  image={item.image}
+                  nickname={item.nickname}
+                  date={item.registration_date}
+                />
+              ))
+            ) : (
+              <div className={css.negative_result}>
+                Sorry, but we coun't find anything about{' '}
+                <span>{this.state.requiredNickname}</span> . Please, try again
+              </div>
+            )
+          ) : null}
         </div>
       </div>
     );

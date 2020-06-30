@@ -11,8 +11,8 @@ function SearchResult(props) {
         className={css.user_image}
       ></img>
       <div className={css.data_container}>
-        <div className={css.nickname}>Erkaim</div>
-        <div className={css.join_date}>5 days ago</div>
+        <div className={css.nickname}>{props.nickname}</div>
+        <div className={css.join_date}>{props.date}</div>
         <button type='button' className={css.friendship_request}>
           Send friendship invitation
         </button>

@@ -3,7 +3,7 @@ import PersonalRoomHeader from './PersonalRoomHeader';
 
 export class Comments extends Component {
   componentDidMount() {
-    this.props.setUserNickname(this.props.match.params.id);
+    this.props.setUserNickname('comments', this.props.match.params.id);
   }
   render() {
     return (

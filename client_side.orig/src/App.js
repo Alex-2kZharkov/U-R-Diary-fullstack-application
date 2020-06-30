@@ -21,7 +21,11 @@ class App extends Component {
     };
   }
   setUserNickname = (section, id) => {
-    Axios.get(`http://localhost:4000/personalroom/${id}/communications`)
+    Axios.get(`http://localhost:4000/personalroom/${id}/${section}`, {
+      params: {
+        requiredNickname: this.state.requiredNickname,
+      },
+    })
       .then((response) => {
         this.setState(
           {
