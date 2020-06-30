@@ -19,6 +19,7 @@ function SearchResult(props) {
           type='button'
           className={css.friendship_request}
           style={props.hideRequest}
+          onClick={() => props.sendFriendshipRequest(props.id)}
         >
           Send friendship invitation
         </button>

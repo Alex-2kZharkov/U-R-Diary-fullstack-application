@@ -471,35 +471,6 @@ app.delete('/personalRoom/:id/delete/:rec_id', async (req, res) => {
     }
   );
 });
-app.get('/personalRoom/:id/friends/required-users', (req, res) => {
-  console.log('I am here', req.query);
-  connection.query(
-    `Select nickname, image, date from User Where User.nickname='${req.query.requiredNickname}'`,
-    (err, result) => {
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else {
-        console.log(result);
-
-        res.send(
-          result.map((item) => ({
-            // counting how many days passed since registrtion
-            nickname: item.nickname,
-            image: item.image,
-            days: Math.floor(
-              Math.abs(
-                new Date(new Date().toISOString()) -
-                  new Date(item.date.toISOString())
-              ) /
-                (1000 * 60 * 60 * 24)
-            ),
-          }))
-        );
-      }
-    }
-  );
-});
 
 // get just user nickname
 app.get('/personalRoom/:id/:section', (req, res) => {
@@ -517,8 +488,59 @@ app.get('/personalRoom/:id/:section', (req, res) => {
     }
   );
 });
-// get list of users with typed nickname
 
+// get list of users with typed nickname
+app.get('/personalRoom/:id/friends/required-users', (req, res) => {
+  console.log('I am here', req.query);
+  connection.query(
+    `Select id, nickname, image, date from User Where User.nickname='${req.query.requiredNickname}'`,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        console.log(result);
+
+        res.send(
+          result.map((item) => ({
+            // counting how many days passed since registrtion
+            id: item.id,
+            nickname: item.nickname,
+            image: item.image,
+            days: Math.floor(
+              Math.abs(
+                new Date(new Date().toISOString()) -
+                  new Date(item.date.toISOString())
+              ) /
+                (1000 * 60 * 60 * 24)
+            ),
+          }))
+        );
+      }
+    }
+  );
+});
+
+// creating notification
+app.post('/personalRoom/:id/friends/required-user/:recepient', (req, res) => {
+  console.log(req.params, req.body);
+  let notification = {
+    author_id: req.params.id,
+    recepient_id: req.params.recepient,
+    date: new Date(),
+    is_accepted: false,
+  };
+  let insertion = 'INSERT INTO Notification SET ?';
+  connection.query(insertion, notification, (err, result) => {
+    if (err) {
+      console.log('Insertion error', err);
+    } else {
+      console.log('Successfully added');
+      console.log(`New inserted record ${result}`);
+      res.status(200).send(result);
+    }
+  });
+});
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });

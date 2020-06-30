@@ -33,6 +33,18 @@ export class Friends extends Component {
       })
       .catch((error) => console.log(error));
   };
+
+  sendFriendshipRequest = (recepient_id) => {
+    Axios.post(
+      `http://localhost:4000/personalRoom/${this.props.match.params.id}/friends/required-user/${recepient_id}`
+    )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   componentDidMount() {
     this.props.setUserNickname('friends', this.props.match.params.id);
   }
@@ -85,10 +97,12 @@ export class Friends extends Component {
               this.state.users.map((item, index) =>
                 this.props.userNickname != item.nickname ? (
                   <SearchResult
+                    id={item.id}
                     key={index}
                     image={item.image}
                     nickname={item.nickname}
                     days={item.days}
+                    sendFriendshipRequest={this.sendFriendshipRequest}
                   />
                 ) : (
                   <SearchResult
