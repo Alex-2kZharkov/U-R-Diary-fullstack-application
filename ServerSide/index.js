@@ -483,7 +483,8 @@ app.get('/personalRoom/:id/friends/required-users', (req, res) => {
         console.log(result);
 
         res.send(
-          result.map((item) => ({ // counting how many days passed since registrtion
+          result.map((item) => ({
+            // counting how many days passed since registrtion
             nickname: item.nickname,
             image: item.image,
             days: Math.floor(

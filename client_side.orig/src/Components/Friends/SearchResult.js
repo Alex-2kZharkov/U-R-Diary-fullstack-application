@@ -13,9 +13,13 @@ function SearchResult(props) {
       <div className={css.data_container}>
         <div className={css.nickname}>{props.nickname}</div>
         <div className={css.join_date}>
-          {props.days === 0 ? 'Joined today' : `Joined ${props.days} ago`}
+          {props.days === 0 ? 'Joined today' : `Joined ${props.days} days ago`}
         </div>
-        <button type='button' className={css.friendship_request}>
+        <button
+          type='button'
+          className={css.friendship_request}
+          style={props.hideRequest}
+        >
           Send friendship invitation
         </button>
       </div>

@@ -37,7 +37,6 @@ export class Friends extends Component {
     this.props.setUserNickname('friends', this.props.match.params.id);
   }
   render() {
-   
     return (
       <div className={css.container}>
         <PersonalRoomHeader
@@ -83,21 +82,36 @@ export class Friends extends Component {
         <div className={css.result_users}>
           {this.state.isSearched ? (
             this.state.users.length ? (
-              this.state.users.map((item, index) => (
-                <SearchResult
-                  key={index}
-                  image={item.image}
-                  nickname={item.nickname}
-                  days={item.days}
-                />
-              ))
+              this.state.users.map((item, index) =>
+                this.props.userNickname != item.nickname ? (
+                  <SearchResult
+                    key={index}
+                    image={item.image}
+                    nickname={item.nickname}
+                    days={item.days}
+                  />
+                ) : (
+                  <SearchResult
+                    key={index}
+                    image={item.image}
+                    nickname={`${item.nickname} (Your account)`}
+                    days={item.days}
+                    hideRequest={{ display: 'none' }}
+                  />
+                )
+              )
             ) : (
               <div className={css.negative_result}>
                 Sorry, but we coun't find anything about{' '}
                 <span>{this.state.requiredNickname}</span> . Please, try again
               </div>
             )
-          ) : null}
+          ) : (
+            <div className={css.entry_message}>
+              Looks like you haven't got any friends. Use search bar above to
+              find other users
+            </div>
+          )}
         </div>
       </div>
     );

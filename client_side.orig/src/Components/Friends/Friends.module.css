@@ -106,7 +106,17 @@
 }
 
 .negative_result span {
-
+    color: #4da6ff;
     font-weight: 700;
     text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.entry_message {
+    text-align: center;
+    font-family: Lato, Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: 32px;
+    /*  text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 0.5px 0.5px #fff, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #fff, -0.5px 0.5px 0 #fff; */
+
 }
