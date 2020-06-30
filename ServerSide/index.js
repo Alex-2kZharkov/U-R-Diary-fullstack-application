@@ -553,9 +553,6 @@ app.get('/personalRoom/:id/friends/required-users', async (req, res) => {
       );
     });
   }
-  console.log('USERS', users);
-  console.log('NEWUSERS', new_users);
-
   res.send(new_users);
 });
 app.get('/personalRoom/:id/friends/notifications-of-users', (req, res) => {

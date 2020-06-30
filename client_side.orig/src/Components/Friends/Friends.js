@@ -24,17 +24,7 @@ export class Friends extends Component {
     )
       .then((response) => {
         console.log(response.data);
-       /*  Axios.get(
-          `http://localhost:4000/personalRoom/${this.props.match.params.id}/friends/notifications-of-users`,
-          response.data
-        )
-          .then((response2) => {
-            console.log(response2);
-          })
-          .catch((error) => console.log(error)); */
-      })
-      .catch((error) => console.log(error));
-    /*  this.setState(
+        this.setState(
           {
             isSearched: true,
             users: response.data,
@@ -42,7 +32,7 @@ export class Friends extends Component {
           () => console.log(this.state.users)
         );
       })
-      .catch((error) => console.log(error)); */
+      .catch((error) => console.log(error));
   };
   //////////////////////////////////////////////////////////////////////
   sendFriendshipRequest = (recepient_id) => {
@@ -113,6 +103,7 @@ export class Friends extends Component {
                     image={item.image}
                     nickname={item.nickname}
                     days={item.days}
+                    isHavingReq={item.isHavingReq}
                     sendFriendshipRequest={this.sendFriendshipRequest}
                   />
                 ) : (
