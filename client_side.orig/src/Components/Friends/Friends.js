@@ -135,8 +135,11 @@ export class Friends extends Component {
           ) : this.state.friends.length ? (
             <>
               <div className={css.entry_message}>Your friends are here</div>
-              {this.state.friends.map((item) => (
+              {this.state.friends.map((item, index) => (
                 <Friend
+                  key={index}
+                  id={item.id}
+                  ownerId={this.props.match.params.id}
                   nickname={item.nickname}
                   image={item.image}
                   date={item.user_date}

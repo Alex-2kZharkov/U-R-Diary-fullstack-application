@@ -10,6 +10,7 @@ import Autenticattion from './Components/Autenticattion';
 import NewRecordPage from './Components/NewRecord/NewRecordPage';
 import EditRecordPage from './Components/EditRecord/EditRecordPage';
 import Axios from 'axios';
+import FriendRoom from './Components/FriendRoom/FriendRoom';
 
 class App extends Component {
   constructor(props) {
@@ -85,9 +86,20 @@ class App extends Component {
             )}
           />
           <Route
+            exact
             path='/personalRoom/:id/friends'
             render={(props) => (
               <Friends
+                {...props}
+                setUserNickname={this.setUserNickname}
+                userNickname={this.state.userNickname}
+              />
+            )}
+          />
+           <Route
+            path='/personalRoom/:id/friends/friend-room/:friend_id'
+            render={(props) => ( 
+              <FriendRoom
                 {...props}
                 setUserNickname={this.setUserNickname}
                 userNickname={this.state.userNickname}

@@ -1,11 +1,13 @@
 import React from 'react';
-import css from './SearchResult.module.css';
+import css from './Friend.module.css';
+import { Link } from 'react-router-dom';
 
 function Friend(props) {
   let days = Math.floor(
     Math.abs(new Date(new Date().toISOString()) - new Date(props.date)) /
       (1000 * 60 * 60 * 24)
   );
+  console.log(props.ownerId, props.id);
   return (
     <div>
       <div className={css.required_user}>
@@ -15,11 +17,16 @@ function Friend(props) {
           className={css.user_image}
         ></img>
         <div className={css.data_container}>
-          <div className={css.nickname}>{props.nickname}</div>
+          <div className={css.nickname}>
+            <Link
+              className={css.nickname_link}
+              to={`/personalRoom/${props.ownerId}/friends/friend-room/${props.id}`}
+            >
+              {props.nickname}
+            </Link>
+          </div>
           <div className={css.join_date}>
-            {days === 0
-              ? 'Joined today'
-              : `Joined ${days} days ago`}
+            {days === 0 ? 'Joined today' : `Joined ${days} days ago`}
           </div>
           <div className={css.friends_message}>
             You are friends <i className='fas fa-check-circle'></i>
