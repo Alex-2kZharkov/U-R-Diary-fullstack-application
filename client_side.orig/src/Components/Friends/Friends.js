@@ -60,13 +60,6 @@ export class Friends extends Component {
     });
   }
   render() {
-    let friends = this.state.friends.map((item) => (
-      <Friend
-        nickname={item.nickname}
-        image={item.image}
-        date={item.user_date}
-      />
-    ));
     return (
       <div className={css.container}>
         <PersonalRoomHeader
@@ -140,9 +133,18 @@ export class Friends extends Component {
               </div>
             )
           ) : this.state.friends.length ? (
-            <div className={css.entry_message}>Your friends are here</div> {friends}
+            <>
+              <div className={css.entry_message}>Your friends are here</div>
+              {this.state.friends.map((item) => (
+                <Friend
+                  nickname={item.nickname}
+                  image={item.image}
+                  date={item.user_date}
+                />
+              ))}{' '}
+            </>
           ) : (
-            <div className={css.entry_message}>
+            <div className={`${css.entry_message} ${css.modification}`}>
               Looks like you haven't got any friends. Use search bar above to
               find other users
             </div>

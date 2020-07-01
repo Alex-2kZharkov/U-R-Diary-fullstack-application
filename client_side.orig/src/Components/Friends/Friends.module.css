@@ -109,7 +109,12 @@
     font-family: Lato, Arial, Helvetica, sans-serif;
     font-weight: 700;
     color: #fff;
-    font-size: 32px;
+    font-size: 38px;
+    margin-bottom: 90px;
     /*  text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 0.5px 0.5px #fff, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #fff, -0.5px 0.5px 0 #fff; */
 
+}
+
+.modification {
+    margin-bottom: 10px;
 }
