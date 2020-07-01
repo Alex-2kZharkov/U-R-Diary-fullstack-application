@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './Notifications.module.css';
 
 function Notification(props) {
+  const [isAccepted, accept] = useState(false);
+  const [isRejected, reject] = useState(false);
+
+  let notifcication_part;
+
   return (
     <div>
       <div className={css.required_notification}>
@@ -13,9 +18,9 @@ function Notification(props) {
         <div className={css.data_container}>
           <div className={css.nickname}>{props.nickname}</div>
           <div className={css.date_sended}>
-            {props.days === 0
+            {props.date === 0
               ? 'Sened: today'
-              : `Sended ${props.days} days ago`}
+              : `Sended ${props.date} days ago`}
           </div>
           {/*  {message} */}
           <button
@@ -23,14 +28,14 @@ function Notification(props) {
             className={css.friendship_request}
             style={props.hideRequest}
           >
-            <i class='fas fa-check'></i> Accept friendship invitation
+            <i className='fas fa-check'></i> Accept friendship invitation
           </button>
           <button
             type='button'
             className={`${css.friendship_request} ${css.reject_notification}`}
             style={props.hideRequest}
           >
-            <i class='fas fa-times'></i> Reject friendship invitation
+            <i className='fas fa-times'></i> Reject friendship invitation
           </button>
           <div className={css.acceptance_message}>
             Invitation has been accepted <i className='fas fa-check-circle'></i>

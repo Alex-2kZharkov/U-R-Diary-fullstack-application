@@ -472,6 +472,16 @@ app.delete('/personalRoom/:id/delete/:rec_id', async (req, res) => {
     }
   );
 });
+app.get('/personalRoom/:id/notificatios/all', (req, res) => {
+  console.log('AAAAAAAAAAAA');
+  connection.query(
+    `Select User.id, User.nickname, User.image, Notification.id as notif_id, Notification.date, Notification.is_accepted from  Notification Inner Join User on Notification.author_id=User.id Where Notification.recepient_id=${req.params.id}`,
+    (err, result) => {
+      console.log('Sub query', result);
+      res.send(result);
+    }
+  );
+});
 
 // get just user nickname
 app.get('/personalRoom/:id/:section', (req, res) => {
@@ -555,12 +565,6 @@ app.get('/personalRoom/:id/friends/required-users', async (req, res) => {
   }
   res.send(new_users);
 });
-app.get('/personalRoom/:id/friends/notifications-of-users', (req, res) => {
-  console.log('Seconds', req.body);
-  console.log('Seconds', req.params);
-  console.log('Seconds', req.query);
-  res.send('okay');
-});
 // creating notification
 app.post('/personalRoom/:id/friends/required-user/:recepient', (req, res) => {
   console.log(req.params, req.body);
@@ -568,7 +572,7 @@ app.post('/personalRoom/:id/friends/required-user/:recepient', (req, res) => {
     author_id: req.params.id,
     recepient_id: req.params.recepient,
     date: new Date(),
-    is_accepted: false,
+    is_accepted: -1, // -1 is indefined user didn't react yet on notification
   };
   let insertion = 'INSERT INTO Notification SET ?';
   connection.query(insertion, notification, (err, result) => {
