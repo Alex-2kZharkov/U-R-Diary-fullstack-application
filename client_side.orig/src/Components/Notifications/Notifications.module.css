@@ -11,47 +11,52 @@
     top: 8rem;
     padding: 1px 0;
     margin: 0 20%;
-    background-color: rgb(112, 112, 112);
+    background-color: #8e4620;
     border-radius: 30px;
-    box-shadow: -10px -10px 30px 5px rgb(255, 153, 94) inset,
-        5px 5px 30px 5px rgb(0, 110, 255) inset;
+    box-shadow: -10px -10px 30px 10px #f69e7b inset,
+        5px 5px 30px 10px #f69e7b inset;
 }
 
 .inner_container {
     position: relative;
     padding: 2rem;
     margin: 20px;
-    background-color: rgb(255, 255, 255);
+    background-color: #eedad1;
     border-radius: 7px;
 }
 
 
-.required_user {
+.required_notification {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     padding-bottom: 30px;
 }
 
-.required_user::after {
-    content: '';
+.border {
     display: inline-block;
     width: 100%;
-    height: 2px;
-    margin-top: 20px;
-    background-color: pink;
-    box-shadow: 5px 5px 10px blue, -4px -4px 9px blue;
+    height: 60px;
+    background: url('https://www.onlygfx.com/wp-content/uploads/2018/01/flower-line-broder-6.png') repeat-x;
+    background-size: 200px;
+}
+
+.border::after {
+    display: inline-block;
+    content: '';
+
+    background-color: teal;
 
 }
 
-.required_user:last-child {
+.required_notification:last-child {
     margin-bottom: 0;
 }
 
-.user_image {
+.notification_image {
     display: block;
     min-width: 150px;
     min-height: 150px;
@@ -62,20 +67,20 @@
 }
 
 .data_container {
-    flex-basis: 75%;
+    flex-basis: 80%;
 }
 
 .nickname {
     margin-bottom: 10px;
-    color: rgb(235, 235, 235);
-    text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
-    font-weight: 400;
+    color: #ff8000;
+    /* text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000; */
+    font-weight: 700;
     font-size: 36px;
-    font-family: Geneva, Tahoma, sans-serif, sans-serif;
+    font-family: Helvetica, Tahoma, sans-serif, sans-serif;
     word-break: break-all;
 }
 
-.join_date {
+.date_sended {
     font-family: Cochin, Cambria, Georgia, Times, 'Times New Roman', serif;
     color: #0080ff;
     font-style: italic;
@@ -88,10 +93,10 @@
 .friendship_request {
 
     padding: 7px 12px 7px 12px;
-    background-color: #a750ff;
+    background-color: #005190;
     font-size: 16px;
     font-family: Arial, Times, 'Times New Roman', serif;
-    color: #000;
+    color: #fff;
     cursor: pointer;
     border-top: solid 1.5px #000000;
     border-left: solid 1.5px #000000;
@@ -99,19 +104,41 @@
     border-bottom: solid 1.5px #333;
     outline: none;
     transition: color 0.1s linear;
-    transition: background 0.1s linear;
+    transition: all 0.1s ease;
 }
 
 .friendship_request:hover {
+    text-shadow: 5px 5px 10px #fff, -5px -5px 10px #fff;
+    /* box-shadow: 5px 5px 10px #005190, -5px -5px 10px #005190; */
     background-color: #8826eb;
     color: #fff;
 }
 
-.reaction_message {
+.reject_notification {
+    background-color: #ed8240;
+    margin-left: 20px;
+}
 
-    width: 210px;
+.acceptance_message {
+
+    width: 285gpx;
     padding: 7px 12px 7px 12px;
     background-color: #005190;
+    font-size: 20px;
+    font-family: Arial, Times, 'Times New Roman', serif;
+    color: #fff;
+    border-top: solid 1.5px #000000;
+    border-left: solid 1.5px #000000;
+    border-right: solid 1.5px #333;
+    border-bottom: solid 1.5px #333;
+    border-radius: 10px;
+}
+
+.rejection_message {
+
+    width: 285px;
+    padding: 7px 12px 7px 12px;
+    background-color: #ed8240;
     font-size: 20px;
     font-family: Arial, Times, 'Times New Roman', serif;
     color: #fff;

@@ -490,7 +490,7 @@ app.get('/personalRoom/:id/:section', (req, res) => {
   );
 });
 
-// get list of users with typed nickname
+// get list of users with typed nickname and check if they already had notification
 app.get('/personalRoom/:id/friends/required-users', async (req, res) => {
   console.log('I am here', req.query);
   let users = [];
@@ -581,6 +581,7 @@ app.post('/personalRoom/:id/friends/required-user/:recepient', (req, res) => {
     }
   });
 });
+
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });

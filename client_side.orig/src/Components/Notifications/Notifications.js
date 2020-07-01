@@ -16,7 +16,7 @@ export class Notifications extends Component {
         />
         <div className={css.external_container}>
           <div className={css.inner_container}>
-            <Notification image='' props='Alex_007' days='12'/>
+            <Notification image='' nickname='Alex_007' days='12'/>
           </div>
         </div>
       </div>
