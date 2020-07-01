@@ -585,6 +585,7 @@ app.post('/personalRoom/:id/friends/required-user/:recepient', (req, res) => {
     }
   });
 });
+// update notification status due user desicion
 app.put('/personalRoom/:id/notification/:notif_id', (req, res) => {
   console.log('IT WORKS ', req.body, req.params);
   connection.query(
@@ -601,7 +602,17 @@ app.put('/personalRoom/:id/notification/:notif_id', (req, res) => {
     }
   );
 });
-
+// get all friends , friends are those notifications where is_accepted = 1
+// getting notifications and their authors
+app.get('/personalRoom/:id/friends/my-friends', (req, res) => {
+  connection.query(
+    `Select User.id, User.nickname, User.image,User.date as user_date, Notification.id as notif_id , Notification.is_accepted from  Notification Inner Join User on Notification.author_id=User.id Where Notification.recepient_id=${req.params.id} and Notification.is_accepted='1'`,
+    (err, result) => {
+      console.log('FRIENDS', result);
+      res.send(result);
+    }
+  );
+});
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });

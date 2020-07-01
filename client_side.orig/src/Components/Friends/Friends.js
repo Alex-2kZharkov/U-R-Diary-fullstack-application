@@ -3,6 +3,7 @@ import PersonalRoomHeader from '../PersonalRoomHeader';
 import css from './Friends.module.css';
 import SearchResult from './SearchResult';
 import Axios from 'axios';
+import Friend from './Friend';
 export class Friends extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +12,7 @@ export class Friends extends Component {
       requiredNickname: '',
       isSearched: false,
       users: [],
+      friends: [],
     };
   }
   findUsers = () => {
@@ -48,8 +50,23 @@ export class Friends extends Component {
   };
   componentDidMount() {
     this.props.setUserNickname('friends', this.props.match.params.id);
+    Axios.get(
+      `http://localhost:4000/personalRoom/${this.props.match.params.id}/friends/my-friends`
+    ).then((response) => {
+      console.log(response);
+      this.setState({
+        friends: response.data,
+      });
+    });
   }
   render() {
+    let friends = this.state.friends.map((item) => (
+      <Friend
+        nickname={item.nickname}
+        image={item.image}
+        date={item.user_date}
+      />
+    ));
     return (
       <div className={css.container}>
         <PersonalRoomHeader
@@ -122,6 +139,8 @@ export class Friends extends Component {
                 <span>{this.state.requiredNickname}</span> . Please, try again
               </div>
             )
+          ) : this.state.friends.length ? (
+            <div className={css.entry_message}>Your friends are here</div> {friends}
           ) : (
             <div className={css.entry_message}>
               Looks like you haven't got any friends. Use search bar above to

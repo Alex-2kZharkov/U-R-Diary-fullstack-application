@@ -6,8 +6,6 @@ export class Notification extends React.Component {
     super(props);
 
     this.state = {
-      isAccepted: false,
-      isRejected: false,
       days: Math.floor(
         Math.abs(
           new Date(new Date().toISOString()) - new Date(this.props.date)
@@ -17,16 +15,6 @@ export class Notification extends React.Component {
     };
   }
 
-  accept = () => {
-    this.setState({
-      isAccepted: true,
-    });
-  };
-  reject = () => {
-    this.setState({
-      isRejected: true,
-    });
-  };
   render() {
     let block;
     if (this.props.isAccepted === -1) {
@@ -49,6 +37,14 @@ export class Notification extends React.Component {
           <button
             type='button'
             className={`${css.friendship_request} ${css.reject_notification}`}
+            onClick={() =>
+              this.props.updateNotification(
+                this.props.user_id,
+                this.props.author_id,
+                this.props.notif_id,
+                0
+              )
+            }
           >
             <i className='fas fa-times'></i> Reject friendship invitation
           </button>
