@@ -11,6 +11,7 @@ export class Notifications extends Component {
     this.state = {
       notifications: [],
     };
+    // this.updateNotification = this.updateNotification.bind(this);
   }
 
   componentDidMount() {
@@ -18,9 +19,31 @@ export class Notifications extends Component {
     Axios.get(
       `http://localhost:4000/personalRoom/${this.props.match.params.id}/notificatios/all`
     ).then((response) => {
-      console.log('NOTIFICATIONS ',response);
+      console.log('NOTIFICATIONS ', response);
+      this.setState({
+        notifications: response.data,
+      });
     });
   }
+  updateNotification = (user_id, author_id, notif_id, status) => {
+    Axios.put(
+      `http://localhost:4000/personalRoom/${user_id}/notification/${notif_id}`,
+      { status: status, author_id: author_id }
+    ).then((response) => {
+      console.log(response);
+      console.log(this.state);
+      let requiredIndex;
+      this.state.notifications.find((item, index, array) => {
+        if (item.id == response.data[response.data.length - 1].id)
+          requiredIndex = index;
+      });
+      this.state.notifications[requiredIndex] =
+        response.data[response.data.length - 1];
+      this.setState({
+        notifications: this.state.notifications,
+      });
+    });
+  };
   render() {
     return (
       <div className={css.container}>
@@ -30,7 +53,19 @@ export class Notifications extends Component {
         />
         <div className={css.external_container}>
           <div className={css.inner_container}>
-            <Notification image='' nickname='Alex_007' date='12' />
+            {this.state.notifications.map((item, index) => (
+              <Notification
+                key={index}
+                user_id={this.props.match.params.id}
+                author_id={item.id}
+                nickname={item.nickname}
+                image={item.image}
+                notif_id={item.notif_id}
+                date={item.date}
+                isAccepted={item.is_accepted}
+                updateNotification={this.updateNotification}
+              />
+            ))}
           </div>
         </div>
       </div>

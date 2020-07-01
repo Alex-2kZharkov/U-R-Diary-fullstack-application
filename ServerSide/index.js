@@ -472,8 +472,8 @@ app.delete('/personalRoom/:id/delete/:rec_id', async (req, res) => {
     }
   );
 });
+// getting notifications and their authors
 app.get('/personalRoom/:id/notificatios/all', (req, res) => {
-  console.log('AAAAAAAAAAAA');
   connection.query(
     `Select User.id, User.nickname, User.image, Notification.id as notif_id, Notification.date, Notification.is_accepted from  Notification Inner Join User on Notification.author_id=User.id Where Notification.recepient_id=${req.params.id}`,
     (err, result) => {
@@ -584,6 +584,22 @@ app.post('/personalRoom/:id/friends/required-user/:recepient', (req, res) => {
       res.status(200).send(result);
     }
   });
+});
+app.put('/personalRoom/:id/notification/:notif_id', (req, res) => {
+  console.log('IT WORKS ', req.body, req.params);
+  connection.query(
+    `Update Notification Set is_accepted=${req.body.status} Where id=${req.params.notif_id}`,
+    (err, result) => {
+      console.log(result);
+      connection.query(
+        `Select User.id, User.nickname, User.image, Notification.id as notif_id, Notification.date, Notification.is_accepted from  Notification Inner Join User on Notification.author_id=User.id Where Notification.recepient_id=${req.params.id} and Notification.author_id=${req.body.author_id}`,
+        (err, result) => {
+          console.log('Sub query', result);
+          res.send(result);
+        }
+      );
+    }
+  );
 });
 
 app.listen(serverPort, () => {
