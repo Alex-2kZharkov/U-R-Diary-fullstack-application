@@ -1,0 +1,58 @@
+.record {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    padding: 2% 2% 0 1%;
+    margin-bottom: 100px;
+    padding-bottom: 70px;
+    border: solid 3px pink;
+    border-radius: 20px;
+    border-bottom: solid pink 6px;
+    -webkit-box-shadow: 0 4px 6px -6px pink;
+    -moz-box-shadow: 0 4px 6px -6px pink;
+    /* box-shadow: 0 20px 100px 20px #005190; */
+    box-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 5px 20px 35px #39d2ff, -5px -20px 35px #39d2ff;
+}
+
+.record:last-child {
+    margin-bottom: 0;
+}
+
+
+.record_image {
+    display: block;
+    min-width: 170px;
+    min-height: 170px;
+    max-width: 170px;
+    max-height: 170px;
+    border-radius: 50%;
+    border: solid 2px #000000;
+}
+
+.data_container {
+    flex-basis: 84%;
+}
+
+.date {
+    font-family: Cochin, Cambria, Georgia, Times, 'Times New Roman', serif;
+    color: #0080ff;
+    font-style: italic;
+    text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+    font-weight: 700;
+    font-size: 30px;
+    font-weight: 900;
+
+}
+
+.content {
+    margin-top: 10px;
+    color: #d7d7f6;
+    text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+    font-weight: 700;
+    font-size: 30px;
+    font-weight: 900;
+    font-size: 28px;
+    font-family: 'Marck Script', Geneva, Tahoma, sans-serif, sans-serif;
+    word-break: break-all;
+}
