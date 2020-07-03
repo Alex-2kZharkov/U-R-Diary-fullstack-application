@@ -12,7 +12,7 @@
     -webkit-box-shadow: 0 4px 6px -6px pink;
     -moz-box-shadow: 0 4px 6px -6px pink;
     /* box-shadow: 0 20px 100px 20px #005190; */
-    box-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 5px 20px 35px #39d2ff, -5px -20px 35px #39d2ff;
+    box-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 5px 20px 35px beige, -5px -20px 35px beige;
 }
 
 .record:last-child {

@@ -20,6 +20,8 @@ export class FriendRoom extends Component {
       substring: '',
       records: [], // records from data base
       isCopied: false,
+      comment: '',
+      isCommentBoxOpen: true,
     };
     this.searchField = React.createRef();
   }
@@ -54,6 +56,22 @@ export class FriendRoom extends Component {
     });
     this.searchField.current.value = ''; // empty search field
   };
+  handleCommentChange = (e) => {
+    this.setState({
+      comment: e.target.value,
+    });
+  };
+  openCommentBox = () => {
+    this.setState({
+      isCommentBoxOpen: true,
+    });
+  };
+  closeCommentBox = () => {
+    this.setState({
+      isCommentBoxOpen: false,
+    });
+  };
+  addComment = () => {};
   componentDidMount() {
     this.props.setUserNickname('friends', this.props.match.params.id);
     console.log('COMPONENT DID');
@@ -104,7 +122,7 @@ export class FriendRoom extends Component {
       });
   }
   render() {
-    let records;
+    let records, commentBox;
     if (this.state.searchStatus) {
       let searchResults = this.findRecord();
 
@@ -140,6 +158,28 @@ export class FriendRoom extends Component {
         />
       );
     }
+    // deciding if comment box have to be rendered
+    if (this.state.isCommentBoxOpen) {
+      commentBox = (
+        <div className={css.comment_box}>
+          <div className={css.comment_field_box}>
+            <textarea
+              rows={20}
+              className={css.comment_field}
+              value={this.state.comment}
+              onChange={this.handleCommentChange}
+              placeholder='Write you comment about diary here'
+            ></textarea>
+          </div>
+          <div className={css.send_comment}>
+            <i class='far fa-paper-plane'></i>
+          </div>
+          <div className={css.close_comment_box}>
+            <i class='fas fa-times'></i>
+          </div>
+        </div>
+      );
+    }
 
     return (
       <div className={css.intro}>
@@ -153,6 +193,11 @@ export class FriendRoom extends Component {
             cancelSearch={this.cancelSearch}
             searchField={this.searchField}
           />
+          <h3 className={css.title}>
+            Welcome to <span>{this.state.nickname}'s Diary</span>. We hope
+            reading this will hope better understand this person. Don't forget
+            to write a couple of kinds workd at comments below
+          </h3>
           {records}
           <FriendProfile
             nickname={this.state.nickname}
@@ -165,6 +210,15 @@ export class FriendRoom extends Component {
             isCopied={this.state.isCopied}
             copyEmail={this.copyEmail}
           />
+          <div className={css.add_comment_container}>
+            {' '}
+            {/*  callback function */}
+            <button className={css.add_comment}>
+              Write comment
+              <i class={`fas fa-comment ${css.comment_icon}`}></i>
+            </button>
+          </div>
+          {commentBox}
         </div>
       </div>
     );
