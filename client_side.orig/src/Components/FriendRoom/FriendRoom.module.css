@@ -44,9 +44,7 @@
     bottom: 1em;
     cursor: pointer;
     color: #ffffff;
-    transition: border .0s linear;
-    transition: color 0s linear;
-    transition: text-shadow 0s linear;
+    transition: all 0s ease 0;
 }
 
 .add_comment {
@@ -60,6 +58,11 @@
     transition: all .2s ease 0s;
     outline: none;
     cursor: pointer;
+    transition: all 0s ease 0;
+}
+
+.add_comment:hover {
+    background-color: #005190;
 }
 
 .add_comment_container:hover {
@@ -147,4 +150,17 @@
 
     padding: 7px 2.5px 6px 2px;
     margin-left: 10px;
+}
+
+.msgAfterComSending {
+    position: fixed;
+    bottom: 3em;
+    right: 0.2em;
+    color: #fff;
+    font-size: 30px;
+    text-shadow: 2px 0 0 #ff7f00, -2px 0 0 #ff7f00, 0 2px 0 #ff7f00, 0 -2px 0 #ff7f00, 1px 1px #ff7f00, -1px -1px 0 #ff7f00, 1px -1px 0 #ff7f00, -1px 1px 0 #ff7f00;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 700;
+    text-align: center;
+
 }

@@ -82,7 +82,7 @@
 }
 
 .result_users {
-    padding: 2rem 5% 70px 5%;
+    padding: 2rem 5% 0px 5%;
     margin: 0 20%;
     margin-top: 7em;
     box-shadow: -10px -10px 30px 5px rgb(255, 153, 94),
@@ -110,7 +110,7 @@
     font-weight: 700;
     color: #fff;
     font-size: 38px;
-    margin-bottom: 90px;
+    margin-bottom: 50px;
     /*  text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 0.5px 0.5px #fff, -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #fff, -0.5px 0.5px 0 #fff; */
 
 }

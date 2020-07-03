@@ -22,6 +22,7 @@ export class FriendRoom extends Component {
       isCopied: false,
       comment: '',
       isCommentBoxOpen: false,
+      isCommentSended: false,
     };
     this.searchField = React.createRef();
   }
@@ -62,24 +63,39 @@ export class FriendRoom extends Component {
     });
   };
   openCommentBox = () => {
-    this.setState({
-      isCommentBoxOpen: true,
-    });
+    if (this.state.isCommentBoxOpen) {
+      this.setState({
+        isCommentBoxOpen: false,
+      });
+    } else {
+      this.setState({
+        isCommentBoxOpen: true,
+      });
+    }
   };
   closeCommentBox = () => {
     this.setState({
       isCommentBoxOpen: false,
+      isCommentSended: false,
     });
   };
   addComment = () => {
-    axios
-      .post(
-        `http://localhost:4000/personalRoom/${this.props.match.params.id}/friends/friend-room/${this.props.match.params.friend_id}`,
-        { comment: this.state.comment }
-      )
-      .then((response) => {
-        console.log(response);
-      });
+    if (this.state.comment != '') {
+      axios
+        .post(
+          `http://localhost:4000/personalRoom/${this.props.match.params.id}/friends/friend-room/${this.props.match.params.friend_id}`,
+          { comment: this.state.comment }
+        )
+        .then((response) => {
+          console.log(response);
+          this.setState({
+            isCommentBoxOpen: false,
+            isCommentSended: true,
+            comment: '',
+          });
+          setTimeout(this.closeCommentBox, 1500);
+        });
+    }
   };
   componentDidMount() {
     this.props.setUserNickname('friends', this.props.match.params.id);
@@ -131,7 +147,7 @@ export class FriendRoom extends Component {
       });
   }
   render() {
-    let records, commentBox;
+    let records, commentBox, msgAfterComSending;
     if (this.state.searchStatus) {
       let searchResults = this.findRecord();
 
@@ -196,6 +212,13 @@ export class FriendRoom extends Component {
       );
     } else commentBox = null;
 
+    if (this.state.isCommentSended) {
+      msgAfterComSending = (
+        <div className={css.msgAfterComSending}>
+          Your comment was sended <div>to {this.state.nickname}</div>
+        </div>
+      );
+    }
     return (
       <div className={css.intro}>
         <div className={css.darker}>
@@ -234,6 +257,7 @@ export class FriendRoom extends Component {
             </button>
           </div>
           {commentBox}
+          {msgAfterComSending}
         </div>
       </div>
     );

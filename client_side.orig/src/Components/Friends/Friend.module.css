@@ -4,7 +4,7 @@
     align-items: center;
     flex-wrap: wrap;
     position: relative;
-    margin-bottom: 50px;
+
     padding-bottom: 30px;
 }
 
@@ -14,13 +14,16 @@
     width: 100%;
     height: 2px;
     margin-top: 20px;
+    margin-bottom: 60px;
     background-color: pink;
     box-shadow: 5px 5px 10px blue, -4px -4px 9px blue;
 
 }
 
-.required_user:last-child {
+.required_user::after:last-child,
+.required_user {
     margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .user_image {
@@ -45,14 +48,16 @@
     font-size: 36px;
     font-family: Geneva, Tahoma, sans-serif, sans-serif;
     word-break: break-all;
-   
+
     transition: all 0.1s ease;
     cursor: pointer;
 }
+
 .nickname_link {
     color: #fff;
     text-decoration: none;
 }
+
 .nickname:hover {
     text-shadow: 2px 0 0 #da441b, -2px 0 0 #da441b, 0 2px 0 #da441b, 0 -2px 0 #da441b, 1px 1px #da441b, -1px -1px 0 #da441b, 1px -1px 0 #da441b, -1px 1px 0 #da441b, 5px 5px 10px #d7d7f6, -4px -4px 9px #d7d7f6;
 }
