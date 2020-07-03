@@ -56,8 +56,8 @@
 /*Sub profile*/
 .sub_profile {
     position: fixed;
-    top: 18em;
-    right: 2%;
+    top: 24em;
+    right: 3em;
     display: flex;
     align-items: center;
     background-color: #2492ff;

@@ -21,7 +21,7 @@ export class FriendRoom extends Component {
       records: [], // records from data base
       isCopied: false,
       comment: '',
-      isCommentBoxOpen: true,
+      isCommentBoxOpen: false,
     };
     this.searchField = React.createRef();
   }
@@ -71,7 +71,16 @@ export class FriendRoom extends Component {
       isCommentBoxOpen: false,
     });
   };
-  addComment = () => {};
+  addComment = () => {
+    axios
+      .post(
+        `http://localhost:4000/personalRoom/${this.props.match.params.id}/friends/friend-room/${this.props.match.params.friend_id}`,
+        { comment: this.state.comment }
+      )
+      .then((response) => {
+        console.log(response);
+      });
+  };
   componentDidMount() {
     this.props.setUserNickname('friends', this.props.match.params.id);
     console.log('COMPONENT DID');
@@ -164,22 +173,28 @@ export class FriendRoom extends Component {
         <div className={css.comment_box}>
           <div className={css.comment_field_box}>
             <textarea
-              rows={20}
+              rows={10}
               className={css.comment_field}
               value={this.state.comment}
               onChange={this.handleCommentChange}
               placeholder='Write you comment about diary here'
             ></textarea>
           </div>
-          <div className={css.send_comment}>
+          <div
+            className={`${css.send_comment} ${css.comment_button}`}
+            onClick={this.addComment}
+          >
             <i class='far fa-paper-plane'></i>
           </div>
-          <div className={css.close_comment_box}>
+          <div
+            className={`${css.close_comment_box} ${css.comment_button}`}
+            onClick={this.closeCommentBox}
+          >
             <i class='fas fa-times'></i>
           </div>
         </div>
       );
-    }
+    } else commentBox = null;
 
     return (
       <div className={css.intro}>
@@ -213,7 +228,7 @@ export class FriendRoom extends Component {
           <div className={css.add_comment_container}>
             {' '}
             {/*  callback function */}
-            <button className={css.add_comment}>
+            <button className={css.add_comment} onClick={this.openCommentBox}>
               Write comment
               <i class={`fas fa-comment ${css.comment_icon}`}></i>
             </button>
