@@ -613,6 +613,20 @@ app.get('/personalRoom/:id/friends/my-friends', (req, res) => {
     }
   );
 });
+// add comment
+app.post('/personalRoom/:id/friends/friend-room/:friend_id', (req, res) => {
+  console.log(req.body);
+  let newComment = {
+    side_user_id: req.params.friend_id,
+    user_id: req.params.id,
+    content: req.body.comment,
+    date_created: new Date(),
+  };
+  connection.query(`Insert Into Comment set ?`, newComment, (err, result) => {
+    if (err) console.log(err);
+    else res.send(result);
+  });
+});
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });
