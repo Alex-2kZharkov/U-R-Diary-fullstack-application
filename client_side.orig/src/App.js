@@ -5,7 +5,7 @@ import Registration from './Components/Registration';
 import PersonalRoom from './Components/PersonalRoom';
 import Notifications from './Components/Notifications/Notifications';
 import Friends from './Components/Friends/Friends';
-import Comments from './Components/Comments';
+import Comments from './Components/Comments/Comments';
 import Autenticattion from './Components/Autenticattion';
 import NewRecordPage from './Components/NewRecord/NewRecordPage';
 import EditRecordPage from './Components/EditRecord/EditRecordPage';
