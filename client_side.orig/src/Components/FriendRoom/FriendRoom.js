@@ -253,7 +253,7 @@ export class FriendRoom extends Component {
             {/*  callback function */}
             <button className={css.add_comment} onClick={this.openCommentBox}>
               Write comment
-              <i class={`fas fa-comment ${css.comment_icon}`}></i>
+              <i className={`fas fa-comment ${css.comment_icon}`}></i>
             </button>
           </div>
           {commentBox}

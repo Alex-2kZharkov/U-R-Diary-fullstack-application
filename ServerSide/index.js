@@ -607,10 +607,17 @@ app.put('/personalRoom/:id/notification/:notif_id', (req, res) => {
 // getting notifications and their authors
 app.get('/personalRoom/:id/friends/my-friends', (req, res) => {
   connection.query(
-    `Select User.id, User.nickname, User.image,User.date as user_date, Notification.id as notif_id , Notification.is_accepted from  Notification Inner Join User on Notification.author_id=User.id Where Notification.recepient_id=${req.params.id} and Notification.is_accepted='1'`,
+    `Select User.id, User.nickname, User.image,User.date as user_date, Notification.id as notif_id , Notification.is_accepted from  Notification Inner Join User on Notification.author_id=User.id Where Notification.recepient_id=${req.params.id}  and Notification.is_accepted='1'`,
     (err, result) => {
-      console.log('FRIENDS', result);
-      res.send(result);
+      console.log('FRIENDS AS RECEPIENT', result);
+      connection.query(
+        `Select User.id, User.nickname, User.image,User.date as user_date, Notification.id as notif_id , Notification.is_accepted from  Notification Inner Join User on Notification.recepient_id=User.id Where Notification.author_id=${req.params.id} and Notification.is_accepted='1'`,
+        (err, result2) => {
+          console.log('FRIENDS AS AUTHOR', result2);
+          res.send(result.concat(result2));
+        }
+      );
+      /*  res.send(result); */
     }
   );
 });
