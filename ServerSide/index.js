@@ -488,7 +488,7 @@ app.get('/personalRoom/:id/notificatios/all', (req, res) => {
 app.get('/personalRoom/:id/:section', (req, res) => {
   console.log('here', req.params);
   connection.query(
-    `Select nickname from User where id=${req.params.id}`,
+    `Select nickname, image from User where id=${req.params.id}`,
     (err, result) => {
       if (err) {
         console.log(err);
@@ -632,7 +632,7 @@ app.post('/personalRoom/:id/friends/friend-room/:friend_id', (req, res) => {
 app.get('/personalRoom/:id/comments/my-comments', (req, res) => {
   console.log('MY COMMENTS', req.params);
   connection.query(
-    ` Select Comment.*, User.nickname, User.image from Comment Inner Join User on Comment.user_id=User.id Where Comment.user_id=${req.params.id}`,
+    ` Select Comment.*, User.nickname, User.image from Comment Inner Join User on Comment.side_user_id=User.id Where Comment.user_id=${req.params.id}`,
     (err, result) => {
       if (err) {
         console.log(err);
@@ -646,7 +646,7 @@ app.get('/personalRoom/:id/comments/my-comments', (req, res) => {
 app.get('/personalRoom/:id/comments/side-user-comments', (req, res) => {
   console.log('MY COMMENTS', req.params);
   connection.query(
-    ` Select Comment.*, User.nickname, User.image from Comment Inner Join User on Comment.side_user_id=User.id Where Comment.side_user_id=${req.params.id}`,
+    ` Select Comment.*, User.nickname, User.image from Comment Inner Join User on Comment.user_id=User.id Where Comment.side_user_id=${req.params.id}`,
     (err, result) => {
       if (err) {
         console.log(err);
@@ -657,6 +657,23 @@ app.get('/personalRoom/:id/comments/side-user-comments', (req, res) => {
     }
   );
 });
+// delete side user comment
+app.delete(
+  '/personalRoom/:id/comments/delete-comment/:comment_id',
+  (req, res) => {
+    console.log('DELETE COMMENTS', req.params);
+    connection.query(
+      ` DELETE From Comment Where comment_id='${req.params.comment_id}'`,
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send('Comment has deleted');
+        }
+      }
+    );
+  }
+);
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });

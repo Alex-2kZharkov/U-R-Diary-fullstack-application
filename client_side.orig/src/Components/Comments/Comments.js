@@ -14,6 +14,22 @@ class Comments extends Component {
     };
   }
 
+  deleteSideUserComment = (commentId) => {
+    axios
+      .delete(
+        `http://localhost:4000/personalRoom/${this.props.match.params.id}/comments/delete-comment/${commentId}`
+      )
+      .then((response) => {
+        console.log(response.data);
+        let index = this.state.sideUsercomments.indexOf(
+          this.state.sideUsercomments.find((item) => item.comment_id == commentId)
+        );
+        this.state.sideUsercomments.splice(index, 1);
+        this.setState({
+          sideUsercomments: this.state.sideUsercomments,
+        });
+      });
+  };
   componentDidMount() {
     axios
       .get(
@@ -49,7 +65,7 @@ class Comments extends Component {
       myComments = this.state.myComments.map((item, index) => (
         <MyComment
           key={index}
-          image={item.image}
+          image={this.props.userImage}
           nickname='You'
           date={item.date_created}
           content={item.content}
@@ -63,6 +79,7 @@ class Comments extends Component {
           nickname={item.nickname}
           date={item.date_created}
           content={item.content}
+          deleteSideUserComment={this.deleteSideUserComment}
         />
       ));
       entryMsg = (
@@ -78,7 +95,7 @@ class Comments extends Component {
       myComments = this.state.myComments.map((item, index) => (
         <MyComment
           key={index}
-          image={item.image}
+          image={this.props.userImage}
           nickname='You'
           date={item.date_created}
           content={item.content}
@@ -102,6 +119,7 @@ class Comments extends Component {
           nickname={item.nickname}
           date={item.date_created}
           content={item.content}
+          deleteSideUserComment={this.deleteSideUserComment}
         />
       ));
       entryMsg = (

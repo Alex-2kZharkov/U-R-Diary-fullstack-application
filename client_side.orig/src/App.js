@@ -19,6 +19,7 @@ class App extends Component {
     this.state = {
       id: null,
       userNickname: '',
+      userImage: '',
     };
   }
   setUserNickname = (section, id) => {
@@ -31,6 +32,7 @@ class App extends Component {
         this.setState(
           {
             userNickname: response.data[response.data.length - 1].nickname,
+            userImage: response.data[response.data.length - 1].image
           },
           () => this.state.userNickname
         );
@@ -96,9 +98,9 @@ class App extends Component {
               />
             )}
           />
-           <Route
+          <Route
             path='/personalRoom/:id/friends/friend-room/:friend_id'
-            render={(props) => ( 
+            render={(props) => (
               <FriendRoom
                 {...props}
                 setUserNickname={this.setUserNickname}
@@ -113,6 +115,7 @@ class App extends Component {
                 {...props}
                 setUserNickname={this.setUserNickname}
                 userNickname={this.state.userNickname}
+                userImage={this.state.userImage}
               />
             )}
           />

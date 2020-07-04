@@ -27,7 +27,7 @@ function Comment(props) {
         </div>
         <button
           className={css.delete}
-          onClick={() => props.deleteRecord(props.id)}
+          onClick={() => props.deleteSideUserComment(props.commentId)}
         >
           <i className='fas fa-trash-alt'></i>
         </button>
