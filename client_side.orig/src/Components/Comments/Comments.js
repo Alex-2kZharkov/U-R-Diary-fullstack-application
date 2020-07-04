@@ -27,9 +27,98 @@ class Comments extends Component {
           () => console.log(this.state.myComments)
         );
       });
+    axios
+      .get(
+        `http://localhost:4000/personalRoom/${this.props.match.params.id}/comments/side-user-comments`
+      )
+      .then((response) => {
+        this.setState(
+          {
+            sideUsercomments: response.data,
+          },
+          () => console.log(this.state.sideUsercomments)
+        );
+      });
     this.props.setUserNickname('comments', this.props.match.params.id);
   }
   render() {
+    let myComments = null,
+      sideUserComments = null,
+      entryMsg = null;
+    if (this.state.myComments.length && this.state.sideUsercomments.length) {
+      myComments = this.state.myComments.map((item, index) => (
+        <MyComment
+          key={index}
+          image={item.image}
+          nickname='You'
+          date={item.date_created}
+          content={item.content}
+        />
+      ));
+      sideUserComments = this.state.sideUsercomments.map((item, index) => (
+        <Comment
+          commentId={item.comment_id}
+          key={index}
+          image={item.image}
+          nickname={item.nickname}
+          date={item.date_created}
+          content={item.content}
+        />
+      ));
+      entryMsg = (
+        <div className={`${css.entry_message} ${css.modification}`}>
+          {' '}
+          Uh, your friends left comments for you. Here they come!
+        </div>
+      );
+    } else if (
+      this.state.myComments.length &&
+      !this.state.sideUsercomments.length
+    ) {
+      myComments = this.state.myComments.map((item, index) => (
+        <MyComment
+          key={index}
+          image={item.image}
+          nickname='You'
+          date={item.date_created}
+          content={item.content}
+        />
+      ));
+      entryMsg = (
+        <div className={`${css.entry_message} ${css.modification}`}>
+          {' '}
+          Uh, your friends left comments for you. Here they come!
+        </div>
+      );
+    } else if (
+      !this.state.myComments.length &&
+      this.state.sideUsercomments.length
+    ) {
+      sideUserComments = this.state.sideUsercomments.map((item, index) => (
+        <Comment
+          commentId={item.comment_id}
+          key={index}
+          image={item.image}
+          nickname={item.nickname}
+          date={item.date_created}
+          content={item.content}
+        />
+      ));
+      entryMsg = (
+        <div className={`${css.entry_message} ${css.modification}`}>
+          {' '}
+          Uh, your friends left comments for you. Here they come!
+        </div>
+      );
+    } else {
+      entryMsg = (
+        <div className={`${css.entry_message} ${css.modification}`}>
+          Looks like you haven't got any comments. Go to <span>friends</span>{' '}
+          section, fing some good friends, and we sure they will share their
+          thoughts about your diary
+        </div>
+      );
+    }
     return (
       <div className={css.intro}>
         <PersonalRoomHeader
@@ -43,38 +132,9 @@ class Comments extends Component {
           <div className={`${css.icon} ${css.right}`}>
             <i className='fas fa-comments'></i>
           </div>
-          {/* <div className={`${css.entry_message} ${css.modification}`}>
-            Looks like you haven't got any comments. Go to <span>friends</span>{' '}
-            section, fing some good friends, and we sure they will share their
-            thoughts about your diary
-          </div> */}
-          <div className={`${css.entry_message} ${css.modification}`}>
-            Uh, your friends left comments for you. Here they come!
-          </div>
-          <Comment
-            image='https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg'
-            nickname='Alex'
-            date={new Date()}
-            content='My comment'
-          />
-          <MyComment
-            image='https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg'
-            nickname='Alex'
-            date={new Date()}
-            content='My comment'
-          />
-          <Comment
-            image='https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg'
-            nickname='Alex'
-            date={new Date()}
-            content='My comment'
-          />
-          <Comment
-            image='https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg'
-            nickname='Alex'
-            date={new Date()}
-            content='My comment'
-          />
+          {entryMsg}
+          {sideUserComments}
+          {myComments}
         </div>
       </div>
     );

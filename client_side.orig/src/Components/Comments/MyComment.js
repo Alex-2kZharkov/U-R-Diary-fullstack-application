@@ -8,10 +8,7 @@ function MyComment(props) {
       <div className={css.data_container}>
         <div className={css.nickname}>
           <span className={css.nickname_name}>{props.nickname}</span> wrote at{' '}
-          <span className={css.join_date}>
-            {' '}
-            {props.date.toLocaleString()}
-          </span>{' '}
+          <span className={css.join_date}> {new Date(props.date).toLocaleString()}</span>{' '}
           <div className={css.comment_content}>{`\t${props.content}`}</div>
         </div>
 

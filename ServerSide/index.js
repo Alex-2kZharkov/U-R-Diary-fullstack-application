@@ -643,6 +643,20 @@ app.get('/personalRoom/:id/comments/my-comments', (req, res) => {
     }
   );
 });
+app.get('/personalRoom/:id/comments/side-user-comments', (req, res) => {
+  console.log('MY COMMENTS', req.params);
+  connection.query(
+    ` Select Comment.*, User.nickname, User.image from Comment Inner Join User on Comment.side_user_id=User.id Where Comment.side_user_id=${req.params.id}`,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('MY COMMENTS2', result);
+        res.send(result);
+      }
+    }
+  );
+});
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });

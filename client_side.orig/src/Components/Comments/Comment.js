@@ -19,7 +19,10 @@ function Comment(props) {
             {props.nickname}
           </Link>{' '}
           wrote at{' '}
-          <span className={css.join_date}> {props.date.toLocaleString()}</span>{' '}
+          <span className={css.join_date}>
+            {' '}
+            {new Date(props.date).toLocaleString()}
+          </span>{' '}
           :<div className={css.comment_content}>{`\t${props.content}`}</div>
         </div>
         <button
