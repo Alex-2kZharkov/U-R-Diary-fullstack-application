@@ -3,8 +3,17 @@ import PersonalRoomHeader from '../PersonalRoomHeader';
 import css from './Comments.module.css';
 import Comment from './Comment';
 class Comments extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       comments: []
+    }
+  }
+  
   componentDidMount() {
     this.props.setUserNickname('comments', this.props.match.params.id);
+    
   }
   render() {
     return (
@@ -21,11 +30,34 @@ class Comments extends Component {
             <i className='fas fa-comments'></i>
           </div>
           <div className={`${css.entry_message} ${css.modification}`}>
-            Looks like you haven't got any comments. Go to <span>friends</span> section, fing
-            some good friends, and we sure they will share their thoughts about
-            your diary
-            <Comment image='https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg' nickname='Alex' date={new Date()} content='My comment'/>
+            Looks like you haven't got any comments. Go to <span>friends</span>{' '}
+            section, fing some good friends, and we sure they will share their
+            thoughts about your diary
           </div>
+          <Comment
+            image='https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg'
+            nickname='Alex'
+            date={new Date()}
+            content='My comment'
+          />
+          <Comment
+            image='https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg'
+            nickname='Alex'
+            date={new Date()}
+            content='My comment'
+          />
+          <Comment
+            image='https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg'
+            nickname='Alex'
+            date={new Date()}
+            content='My comment'
+          />
+          <Comment
+            image='https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg'
+            nickname='Alex'
+            date={new Date()}
+            content='My comment'
+          />
         </div>
       </div>
     );

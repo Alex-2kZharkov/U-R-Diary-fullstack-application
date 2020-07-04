@@ -22,7 +22,12 @@ function Comment(props) {
           <span className={css.join_date}> {props.date.toLocaleString()}</span>{' '}
           :<div className={css.comment_content}>{`\t${props.content}`}</div>
         </div>
-
+        <button
+          className={css.delete}
+          onClick={() => props.deleteRecord(props.id)}
+        >
+          <i className='fas fa-trash-alt'></i>
+        </button>
         {/* {days === 0 ? 'Joined today' : `Joined ${days} days ago`} */}
       </div>
     </div>

@@ -66,19 +66,20 @@
     transition: color .0s linear;
 }
 
-.download_modif {
-    top: 5rem;
-    padding: 12px 20px 9.5px 20px;
-    background-color: #F20056;
-    color: #ffffff;
-    cursor: pointer;
-    outline: none;
-}
+
 
 .delete_modif {
     top: 10rem;
     padding: 11px 17px;
     background-color: #FFDE00;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+.download_modif {
+    top: 5rem;
+    padding: 12px 20px 9.5px 20px;
+    background-color: #F20056;
     color: #ffffff;
     cursor: pointer;
     outline: none;
