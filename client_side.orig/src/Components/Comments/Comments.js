@@ -22,7 +22,9 @@ class Comments extends Component {
       .then((response) => {
         console.log(response.data);
         let index = this.state.sideUsercomments.indexOf(
-          this.state.sideUsercomments.find((item) => item.comment_id == commentId)
+          this.state.sideUsercomments.find(
+            (item) => item.comment_id == commentId
+          )
         );
         this.state.sideUsercomments.splice(index, 1);
         this.setState({
@@ -67,6 +69,7 @@ class Comments extends Component {
           key={index}
           image={this.props.userImage}
           nickname='You'
+          to={item.nickname}
           date={item.date_created}
           content={item.content}
         />
@@ -96,6 +99,7 @@ class Comments extends Component {
         <MyComment
           key={index}
           image={this.props.userImage}
+          to={item.nickname}
           nickname='You'
           date={item.date_created}
           content={item.content}
