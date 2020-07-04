@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PersonalRoomHeader from '../PersonalRoomHeader';
 import css from './Comments.module.css';
+import Comment from './Comment';
 class Comments extends Component {
   componentDidMount() {
     this.props.setUserNickname('comments', this.props.match.params.id);
@@ -13,8 +14,18 @@ class Comments extends Component {
           id={this.props.match.params.id}
         />
         <div className={css.comments_container}>
-          <div className={`${css.icon} ${css.left}`}><i class="fas fa-comments"></i></div>
-          <div className={`${css.icon} ${css.right}`}><i class="fas fa-comments"></i></div>
+          <div className={`${css.icon} ${css.left}`}>
+            <i className='fas fa-comments'></i>
+          </div>
+          <div className={`${css.icon} ${css.right}`}>
+            <i className='fas fa-comments'></i>
+          </div>
+          <div className={`${css.entry_message} ${css.modification}`}>
+            Looks like you haven't got any comments. Go to <span>friends</span> section, fing
+            some good friends, and we sure they will share their thoughts about
+            your diary
+            <Comment image='https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg' nickname='Alex' date={new Date()} content='My comment'/>
+          </div>
         </div>
       </div>
     );

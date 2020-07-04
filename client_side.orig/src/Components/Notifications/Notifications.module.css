@@ -115,7 +115,6 @@
 
 .friendship_request:hover {
     text-shadow: 5px 5px 10px #fff, -5px -5px 10px #fff;
-    /* box-shadow: 5px 5px 10px #005190, -5px -5px 10px #005190; */
     background-color: #8826eb;
     color: #fff;
 }
