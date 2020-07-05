@@ -7,7 +7,8 @@ function Friend(props) {
     Math.abs(new Date(new Date().toISOString()) - new Date(props.date)) /
       (1000 * 60 * 60 * 24)
   );
-  console.log(props.ownerId, props.id);
+
+  console.log('NOTIF ID', props.notif_id);
   return (
     <div>
       <div className={css.required_user}>
@@ -32,6 +33,12 @@ function Friend(props) {
             You are friends <i className='fas fa-check-circle'></i>
           </div>
         </div>
+        <button
+          className={css.delete}
+          onClick={() => props.deleteFriend(props.notif_id)}
+        >
+          <i className='fas fa-trash-alt'></i>
+        </button>
       </div>
     </div>
   );

@@ -48,6 +48,20 @@ export class Friends extends Component {
         console.log(err);
       });
   };
+  deleteFriend = (friendId) => {
+    Axios.delete(
+      `http://localhost:4000/personalRoom/${this.props.match.params.id}/friends/my-friends/delete/${friendId}`
+    ).then((response) => {
+      console.log(response.data);
+      let index = this.state.friends.indexOf(
+        this.state.friends.find((item) => item.notif_id == friendId)
+      );
+      this.state.friends.splice(index, 1);
+      this.setState({
+        friends: this.state.friends,
+      });
+    });
+  };
   componentDidMount() {
     this.props.setUserNickname('friends', this.props.match.params.id);
     Axios.get(
@@ -59,6 +73,7 @@ export class Friends extends Component {
       });
     });
   }
+
   render() {
     return (
       <div className={css.container}>
@@ -137,6 +152,8 @@ export class Friends extends Component {
               <div className={css.entry_message}>Your friends are here</div>
               {this.state.friends.map((item, index) => (
                 <Friend
+                  notif_id={item.notif_id}
+                  deleteFriend={this.deleteFriend}
                   key={index}
                   id={item.id}
                   ownerId={this.props.match.params.id}

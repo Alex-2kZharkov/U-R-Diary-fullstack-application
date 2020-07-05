@@ -687,6 +687,24 @@ app.delete(
     );
   }
 );
+// delete friend
+app.delete(
+  '/personalRoom/:id/friends/my-friends/delete/:friend_id',
+  
+  (req, res) => {
+    console.log('DELETE FRIENDS', req.params);
+    connection.query(
+      ` DELETE From Notification Where id='${req.params.friend_id}'`,
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send('Friend has deleted');
+        }
+      }
+    );
+  }
+);
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });

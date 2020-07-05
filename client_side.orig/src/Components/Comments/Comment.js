@@ -3,7 +3,6 @@ import css from './Comment.module.css';
 import { Link } from 'react-router-dom';
 
 function Comment(props) {
-  console.log(props.myId, '', props.sideUserId);
   return (
     <div className={css.comment}>
       <img
@@ -32,7 +31,7 @@ function Comment(props) {
         >
           <i className='fas fa-trash-alt'></i>
         </button>
-        {/* {days === 0 ? 'Joined today' : `Joined ${days} days ago`} */}
+      
       </div>
     </div>
   );
