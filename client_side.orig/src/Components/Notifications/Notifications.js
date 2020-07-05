@@ -60,17 +60,17 @@ export class Notifications extends Component {
                   Here comes your notifications
                 </div>
                 {this.state.notifications.map((item, index) => (
-                <Notification
-                  key={index}
-                  user_id={this.props.match.params.id}
-                  author_id={item.id}
-                  nickname={item.nickname}
-                  image={item.image}
-                  notif_id={item.notif_id}
-                  date={item.date}
-                  isAccepted={item.is_accepted}
-                  updateNotification={this.updateNotification}
-                />
+                  <Notification
+                    key={index}
+                    user_id={this.props.match.params.id}
+                    author_id={item.id}
+                    nickname={item.nickname}
+                    image={item.image}
+                    notif_id={item.notif_id}
+                    date={item.date}
+                    isAccepted={item.is_accepted}
+                    updateNotification={this.updateNotification}
+                  />
                 ))}
               </>
             ) : (
@@ -82,6 +82,7 @@ export class Notifications extends Component {
             )}
           </div>
         </div>
+        <div className={`${css.bell} fa fa-bell`}></div>
       </div>
     );
   }

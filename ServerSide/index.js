@@ -690,7 +690,7 @@ app.delete(
 // delete friend
 app.delete(
   '/personalRoom/:id/friends/my-friends/delete/:friend_id',
-  
+
   (req, res) => {
     console.log('DELETE FRIENDS', req.params);
     connection.query(
