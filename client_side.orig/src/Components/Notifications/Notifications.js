@@ -53,19 +53,34 @@ export class Notifications extends Component {
         />
         <div className={css.external_container}>
           <div className={css.inner_container}>
-            {this.state.notifications.map((item, index) => (
-              <Notification
-                key={index}
-                user_id={this.props.match.params.id}
-                author_id={item.id}
-                nickname={item.nickname}
-                image={item.image}
-                notif_id={item.notif_id}
-                date={item.date}
-                isAccepted={item.is_accepted}
-                updateNotification={this.updateNotification}
-              />
-            ))}
+            {this.state.notifications.length ? (
+              this.state.notifications.map((item, index) => (
+                <>
+                  {' '}
+                  <div className={`${css.entry_message} ${css.modification}`}>
+                    {' '}
+                    Here comes your notifications
+                  </div>
+                  <Notification
+                    key={index}
+                    user_id={this.props.match.params.id}
+                    author_id={item.id}
+                    nickname={item.nickname}
+                    image={item.image}
+                    notif_id={item.notif_id}
+                    date={item.date}
+                    isAccepted={item.is_accepted}
+                    updateNotification={this.updateNotification}
+                  />{' '}
+                </>
+              ))
+            ) : (
+              <div className={`${css.entry_message} ${css.modification}`}>
+                {' '}
+                You haven't got any notifications yet. You'll see them as soon
+                as another user will send to you friendship request
+              </div>
+            )}
           </div>
         </div>
       </div>
