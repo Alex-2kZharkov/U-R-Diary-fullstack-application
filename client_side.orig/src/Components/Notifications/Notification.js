@@ -59,7 +59,7 @@ export class Notification extends React.Component {
     } else {
       block = (
         <div className={css.acceptance_message}>
-          Invitation has been accepted <i className='fas fa-check-circle'></i>
+          Accepted. You are friends now <i className='fas fa-check-circle'></i>
         </div>
       );
     }

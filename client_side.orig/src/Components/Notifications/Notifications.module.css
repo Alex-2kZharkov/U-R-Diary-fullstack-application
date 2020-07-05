@@ -126,7 +126,7 @@
 
 .acceptance_message {
 
-    width: 285px;
+    width: 300px;
     padding: 7px 12px 7px 12px;
     background-color: #005190;
     font-size: 20px;
@@ -162,6 +162,7 @@
     text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
     font-size: 38px;
     margin-bottom: 50px;
+    z-index: 5;
 }
 
 .entry_message span {

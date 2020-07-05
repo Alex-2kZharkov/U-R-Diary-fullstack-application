@@ -478,8 +478,14 @@ app.get('/personalRoom/:id/notificatios/all', (req, res) => {
   connection.query(
     `Select User.id, User.nickname, User.image, Notification.id as notif_id, Notification.date, Notification.is_accepted from  Notification Inner Join User on Notification.author_id=User.id Where Notification.recepient_id=${req.params.id}`,
     (err, result) => {
-      console.log('Sub query', result);
-      res.send(result);
+      console.log('NOTIFICATIONS', result);
+      connection.query(
+        `Select User.id, User.nickname, User.image, Notification.id as notif_id, Notification.date, Notification.is_accepted from  Notification Inner Join User on Notification.recepient_id=User.id Where Notification.author_id=${req.params.id} and Notification.is_accepted='1'`,
+        (err, result2) => {
+          console.log('NOTIFICATIONS AS AUTHOR', result2);
+          res.send(result.concat(result2));
+        }
+      );
     }
   );
 });
