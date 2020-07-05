@@ -76,6 +76,8 @@ class Comments extends Component {
       ));
       sideUserComments = this.state.sideUsercomments.map((item, index) => (
         <Comment
+          myId={this.props.match.params.id}
+          sideUserId={item.user_id}
           commentId={item.comment_id}
           key={index}
           image={item.image}

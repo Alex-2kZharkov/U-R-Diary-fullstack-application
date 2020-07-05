@@ -3,6 +3,7 @@ import css from './Comment.module.css';
 import { Link } from 'react-router-dom';
 
 function Comment(props) {
+  console.log(props.myId, '', props.sideUserId);
   return (
     <div className={css.comment}>
       <img
@@ -14,7 +15,7 @@ function Comment(props) {
         <div className={css.nickname}>
           <Link
             className={css.nickname_link}
-            to={`/personalRoom/${props.ownerId}/friends/friend-room/${props.id}`}
+            to={`/personalRoom/${props.myId}/friends/friend-room/${props.sideUserId}`}
           >
             {props.nickname}
           </Link>{' '}

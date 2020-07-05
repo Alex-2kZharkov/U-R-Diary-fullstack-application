@@ -200,13 +200,13 @@ export class FriendRoom extends Component {
             className={`${css.send_comment} ${css.comment_button}`}
             onClick={this.addComment}
           >
-            <i class='far fa-paper-plane'></i>
+            <i className='far fa-paper-plane'></i>
           </div>
           <div
             className={`${css.close_comment_box} ${css.comment_button}`}
             onClick={this.closeCommentBox}
           >
-            <i class='fas fa-times'></i>
+            <i className='fas fa-times'></i>
           </div>
         </div>
       );
