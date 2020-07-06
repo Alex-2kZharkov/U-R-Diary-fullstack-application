@@ -4,7 +4,6 @@ import axios from 'axios';
 
 function SearchResult(props) {
   const [isSended, reactOnSending] = useState(false);
-  console.log(isSended);
   let message;
   if (props.isHavingReq) {
     message = (

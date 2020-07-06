@@ -536,7 +536,7 @@ app.get('/personalRoom/:id/friends/required-users', async (req, res) => {
         `Select * from Notification Where author_id=${req.params.id} and recepient_id=${users[i].id}`,
         (err, result) => {
           if (result.length) {
-            if (result[0].is_accepted == 0) {
+            if (result[result.length - 1].is_accepted == 0) {
               new_users.push({
                 id: users[i].id,
                 nickname: users[i].nickname,
@@ -549,6 +549,20 @@ app.get('/personalRoom/:id/friends/required-users', async (req, res) => {
                     (1000 * 60 * 60 * 24)
                 ),
                 isHavingReq: false,
+              });
+            } else if (result[0].is_accepted == 1) {
+              new_users.push({
+                id: users[i].id,
+                nickname: users[i].nickname,
+                image: users[i].image,
+                days: Math.floor(
+                  Math.abs(
+                    new Date(new Date().toISOString()) -
+                      new Date(users[i].date.toISOString())
+                  ) /
+                    (1000 * 60 * 60 * 24)
+                ),
+                isHavingReq: true,
               });
             } else {
               new_users.push({
