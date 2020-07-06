@@ -10,6 +10,7 @@
     position: relative;
     top: 8rem;
     padding: 1px 0;
+    margin-left: 2%;
     width: 60%;
     background-color: #8e4620;
     border-radius: 30px;
@@ -44,14 +45,6 @@
     background-size: 200px;
 }
 
-.border::after {
-    display: inline-block;
-    content: '';
-
-    background-color: teal;
-
-}
-
 .required_notification:last-child {
     margin-bottom: 0;
 }
@@ -68,6 +61,7 @@
 
 .data_container {
     flex-basis: 80%;
+ 
 }
 
 .nickname {
@@ -102,7 +96,7 @@
     background-color: #005190;
     font-size: 16px;
     font-family: Arial, Times, 'Times New Roman', serif;
-    color: #0080ff;
+    color: #fff;
     cursor: pointer;
     border-top: solid 1.5px #000000;
     border-left: solid 1.5px #000000;
@@ -114,9 +108,9 @@
 }
 
 .friendship_request:hover {
-    text-shadow: 5px 5px 10px #0080ff, -5px -5px 10px #0080ff;
+    text-shadow: 5px 5px 10px #fff, -5px -5px 10px #fff;
     background-color: #8826eb;
-    color: #0080ff;
+    color: #fff;
 }
 
 .reject_notification {
@@ -131,7 +125,7 @@
     background-color: #005190;
     font-size: 20px;
     font-family: Arial, Times, 'Times New Roman', serif;
-    color: #0080ff;
+    color: #fff;
     border-top: solid 1.5px #000000;
     border-left: solid 1.5px #000000;
     border-right: solid 1.5px #333;
@@ -146,7 +140,7 @@
     background-color: #ed8240;
     font-size: 20px;
     font-family: Arial, Times, 'Times New Roman', serif;
-    color: #0080ff;
+    color: #fff;
     border-top: solid 1.5px #000000;
     border-left: solid 1.5px #000000;
     border-right: solid 1.5px #333;
@@ -177,7 +171,7 @@
     font-size: 450px;
     position: fixed;
     top: 0.6em;
-    right: 1.1em;
+    right: 1em;
     color: #ff7b00;
     text-shadow: 5px 0 0 #0080ff, -5px 0 0 #0080ff, 0 5px 0 #0080ff, 0 -5px 0 #0080ff,
         2.5px 2.5px #0080ff, -2.5px -2.5px 0 #0080ff, 2.5px -2.5px 0 #0080ff, -2.5px 2.5px 0 #0080ff;

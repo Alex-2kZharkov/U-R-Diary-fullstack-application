@@ -41,6 +41,8 @@
 
 .data_container {
     margin-left: 20px;
+    width: 67.5%;
+
 }
 
 .nickname {
@@ -80,6 +82,7 @@
     font-style: italic;
     color: #fff;
     text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 0.5px 0.5px #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;
+
 }
 
 .delete {

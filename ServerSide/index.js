@@ -490,7 +490,7 @@ app.get('/personalRoom/:id/notificatios/all', (req, res) => {
   );
 });
 
-// get just user nickname
+// get just user nickname from different sections
 app.get('/personalRoom/:id/:section', (req, res) => {
   console.log('here', req.params);
   connection.query(
@@ -536,19 +536,35 @@ app.get('/personalRoom/:id/friends/required-users', async (req, res) => {
         `Select * from Notification Where author_id=${req.params.id} and recepient_id=${users[i].id}`,
         (err, result) => {
           if (result.length) {
-            new_users.push({
-              id: users[i].id,
-              nickname: users[i].nickname,
-              image: users[i].image,
-              days: Math.floor(
-                Math.abs(
-                  new Date(new Date().toISOString()) -
-                    new Date(users[i].date.toISOString())
-                ) /
-                  (1000 * 60 * 60 * 24)
-              ),
-              isHavingReq: true,
-            });
+            if (result[0].is_accepted == 0) {
+              new_users.push({
+                id: users[i].id,
+                nickname: users[i].nickname,
+                image: users[i].image,
+                days: Math.floor(
+                  Math.abs(
+                    new Date(new Date().toISOString()) -
+                      new Date(users[i].date.toISOString())
+                  ) /
+                    (1000 * 60 * 60 * 24)
+                ),
+                isHavingReq: false,
+              });
+            } else {
+              new_users.push({
+                id: users[i].id,
+                nickname: users[i].nickname,
+                image: users[i].image,
+                days: Math.floor(
+                  Math.abs(
+                    new Date(new Date().toISOString()) -
+                      new Date(users[i].date.toISOString())
+                  ) /
+                    (1000 * 60 * 60 * 24)
+                ),
+                isHavingReq: true,
+              });
+            }
             if (i == users.length - 1) resolve();
           } else {
             new_users.push({
@@ -592,7 +608,7 @@ app.post('/personalRoom/:id/friends/required-user/:recepient', (req, res) => {
     }
   });
 });
-// update notification status due user desicion
+// update notification status due user decision
 app.put('/personalRoom/:id/notification/:notif_id', (req, res) => {
   console.log('IT WORKS ', req.body, req.params);
   connection.query(
