@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Cambria, 'Kaushan Script', 'Quite Magical', Cartoonish, Montserrat, 'Segoe UI', 'Roboto', 'Oxygen','Marck Script', Cochin, Lato,
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif, 'Times Italic';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: url('https://www.myfreetextures.com/wp-content/uploads/2014/10/seamless-wood-planks-3.jpg');
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

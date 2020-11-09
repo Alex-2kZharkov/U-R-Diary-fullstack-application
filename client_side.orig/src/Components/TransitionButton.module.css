@@ -1,0 +1,37 @@
+.autenticate {
+    position: fixed;
+    right: 1%;
+    top: 2.5%;
+    z-index: 5;
+}
+
+.autenticate a {
+    padding: 10px 26px;
+    border-radius: 20px;
+    background-color: #f0ac4e;
+    font-family: Cambria, sans-serif;
+    font-size: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: background .0s linear;
+    transition: text-shadow .0s ease;
+    outline: none;
+}
+
+.autenticate a:hover {
+    cursor: pointer;
+    text-shadow: 5px 5px 10px #ff9500, -4px -4px 9px #ff9500;
+    background-color: #f0ac4eb4;
+
+}
+
+.autenticate_icon {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.link {
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+}

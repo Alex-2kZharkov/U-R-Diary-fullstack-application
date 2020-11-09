@@ -1,0 +1,166 @@
+.intro {
+    background: url('https://www.myfreetextures.com/wp-content/uploads/2014/10/seamless-wood-planks-3.jpg');
+    background-size: 100%;
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.title {
+    font-size: 40px;
+    margin: 0px 0px 0px 40px;
+    padding: 0 10%;
+    padding-top: 100px;
+    line-height: 1.1;
+    text-align: center;
+    text-shadow: 0 1px 0 rgb(204, 204, 204),
+        0 2px 0 #ca9e9e,
+        0 3px 0 rgb(192, 136, 136),
+        0 4px 0 #be8989,
+        0 5px 0 rgb(172, 127, 127),
+        0 6px 1px rgba(0, 0, 0, .1),
+        0 0 5px rgba(0, 0, 0, .1),
+        0 1px 3px rgba(0, 0, 0, .3),
+        0 3px 5px rgba(0, 0, 0, .2),
+        0 5px 10px rgba(0, 0, 0, .25),
+        0 10px 10px rgba(0, 0, 0, .2),
+        0 20px 20px rgba(0, 0, 0, .15);
+}
+
+.title span {
+    color: #0080ff;
+}
+
+.download_all_button {}
+
+.download_all_button:hover {
+    text-shadow: 5px 5px 10px #0080ff, -5px -5px 10px #0080ff;
+    box-shadow: 5px 5px 10px #0080ff, -5px -5px 10px #0080ff;
+}
+
+.add_comment_container {
+    position: fixed;
+    right: 0.5%;
+    bottom: 1em;
+    cursor: pointer;
+    color: #ffffff;
+    transition: all 0s ease 0;
+}
+
+.add_comment {
+    padding: 10px 9px;
+    border-radius: 20px;
+    background-color: #F20056;
+    font-family: Cambria, sans-serif;
+    font-size: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: all .2s ease 0s;
+    outline: none;
+    cursor: pointer;
+    transition: all 0s ease 0;
+}
+
+.add_comment:hover {
+    background-color: #005190;
+}
+
+.add_comment_container:hover {
+    border: solid 2px #d7d6d7;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px #d7d6d7, -5px -5px 10px #d7d6d7;
+}
+
+.add_comment_container:hover .add_comment {
+    text-shadow: 5px 5px 10px #d7d6d7, -5px -5px 10px #d7d6d7;
+}
+
+.comment_icon {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.comment_box {
+    position: fixed;
+    right: -0.5em;
+    bottom: 4em;
+    font-size: 26px;
+    display: flex;
+    align-items: flex-end;
+    width: 23%;
+}
+
+.comment_field_box {
+    width: 250px;
+}
+
+.comment_field {
+    width: 245px;
+    font-size: 26px;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 rgba(255, 255, 2555);
+    border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+    border-image: none;
+    border-radius: 6px 6px 6px 6px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    color: #005190;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    line-height: 1.4em;
+    padding: 5px 8px;
+    transition: all 0.2s ease 0s;
+    outline: none;
+}
+
+.comment_field:focus {
+    background: none repeat scroll 0 0 #005590;
+    color: #d7d7d7
+}
+
+.comment_field:focus::placeholder {
+    color: #d7d7d7
+}
+
+.comment_button {
+    flex-basis: 10%;
+    background-color: #F20056;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    transition: all .2s ease 0s;
+}
+
+.comment_button:hover {
+    background-color: #005190;
+    text-shadow: 5px 5px 10px #d7d6d7, -5px -5px 10px #d7d6d7;
+    box-shadow: 5px 5px 10px #d7d6d7, -5px -5px 10px #d7d6d7;
+}
+
+.send_comment {
+    padding: 5px 4px 8px 3px;
+    margin-left: 20px;
+}
+
+.close_comment_box {
+
+    padding: 7px 2.5px 6px 2px;
+    margin-left: 10px;
+}
+
+.msgAfterComSending {
+    position: fixed;
+    bottom: 3em;
+    right: 0.2em;
+    color: #fff;
+    font-size: 30px;
+    text-shadow: 2px 0 0 #ff7f00, -2px 0 0 #ff7f00, 0 2px 0 #ff7f00, 0 -2px 0 #ff7f00, 1px 1px #ff7f00, -1px -1px 0 #ff7f00, 1px -1px 0 #ff7f00, -1px 1px 0 #ff7f00;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 700;
+    text-align: center;
+
+}

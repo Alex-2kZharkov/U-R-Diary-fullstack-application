@@ -1,0 +1,101 @@
+.record {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    margin-bottom: 100px;
+    padding-bottom: 70px;
+    border-bottom: solid #FFDE00 3px;
+}
+
+.record:last-child {
+    margin-bottom: 0;
+}
+
+
+.record_image {
+    display: block;
+    min-width: 170px;
+    min-height: 170px;
+    max-width: 170px;
+    max-height: 170px;
+    border-radius: 50%;
+    border: solid 2px #000000;
+}
+
+.data_container {
+    flex-basis: 85%;
+}
+
+.date {
+    font-family: Cochin, Cambria, Georgia, Times, 'Times New Roman', serif;
+    color: #0080ff;
+    font-style: italic;
+    text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+    font-weight: 700;
+    font-size: 30px;
+    font-weight: 900;
+
+}
+
+.content {
+    margin-top: 10px;
+    color: #d7d7f6;
+    text-shadow: 2px 0 0 #000000, -2px 0 0 #000000, 0 2px 0 #000000, 0 -2px 0 #000000, 1px 1px #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+    font-weight: 700;
+    font-size: 30px;
+    font-weight: 900;
+    font-size: 28px;
+    font-family: 'Marck Script', Geneva, Tahoma, sans-serif, sans-serif;
+    word-break: break-all;
+}
+
+.edit {
+    position: absolute;
+    right: -6.5%;
+    top: 0%;
+    background-color: #0080ff;
+    color: #ffffff;
+    padding: 8px 8px 12px 16px;
+    border-radius: 50%;
+    border: solid 1px #333;
+    font-size: 40px;
+    text-align: center;
+    text-decoration: none;
+    transition: background .0s linear;
+    transition: color .0s linear;
+}
+
+
+
+.delete_modif {
+    top: 10rem;
+    padding: 11px 17px;
+    background-color: #FFDE00;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+.download_modif {
+    top: 5rem;
+    padding: 12px 20px 9.5px 20px;
+    background-color: #F20056;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+
+.edit:hover {
+    background-color: #ffffff;
+    color: #0080ff;
+}
+
+.download_modif:hover {
+    background-color: #ffffff;
+    color: #F20056;
+}
+
+.delete_modif:hover {
+    background-color: #fff;
+    color: #FFDE00;
+}

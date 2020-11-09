@@ -1,0 +1,82 @@
+.comment {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+    padding-bottom: 30px;
+    margin-bottom: 5px;
+}
+
+.comment::after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 3px;
+    padding: 1.5px 0;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    box-shadow: 2px 2px 5px #d7d7d7, -2px -2px 5px #d7d7d7;
+    background: linear-gradient(to right, orange, yellow, green, cyan, blue, violet, red)
+}
+
+.comment:last-child::after {
+    margin-bottom: 5px;
+    padding-bottom: 0px;
+}
+
+.comment:last-child {
+    padding-bottom: 5px;
+}
+
+.user_image {
+    display: block;
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+    border: solid 2px #000;
+}
+
+.data_container {
+    flex-basis: 60%;
+}
+
+.nickname {
+    margin-bottom: 10px;
+    font-size: 32px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, 'Times New Roman', Times, serif, Tahoma, sans-serif, sans-serif;
+    word-break: break-all;
+    transition: all 0.1s ease;
+
+}
+
+.nickname_name {
+    color: #ddd;
+    font-size: 46px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-shadow: 4px 0 0 #005190, -4px 0 0 #005190, 0 4px 0 #005190, 0 -4px 0 #005190, 2px 2px #005190, -2px -2px 0 #005190, 2px -2px 0 #005190, -2px 2px 0 #005190;
+    font-size: 46px;
+    text-decoration: none;
+}
+
+.nickname:hover {}
+
+.join_date {
+    font-family: Cochin, Cambria, Georgia, Times, 'Times New Roman', serif;
+    color: #0080ff;
+    font-style: italic;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.comment_content {
+    font-family: Lato, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    color: #fff;
+    text-shadow: 1px 0 0 #0080ff, -1px 0 0, 0 1px 0 #0080ff, 0 -1px 0 #0080ff, 0.5px 0.5px #0080ff, -0.5px -0.5px 0 #0080ff, 0.5px -0.5px 0 #0080ff, -0.5px 0.5px 0 #0080ff;
+}

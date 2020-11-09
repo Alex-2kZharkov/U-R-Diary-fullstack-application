@@ -1,0 +1,94 @@
+.intro {
+    background: url('../assets/background.jpg');
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.form_container {
+    position: relative;
+    width: 80vw;
+    height: 80vh;
+    margin: auto;
+    z-index: 1;
+}
+
+.auten_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    margin: auto;
+}
+
+fieldset {
+    border: double 5px #eeeeee;
+    padding-bottom: 50px;
+}
+
+legend {
+    font-size: 60px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.field {
+    display: block;
+    min-width: 320px;
+    padding: 20px 15px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times;
+    font-size: 20px;
+    text-align: center;
+    outline-color: #b83737;
+}
+
+.submit {
+    display: block;
+    font-family: Georgia, 'Times New Roman', Times;
+    font-size: 20px;
+    padding: 20px 80px;
+    margin: 10px auto;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.1s linear;
+}
+
+.submit:hover {
+    background-color: #6b2b2b;
+    color: #eeeeee
+}
+
+.registration {
+    text-align: center;
+}
+
+.down {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.registration div {
+    margin-bottom: 20px;
+}
+
+.registration a {
+    text-decoration: none;
+    color: #fb5d7f;
+    transition: color .1s linear;
+    transition: text-decoration .1s linear;
+
+}
+
+.registration a:hover {
+    text-decoration: underline;
+    color: #ff4069;
+}

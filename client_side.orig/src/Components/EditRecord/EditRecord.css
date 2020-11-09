@@ -1,0 +1,92 @@
+.intro {
+    background: url('https://www.myfreetextures.com/wp-content/uploads/2014/10/seamless-wood-planks-3.jpg');
+    background-size: 100%;
+    min-height: 100vh;
+    position: relative;
+    font-size: 24px;
+    font-family: Geneva, Tahoma, sans-serif, sans-serif;
+}
+
+.editor {
+    padding: 5em;
+}
+
+.ck-editor__editable_inline {
+    min-height: 500px;
+}
+
+.image_address {
+    font-size: 28px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 1em;
+}
+
+.image_address input {
+    display: block;
+    padding: 3px 0px 3px 5px;
+    width: 99.1%;
+    font-size: 20px;
+}
+
+.update_container {
+    position: fixed;
+    right: 0.1%;
+    bottom: 1%;
+    transition: border 0s linear;
+    cursor: pointer;
+}
+
+.update {
+    text-decoration: none;
+    color: #ffffff;
+    transition: color 0s linear;
+    transition: text-shadow 0s linear;
+}
+
+.update_container button {
+    padding: 10px 15px;
+    border-radius: 20px;
+    background-color: #ff8000;
+    font-family: Cambria, sans-serif;
+    font-size: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0s linear;
+    transition: text-shadow 0s ease;
+    transition: border 0s linear;
+    outline: none;
+}
+
+.update_container button:hover {
+    border: solid 2px #d7d6d7;
+    box-shadow: 5px 5px 10px #d7d6d7, -5px -5px 10px #d7d6d7;
+}
+
+.update_container button:hover .update {
+    text-shadow: 5px 5px 10px #d7d6d7, -5px -5px 10px #d7d6d7;
+
+}
+
+.update_icon {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.blink {
+    position: absolute;
+    left: 12em;
+    bottom: 8rem;
+    margin: auto;
+    text-align: center;
+    animation: blinker 4s step-start infinite;
+    animation-delay: 1s;
+    font-size: 2rem;
+    color: pink;
+    text-shadow: 5px 5px 10px blue, -4px -4px 9px blue;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}

@@ -1,0 +1,50 @@
+.intro {
+    background: url('https://www.myfreetextures.com/wp-content/uploads/2014/10/seamless-wood-planks-3.jpg');
+    background-size: 100%;
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.comments_container {
+    padding: 2rem 1% 10px 1%;
+    margin: 0 20%;
+    margin-bottom: 10px;
+    position: relative;
+    top: 10em;
+    box-shadow: -10px -10px 30px 5px rgb(255, 153, 94),
+        5px 5px 30px 5px rgb(255, 153, 94);
+    border-radius: 80px 80px 5px 5px;
+
+}
+
+.icon {
+    font-size: 50px;
+    color: #ffffff;
+    text-shadow: 5px 5px 10px #d8d8d8, -5px -5px 10px #d8d8d8;
+    position: absolute;
+    top: -35px;
+}
+
+.left {
+    left: -52px
+}
+
+.right {
+    right: -20px;
+}
+
+.entry_message {
+    text-align: center;
+    font-family: Lato, Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: 38px;
+    margin-bottom: 50px;
+}
+
+.entry_message span {
+    color: #0080ff;
+    font-weight: 700;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}

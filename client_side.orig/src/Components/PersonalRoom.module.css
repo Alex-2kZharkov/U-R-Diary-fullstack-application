@@ -1,0 +1,84 @@
+.intro {
+    background: url('https://www.myfreetextures.com/wp-content/uploads/2014/10/seamless-wood-planks-3.jpg');
+    background-size: 100%;
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.darker {
+    position: relative;
+    min-height: 100vh;
+}
+
+.autenticate {
+    position: fixed;
+    right: 0.5%;
+    bottom: 1%;
+    transition: border .0s linear;
+    cursor: pointer;
+}
+
+.new_record {
+    text-decoration: none;
+    color: #ffffff;
+    transition: color .0s linear;
+    transition: text-shadow .0s linear;
+}
+
+.autenticate button {
+    padding: 10px 22px;
+    border-radius: 20px;
+    background-color: #0080ff;
+    font-family: Cambria, sans-serif;
+    font-size: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: text-shadow .0s ease;
+    transition: box-shadow .0s linear;
+    outline: none;
+}
+
+.autenticate button:hover {
+    text-shadow: 5px 5px 10px #ff0080, -5px -5px 10px #ff0080;
+    box-shadow: 5px 5px 10px #ff0080, -5px -5px 10px #ff0080;
+
+}
+
+.autenticate_icon {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.download_all {
+    position: fixed;
+    right: 0.5%;
+    bottom: 20%;
+    transition: border .0s linear;
+    cursor: pointer;
+}
+
+
+.download_all_button {
+    padding: 10px 9px;
+    border-radius: 20px;
+    background-color: #F20056;
+    font-family: Cambria, sans-serif;
+    font-size: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: text-shadow .0s ease;
+    transition: box-shadow .0s linear;
+    outline: none;
+    cursor: pointer;
+}
+
+.download_all_button:hover {
+    text-shadow: 5px 5px 10px #0080ff, -5px -5px 10px #0080ff;
+    box-shadow: 5px 5px 10px #0080ff, -5px -5px 10px #0080ff;
+}
+
+.autenticate_icon {
+    display: inline-block;
+    margin-left: 15px;
+}

@@ -1,0 +1,118 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
+
+.container {
+    background: url('https://www.myfreetextures.com/wp-content/uploads/2014/10/seamless-wood-planks-3.jpg');
+    background-size: 100%;
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.wrap {
+    width: 730px;
+    position: relative;
+    right: -53em;
+    top: 5em;
+}
+
+.wrap form {
+    display: inline-block;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search_field {
+    display: block;
+    height: 60px;
+    font-size: 55px;
+    width: 700px;
+    padding: 3px 3px 3px 3px;
+    margin-top: 10px;
+    font-family: "Lato", Georgia, 'Times New Roman', Times, serif;
+    font-weight: 300;
+    outline: none;
+    color: #fff;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #d7d7d7;
+    cursor: text;
+    opacity: 1;
+}
+
+.search_field::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #aca9a9;
+
+}
+
+.submit {
+    display: block;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity .4s ease;
+    font-size: 44px;
+    margin-left: 1rem;
+    outline: none;
+    transition: opacity 0.1s ease;
+}
+
+.submit:hover {
+    opacity: 0.7;
+}
+
+.search_icon {
+    position: absolute;
+    z-index: 4;
+    top: 0.7em;
+    color: #fff;
+}
+
+.search_modif i {
+    right: -0.7em;
+}
+
+.cancel_modification {
+    margin-left: 12rem;
+}
+
+.cancel_modification i {
+    right: -1.8em;
+}
+
+.result_users {
+    padding: 2rem 5% 0px 5%;
+    margin: 0 20%;
+    margin-top: 7em;
+    box-shadow: -10px -10px 30px 5px rgb(255, 153, 94),
+        5px 5px 30px 5px rgb(0, 110, 255);
+    border-radius: 15px;
+
+}
+
+.negative_result {
+    text-align: center;
+    font-family: Lato, Arial, Helvetica, sans-serif;
+    color: #fff;
+    font-size: 32px;
+}
+
+.negative_result span {
+    color: #4da6ff;
+    font-weight: 700;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.entry_message {
+    text-align: center;
+    font-family: Lato, Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: 38px;
+    margin-bottom: 50px;
+}
+
+.modification {
+    margin-bottom: 10px;
+}

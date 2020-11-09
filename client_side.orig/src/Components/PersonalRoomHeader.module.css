@@ -1,0 +1,161 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 95%;
+    padding: 10px 2.5%;
+    background-color: #ff8000;
+    color: rgb(255, 255, 255);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 28px;
+    z-index: 5;
+}
+
+.user_link_container {
+    flex-basis: 35%;
+    align-self: flex-start;
+    word-break: break-all;
+
+}
+
+.user_link {
+    text-decoration: none;
+    font-family: 'Kaushan Script', 'Times Italic';
+    font-size: 40px;
+    color: #333333;
+    text-shadow: 5px 5px 10px #ff0037, -5px -5px 10px #ff0037;
+    animation: userName 20s infinite alternate;
+}
+
+.nav {
+    flex-basis: 37%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.link {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    padding: 0px 15px;
+}
+
+.link:last-child {
+    padding-right: 0;
+}
+
+.link:hover {
+    text-shadow: 5px 5px 10px #d7d7f6, -4px -4px 9px #d7d7f6;
+    text-decoration: underline;
+}
+
+.active {
+    text-shadow: 5px 5px 10px #d7d7f6, -4px -4px 9px #d7d7f6;
+    text-decoration: underline;
+    color: #0080ff;
+}
+
+.search_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 17%;
+}
+
+
+.search_field {
+    display: block;
+    font-size: 16px;
+    color: #000000;
+    padding: 10px 10px;
+    width: 163px;
+    border: none;
+    border-bottom: solid 1.5px #0080ff;
+    outline: none;
+}
+
+.icon {
+
+    display: block;
+    color: #fff;
+    font-size: 28px;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+.icon:hover {
+    text-shadow: 5px 5px 10px #d7d7f6, -4px -4px 9px #d7d7f6;
+}
+
+@keyframes userName {
+    0% {
+
+        color: blue;
+        text-shadow: 5px 5px 10px pink, -4px -4px 9px pink;
+    }
+
+    10% {
+
+        color: #8e44ad;
+        text-shadow: 5px 5px 10px #2980b9, -4px -4px 9px #2980b9;
+    }
+
+    20% {
+
+        color: #1abc9c;
+        text-shadow: 5px 5px 10px #f1c40f, -4px -4px 9px #f1c40f;
+    }
+
+    30% {
+
+        color: #d35400;
+        text-shadow: 5px 5px 10px #2980b9, -4px -4px 9px #2980b9;
+    }
+
+    40% {
+
+        color: blue;
+        text-shadow: 5px 5px 10px blue, -4px -4px 9px blue;
+    }
+
+    50% {
+
+        color: #34495e;
+        text-shadow: 5px 5px 10px #34495e, -4px -4px 9px #34495e;
+    }
+
+    60% {
+
+        color: blue;
+        text-shadow: 5px 5px 10px blue, -4px -4px 9px blue;
+    }
+
+    70% {
+
+        color: #2980b9;
+        text-shadow: 5px 5px 10px #d35400, -4px -4px 9px #d35400;
+    }
+
+    80% {
+
+        color: #f1c40f;
+        text-shadow: 5px 5px 10px #1abc9c, -4px -4px 9px #1abc9c;
+    }
+
+    90% {
+
+        color: #2980b9;
+        text-shadow: 5px 5px 10px #8e44ad, -4px -4px 9px #8e44ad;
+    }
+
+    100% {
+
+        color: pink;
+        text-shadow: 5px 5px 10px blue, -4px -4px 9px blue;
+    }
+}
