@@ -50,7 +50,7 @@ It is an online diary. My creativity told me to name it U'R Diary.
 | ![main page](client_side.orig/src/assets/screenshots/preview-1.png) | ![main page](client_side.orig/src/assets/screenshots/preview-2.png)|
 | ![main page](client_side.orig/src/assets/screenshots/preview-3.png) | ![main page](client_side.orig/src/assets/screenshots/preview-4.png)|
 |                      Loging page|      Registration page                | 
-| ![main page](client_side.orig/src/assets/screenshots/picture1.png) | ![main page](client_side.orig/src/assets/screenshots/picture2.png)|
+| ![main page](/client_side.orig/src/assets/screenshots/picture1.png) | ![main page](/client_side.orig/src/assets/screenshots/picture2.png)|
 Notification email
 ![main page](client_side.orig/src/assets/screenshots/preview-5.png)
 
