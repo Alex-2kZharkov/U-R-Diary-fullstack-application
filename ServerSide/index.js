@@ -9,8 +9,6 @@ const axios = require('axios');
 const request = require('request');
 const fs = require('fs');
 const { response } = require('express');
-const promise = require('promise');
-const { ppid } = require('process');
 const app = express();
 const serverPort = 4000;
 
@@ -83,7 +81,6 @@ app.post('/registration', (req, res) => {
           password: req.body.password,
           image: req.body.image,
           about_self: req.body.something,
-          date: new Date(),
         };
         let insertion = 'INSERT INTO User SET ?';
         connection.query(insertion, user, (err, result) => {
@@ -473,28 +470,11 @@ app.delete('/personalRoom/:id/delete/:rec_id', async (req, res) => {
     }
   );
 });
-// getting notifications and their authors
-app.get('/personalRoom/:id/notificatios/all', (req, res) => {
-  connection.query(
-    `Select User.id, User.nickname, User.image, Notification.id as notif_id, Notification.date, Notification.is_accepted from  Notification Inner Join User on Notification.author_id=User.id Where Notification.recepient_id=${req.params.id}`,
-    (err, result) => {
-      console.log('NOTIFICATIONS', result);
-      connection.query(
-        `Select User.id, User.nickname, User.image, Notification.id as notif_id, Notification.date, Notification.is_accepted from  Notification Inner Join User on Notification.recepient_id=User.id Where Notification.author_id=${req.params.id} and Notification.is_accepted='1'`,
-        (err, result2) => {
-          console.log('NOTIFICATIONS AS AUTHOR', result2);
-          res.send(result.concat(result2));
-        }
-      );
-    }
-  );
-});
 
-// get just user nickname from different sections
-app.get('/personalRoom/:id/:section', (req, res) => {
-  console.log('here', req.params);
+// get just user nickname
+app.get('/personalRoom/communications/:id', (req, res) => {
   connection.query(
-    `Select nickname, image from User where id=${req.params.id}`,
+    `Select nickname from User where id=${req.params.id}`,
     (err, result) => {
       if (err) {
         console.log(err);
@@ -506,235 +486,11 @@ app.get('/personalRoom/:id/:section', (req, res) => {
     }
   );
 });
-
-// get list of users with typed nickname and check if they already had notification
-app.get('/personalRoom/:id/friends/required-users', async (req, res) => {
-  console.log('I am here', req.query);
-  let users = [];
-  let new_users = [];
-  await new Promise(function (resolve, reject) {
-    connection.query(
-      `Select id, nickname, image, date from User Where User.nickname='${req.query.requiredNickname}'`,
-      (err, result) => {
-        if (err) {
-          console.log(err);
-          reject(err);
-          /*   res.send(err); */
-        } else {
-          console.log(result);
-          users = result;
-          resolve(result);
-          /*   res.send(result); */
-        }
-      }
-    );
-  });
-
-  for (let i = 0; i < users.length; i++) {
-    await new promise((resolve, reject) => {
-      connection.query(
-        `Select * from Notification Where author_id=${req.params.id} and recepient_id=${users[i].id}`,
-        (err, result) => {
-          if (result.length) {
-            if (result[result.length - 1].is_accepted == 0) {
-              new_users.push({
-                id: users[i].id,
-                nickname: users[i].nickname,
-                image: users[i].image,
-                days: Math.floor(
-                  Math.abs(
-                    new Date(new Date().toISOString()) -
-                      new Date(users[i].date.toISOString())
-                  ) /
-                    (1000 * 60 * 60 * 24)
-                ),
-                isHavingReq: false,
-              });
-            } else if (result[0].is_accepted == 1) {
-              new_users.push({
-                id: users[i].id,
-                nickname: users[i].nickname,
-                image: users[i].image,
-                days: Math.floor(
-                  Math.abs(
-                    new Date(new Date().toISOString()) -
-                      new Date(users[i].date.toISOString())
-                  ) /
-                    (1000 * 60 * 60 * 24)
-                ),
-                isHavingReq: true,
-              });
-            } else {
-              new_users.push({
-                id: users[i].id,
-                nickname: users[i].nickname,
-                image: users[i].image,
-                days: Math.floor(
-                  Math.abs(
-                    new Date(new Date().toISOString()) -
-                      new Date(users[i].date.toISOString())
-                  ) /
-                    (1000 * 60 * 60 * 24)
-                ),
-                isHavingReq: true,
-              });
-            }
-            if (i == users.length - 1) resolve();
-          } else {
-            new_users.push({
-              id: users[i].id,
-              nickname: users[i].nickname,
-              image: users[i].image,
-              days: Math.floor(
-                Math.abs(
-                  new Date(new Date().toISOString()) -
-                    new Date(users[i].date.toISOString())
-                ) /
-                  (1000 * 60 * 60 * 24)
-              ),
-              isHavingReq: false,
-            });
-            if (i == users.length - 1) resolve();
-          }
-        }
-      );
-    });
-  }
-  res.send(new_users);
-});
-// creating notification
-app.post('/personalRoom/:id/friends/required-user/:recepient', (req, res) => {
-  console.log(req.params, req.body);
-  let notification = {
-    author_id: req.params.id,
-    recepient_id: req.params.recepient,
-    date: new Date(),
-    is_accepted: -1, // -1 is indefined user didn't react yet on notification
-  };
-  let insertion = 'INSERT INTO Notification SET ?';
-  connection.query(insertion, notification, (err, result) => {
-    if (err) {
-      console.log('Insertion error', err);
-    } else {
-      console.log('Successfully added');
-      console.log(`New inserted record ${result}`);
-      res.status(200).send(result);
-    }
-  });
-});
-// update notification status due user decision
-app.put('/personalRoom/:id/notification/:notif_id', (req, res) => {
-  console.log('IT WORKS ', req.body, req.params);
-  connection.query(
-    `Update Notification Set is_accepted=${req.body.status} Where id=${req.params.notif_id}`,
-    (err, result) => {
-      console.log(result);
-      connection.query(
-        `Select User.id, User.nickname, User.image, Notification.id as notif_id, Notification.date, Notification.is_accepted from  Notification Inner Join User on Notification.author_id=User.id Where Notification.recepient_id=${req.params.id} and Notification.author_id=${req.body.author_id}`,
-        (err, result) => {
-          console.log('Sub query', result);
-          res.send(result);
-        }
-      );
-    }
-  );
-});
-// get all friends , friends are those notifications where is_accepted = 1
-// getting notifications and their authors
-app.get('/personalRoom/:id/friends/my-friends', (req, res) => {
-  connection.query(
-    `Select User.id, User.nickname, User.image,User.date as user_date, Notification.id as notif_id , Notification.is_accepted from  Notification Inner Join User on Notification.author_id=User.id Where Notification.recepient_id=${req.params.id}  and Notification.is_accepted='1'`,
-    (err, result) => {
-      console.log('FRIENDS AS RECEPIENT', result);
-      connection.query(
-        `Select User.id, User.nickname, User.image,User.date as user_date, Notification.id as notif_id , Notification.is_accepted from  Notification Inner Join User on Notification.recepient_id=User.id Where Notification.author_id=${req.params.id} and Notification.is_accepted='1'`,
-        (err, result2) => {
-          console.log('FRIENDS AS AUTHOR', result2);
-          res.send(result.concat(result2));
-        }
-      );
-      /*  res.send(result); */
-    }
-  );
-});
-// add comment
-app.post('/personalRoom/:id/friends/friend-room/:friend_id', (req, res) => {
-  console.log(req.body);
-  let newComment = {
-    side_user_id: req.params.friend_id,
-    user_id: req.params.id,
-    content: req.body.comment,
-    date_created: new Date(),
-  };
-  connection.query(`Insert Into Comment set ?`, newComment, (err, result) => {
-    if (err) console.log(err);
-    else res.send(result);
-  });
-});
-// get all comments for user
-app.get('/personalRoom/:id/comments/my-comments', (req, res) => {
-  console.log('MY COMMENTS', req.params);
-  connection.query(
-    ` Select Comment.*, User.nickname, User.image from Comment Inner Join User on Comment.side_user_id=User.id Where Comment.user_id=${req.params.id}`,
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('MY COMMENTS2', result);
-        res.send(result);
-      }
-    }
-  );
-});
-app.get('/personalRoom/:id/comments/side-user-comments', (req, res) => {
-  console.log('MY COMMENTS', req.params);
-  connection.query(
-    ` Select Comment.*, User.nickname, User.image from Comment Inner Join User on Comment.user_id=User.id Where Comment.side_user_id=${req.params.id}`,
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('MY COMMENTS2', result);
-        res.send(result);
-      }
-    }
-  );
-});
-// delete side user comment
-app.delete(
-  '/personalRoom/:id/comments/delete-comment/:comment_id',
-  (req, res) => {
-    console.log('DELETE COMMENTS', req.params);
-    connection.query(
-      ` DELETE From Comment Where comment_id='${req.params.comment_id}'`,
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        } else {
-          res.send('Comment has deleted');
-        }
-      }
-    );
-  }
-);
-// delete friend
-app.delete(
-  '/personalRoom/:id/friends/my-friends/delete/:friend_id',
-
-  (req, res) => {
-    console.log('DELETE FRIENDS', req.params);
-    connection.query(
-      ` DELETE From Notification Where id='${req.params.friend_id}'`,
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        } else {
-          res.send('Friend has deleted');
-        }
-      }
-    );
-  }
-);
+// get list of users with typed nickname 
+app.get('/personalRoom/:id/communications/required-users', (req, res) => {
+  console.log('I am here');
+  connection.query('Select nick')
+})
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });
