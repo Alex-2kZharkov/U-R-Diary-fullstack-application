@@ -11,7 +11,7 @@ I developed this project for my academic internship at college which is part of 
 at the end of the second year. So I decided to create something that is cool modern and can bring real use to people.
 It is an online diary. My creativity told me to name it U'R Diary.
 
-### What this app can do? 💪
+### What this app can do?💪
 - You can register and login into your personal room
 - After registration app sends an email
 - User personal room consists of his notes and profile info
@@ -56,7 +56,7 @@ Notification email
 
 |                      User's personal room|      Creating first note                 | 
 | :-----------------------------------: | :-----------------------------------: |
-| ![main page](client_side.orig/src/assets/screenshots/picture3.png) | ![main page](client_side.orig/src/assets/screenshots/picture4.png)|
+| ![main page](/client_side.orig/src/assets/screenshots/picture3.png) | ![main page](/client_side.orig/src/assets/screenshots/picture4.png)|
 |                      Personal room with new note|      Changing profile image               | 
 | ![main page](client_side.orig/src/assets/screenshots/picture5.png) | ![main page](client_side.orig/src/assets/screenshots/picture6.png)|
 |                      Updated profile image|      Friends section              | 
