@@ -70,6 +70,7 @@ Notification email
 |                      Writing comment|     Friend's comments               | 
 | ![main page](client_side.orig/src/assets/screenshots/Picture15.png) | ![main page](client_side.orig/src/assets/screenshots/Picture16.png)|
 ||
+&nbsp;&nbsp;&nbsp;&nbsp
 Comment section when there are no comments
 ![main page](client_side.orig/src/assets/screenshots/Picture17.png)
 
