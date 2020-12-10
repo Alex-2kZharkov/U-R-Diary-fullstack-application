@@ -50,27 +50,27 @@ It is an online diary. My creativity told me to name it U'R Diary.
 | ![main page](client_side.orig/src/assets/screenshots/preview-1.png) | ![main page](client_side.orig/src/assets/screenshots/preview-2.png)|
 | ![main page](client_side.orig/src/assets/screenshots/preview-3.png) | ![main page](client_side.orig/src/assets/screenshots/preview-4.png)|
 |                      Loging page|      Registration page                | 
-| ![main page](client_side.orig/src/assets/screenshots/Picture1.png) | ![main page](/client_side.orig/src/assets/screenshots/picture2.png)|
+| ![main page](client_side.orig/src/assets/screenshots/Picture1.png) | ![main page](client_side.orig/src/assets/screenshots/Picture2.png)|
 Notification email
 ![main page](client_side.orig/src/assets/screenshots/preview-5.png)
 
 |                      User's personal room|      Creating first note                 | 
 | :-----------------------------------: | :-----------------------------------: |
-| ![main page](/client_side.orig/src/assets/screenshots/picture3.png) | ![main page](/client_side.orig/src/assets/screenshots/picture4.png)|
+| ![main page](client_side.orig/src/assets/screenshots/Picture3.png) | ![main page](/client_side.orig/src/assets/screenshots/Picture4.png)|
 |                      Personal room with new note|      Changing profile image               | 
-| ![main page](client_side.orig/src/assets/screenshots/picture5.png) | ![main page](client_side.orig/src/assets/screenshots/picture6.png)|
+| ![main page](client_side.orig/src/assets/screenshots/Picture5.png) | ![main page](client_side.orig/src/assets/screenshots/Picture6.png)|
 |                      Updated profile image|      Friends section              | 
-| ![main page](client_side.orig/src/assets/screenshots/picture7.png) | ![main page](client_side.orig/src/assets/screenshots/picture8.png)|
+| ![main page](client_side.orig/src/assets/screenshots/Picture7.png) | ![main page](client_side.orig/src/assets/screenshots/Picture8.png)|
 |                      Match for user's name|      Invitation for friendship was sent              | 
-| ![main page](client_side.orig/src/assets/screenshots/picture9.png) | ![main page](client_side.orig/src/assets/screenshots/picture10.png)|
+| ![main page](client_side.orig/src/assets/screenshots/Picture9.png) | ![main page](client_side.orig/src/assets/screenshots/Picture10.png)|
 |                      Some user's notifications section|     Friendship invitation was accepted              | 
-| ![main page](client_side.orig/src/assets/screenshots/picture11.png) | ![main page](client_side.orig/src/assets/screenshots/picture12.png)|
+| ![main page](client_side.orig/src/assets/screenshots/Picture11.png) | ![main page](client_side.orig/src/assets/screenshots/Picture12.png)|
 |                      Friends section if user had friends|    Some user's room if two users were friends               | 
-| ![main page](client_side.orig/src/assets/screenshots/picture13.png) | ![main page](client_side.orig/src/assets/screenshots/picture14.png)|
+| ![main page](client_side.orig/src/assets/screenshots/Picture13.png) | ![main page](client_side.orig/src/assets/screenshots/Picture14.png)|
 |                      Writing comment|     Friend's comments               | 
-| ![main page](client_side.orig/src/assets/screenshots/picture15.png) | ![main page](client_side.orig/src/assets/screenshots/picture16.png)|
+| ![main page](client_side.orig/src/assets/screenshots/Picture15.png) | ![main page](client_side.orig/src/assets/screenshots/Picture16.png)|
 Comment section when there are no comments
-![main page](client_side.orig/src/assets/screenshots/picture17.png)
+![main page](client_side.orig/src/assets/screenshots/Picture17.png)
 
 ## How To Use
 Node.js must be installed on your PC.
