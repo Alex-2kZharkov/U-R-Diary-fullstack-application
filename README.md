@@ -76,6 +76,7 @@ Comment section when there are no comments
 
 ## How To Use
 Node.js must be installed on your PC.
+MySql Server and MySql Workbanch must be installed on your PC.
 Then clone this project and run the command 'npm install' in its directory, because you need node modules.
 Run 'npm start' also in the project directory.
 You are good to go
